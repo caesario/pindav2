@@ -156,7 +156,7 @@
 
 
 
-            <form role="form" action="<?php echo base_url('brands/update') ?>" method="post" id="updateBrandForm">
+            <form role="form" action="<?php echo site_url('Category/update') ?>" method="post" id="updateBrandForm">
 
 
 
@@ -551,7 +551,7 @@
 
                                     // hide the modal
 
-                                    $("#editBrandModal").modal('hide');
+                                    $("#editModal").modal('hide');
 
                                     $('.modal-backdrop').remove();
 

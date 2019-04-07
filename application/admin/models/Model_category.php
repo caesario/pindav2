@@ -77,8 +77,8 @@ class Model_category extends CI_Model
 	public function update($data, $id)
 	{
 		if($data && $id) {
-			$this->db->where('id_cat', $id);
-			$update = $this->db->update('categories', $data);
+			$this->db->where('id_kategori', $id);
+			$update = $this->db->update('pinda_kategori', $data);
 			return ($update == true) ? true : false;
 		}
 	}

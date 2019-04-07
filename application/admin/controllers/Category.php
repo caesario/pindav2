@@ -167,7 +167,49 @@ class Category extends MY_Controller
             return ($data == true) ? $path : false;
         }
     }
+    public function update($id)
+    {
 
+        $response = array();
+
+        if($id) {
+            $this->form_validation->set_rules('edit_category_name', 'Nama Kategori', 'trim|required');
+            $this->form_validation->set_rules('edit_status', 'Status', 'trim|required');
+            $this->form_validation->set_rules('edit_icon', 'Icon', 'trim|required');
+
+            $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+            if ($this->form_validation->run() == TRUE) {
+                $data = array(
+                    'nama_kategori' => $this->input->post('edit_category_name'),
+                    'status' => $this->input->post('edit_status'),
+                    'icon' => $this->input->post('edit_icon'),
+                );
+
+                $update = $this->model_category->update($data, $id);
+                if($update == true) {
+                    $response['success'] = true;
+                    $response['messages'] = 'Succesfully updated';
+                }
+                else {
+                    $response['success'] = false;
+                    $response['messages'] = 'Error in the database while updated the brand information';
+                }
+            }
+            else {
+                $response['success'] = false;
+                foreach ($_POST as $key => $value) {
+                    $response['messages'][$key] = form_error($key);
+                }
+            }
+        }
+        else {
+            $response['success'] = false;
+            $response['messages'] = 'Error please refresh the page again!!';
+        }
+
+        echo json_encode($response);
+    }
 
 
 
