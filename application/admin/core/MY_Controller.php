@@ -10,9 +10,9 @@ class MY_Controller extends CI_Controller
     public function render_template($page = null, $data = array())
     {
 
-        $this->load->view('template/header',$data);
-        $this->load->view('template/header_menu',$data);
-        $this->load->view('template/sidebar_menu',$data);
+        $this->load->view('layout/header',$data);
+        $this->load->view('layout/sidebar',$data);
+        $this->load->view('layout/topmenu',$data);
         $this->load->view($page, $data);
     }
 
