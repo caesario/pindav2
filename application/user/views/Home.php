@@ -240,7 +240,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0 justify-content-center">
                 <a href="">
                     <div class="category-card  text-center">
                         <div class="category-card-img">
@@ -251,7 +251,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                 </a>
-            </div>
+            </div>\
             <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                 <a href="">
                     <div class="category-card  text-center">
