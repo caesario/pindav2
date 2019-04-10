@@ -5,6 +5,9 @@ class MY_Controller extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        $this->load->model('model_category', 'category');
+        $this->load->model('model_artikel', 'artikel');
     }
 
     public function render_template($page = null, $data = array())

@@ -21,7 +21,7 @@
                             <li><a><i class="fa fa-database"></i> Master Data <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="<?= site_url('Category') ?>">Kategori</a></li>
-                                    <li><a href="index2.html">Artikel</a></li>
+                                    <li><a href="<?=site_url('Article')?>">Artikel</a></li>
                                     <li><a href="index3.html">Pesan</a></li>
                                 </ul>
                             </li>

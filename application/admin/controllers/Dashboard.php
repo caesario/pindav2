@@ -24,7 +24,7 @@ class Dashboard extends MY_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
-		$this->render_template('Dashboard', $this->data);
-	}
+    {
+        $this->render_template('Dashboard', $this->data);
+    }
 }
