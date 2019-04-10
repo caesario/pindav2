@@ -8,6 +8,7 @@ class MY_Controller extends CI_Controller
 
         $this->load->model('model_category', 'category');
         $this->load->model('model_artikel', 'artikel');
+        $this->load->model('model_admin', 'admin');
     }
 
     public function render_template($page = null, $data = array())

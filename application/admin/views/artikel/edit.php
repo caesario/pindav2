@@ -7,7 +7,7 @@
                     <h3>Tambah <small>Artikel</small></h3>
                 </div>
             </div>
-
+            <?php var_dump($detailartikel)?>
             <div class="clearfix"></div>
 
             <div id="messages"></div>
@@ -44,36 +44,45 @@
                             <div class="form-group row">
                                 <div class="col-md-6 col-12 col-xs-12">
                                     <label for="id_artikel">ID Artikel</label>
-                                    <input type="text" class="form-control" id="id_artikel" name="id_artikel" placeholder="ID ARTIKEL" autocomplete="off" disabled/>
-
+                                    <input type="text" class="form-control" id="id_artikel" name="id_artikel" value="<?= $detailartikel[0]['id_artikel']?>" placeholder="ID ARTIKEL" autocomplete="off" disabled/>
+                                    <input type="hidden" class="form-control" id="id_artikel" name="id_artikel" value="<?= $detailartikel[0]['id_artikel']?>" placeholder="ID ARTIKEL" autocomplete="off" />
                                 </div>
                                 <div class="col-md-6 col-12 col-x-12">
                                     <label for="id_admin">Nama Admin</label>
                                     <select class="form-control" id="id_admin" name="id_admin">
+                                        <option value="<?= $detailartikel[0]['id_admin']?>"><?= $detailartikel[0]['nama_admin']?></option>
                                     <?php foreach ($admin as $k => $v): ?>
+                                        <?php if($v['id_admin'] == $detailartikel[0]['id_admin'] ) : ?>
 
+                                        <?php else  : ?>
                                         <option value="<?php echo $v['id_admin'] ?>"><?php echo $v['nama_admin'] ?></option>
-
+                                        <?php endif; ?>
                                     <?php endforeach ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="judul_artikel">Judul Artikel</label>
-                                <input type="text" class="form-control" id="judul_artikel" name="judul_artikel" placeholder="Masukkan judul Artikel" autocomplete="off"/>
+                                <input type="text" class="form-control" id="judul_artikel" name="judul_artikel" value="<?= $detailartikel[0]['judul_artikel']?>" placeholder="Masukkan judul Artikel" autocomplete="off"/>
                             </div>
                             <div class="form-group">
                                     <label for="isi_artikel">Description</label>
-                                    <textarea type="text" class="form-control" id="isi_artikel" name="isi_artikel" placeholder="Enter
-                                    description" autocomplete="off" rows="13" cols="20">
-                                    </textarea>
+                                    <textarea type="text" class="form-control" id="isi_artikel"name="isi_artikel" placeholder="Enter
+                                    description" autocomplete="off" rows="13" cols="20"><?= $detailartikel[0]['isi_artikel']?></textarea>
                             </div>
+                            <div class="form-group">
+                                <label for="">Waktu Yang diset Sebelumnya</label>
+                                <input type="text" class="form-control" name="tanggal" id="" value="<?= $detailartikel[0]['tgl_artikel']?>" disabled>
+                            </div>
+                            <label for="">Set Waktu Baru</label>
                             <div class="input-group date">
-                                <input type="text" class="form-control" name="tanggal" id="dateTime" value="12-02-2012">
+                                <input type="text" class="form-control" name="tanggal" id="dateTime" value="">
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
                             </div>
+
+
                             <div class="clearfix"></div>
                             <br>
                             <div class="box-footer" style="float: right !important;">
@@ -397,7 +406,7 @@
 
 <script>
 
-    $("#description").wysihtml5();
+    $("#isi_artikel").wysihtml5();
 
     var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
 

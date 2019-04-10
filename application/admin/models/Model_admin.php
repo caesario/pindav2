@@ -1,50 +1,30 @@
 <?php 
 
-class Model_artikel extends CI_Model
+class Model_admin extends CI_Model
 {
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
-    public function getArtikelData($id = null)
+    /* get the brand data */
+    public function getAdminData($id = null)
     {
         if($id) {
-            $sql = "SELECT * FROM pinda_artikel WHERE id_artikel= ?";
+            $sql = "SELECT * FROM pinda_admin WHERE id_admin = ?";
             $query = $this->db->query($sql, array($id));
             return $query->row_array();
         }
 
-        $sql = "SELECT * FROM pinda_artikel";
+        $sql = "SELECT * FROM pinda_admin";
         $query = $this->db->query($sql);
-        return $query->result_array();
-    }
-
-    public function getArtikelDataDetail($id)
-    {
-        $this->db->select('*');
-        $this->db->from('pinda_admin');
-        $this->db->where('id_artikel', $id);
-        $this->db->join('pinda_artikel', 'pinda_artikel.id_admin = pinda_admin.id_admin');
-        $query = $this->db->get();
-        return $query->result_array();
-    }
-
-
-
-	public function getAllArtikel() {
-
-        $this->db->select('*');
-        $this->db->from('pinda_admin');
-        $this->db->join('pinda_artikel', 'pinda_artikel.id_admin = pinda_admin.id_admin');
-        $query = $this->db->get();
         return $query->result_array();
     }
 
 	public function create($data)
 	{
 		if($data) {
-			$insert = $this->db->insert('pinda_artikel', $data);
+			$insert = $this->db->insert('pinda_kategori', $data);
 			return ($insert == true) ? true : false;
 		}
 	}

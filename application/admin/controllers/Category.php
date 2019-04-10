@@ -38,9 +38,9 @@ class Category extends MY_Controller
             $buttons = '';
 
 
-                $buttons .= '<button type="button" class="btn btn-warning" onclick="editCategory('.$value['id_kategori'].')" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i></button>';
+                $buttons .= '<button type="button" class="btn btn-warning" onclick="editCategory(&quot;'.$value['id_kategori'].'&quot;)" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></button>';
 
-                $buttons .= ' <button type="button" class="btn btn-danger" onclick="removeFunc('.$value['id_kategori'].')" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
+                $buttons .= ' <button type="button" class="btn btn-danger" onclick="removeFunc(&quot;'.$value['id_kategori'].'&quot;)" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
 
             $img = '<img src="'.base_url($icon['icon']).'" alt="'.$value['id_kategori'].'" class="img-circle" width="50" height="50" />';
 
@@ -103,7 +103,7 @@ class Category extends MY_Controller
 	public function tambah() {
 
         $response = array();
-
+        $id = uniqid('KAT-');
         $this->form_validation->set_rules('nama_kategori', 'Kategori', 'trim|required');
         $this->form_validation->set_rules('status', 'Status', 'trim|required');
         $this->form_validation->set_rules('icon', 'Icon', 'trim');
@@ -114,6 +114,7 @@ class Category extends MY_Controller
 
 
             $data = array(
+                'id_kategori' => $id,
                 'icon' => $this->input->post('icon'),
                 'nama_kategori' => $this->input->post('nama_kategori'),
                 'status' => $this->input->post('status'),

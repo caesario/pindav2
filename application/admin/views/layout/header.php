@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <link rel="icon" href="<?= base_url('assets/user/img/pindaic.png') ?>" type="image/ico" />
 
     <title>PINDA ADMIN | <?= $page_title; ?></title>
 
@@ -25,6 +25,7 @@
     <link href="<?= base_url('assets/admin//vendors/jqvmap/dist/jqvmap.min.css') ?>" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?= base_url('assets/admin//vendors/bootstrap-daterangepicker/daterangepicker.css')?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/admin/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css') ?>">
     <!-- Datatables -->
     <link href="<?= base_url('assets/admin/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('assets/admin/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') ?>" rel="stylesheet">
@@ -34,6 +35,7 @@
     <!-- Custom Theme Style -->
     <link href="<?= base_url('assets/admin/build/css/custom.min.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/admin/vendors/fileinput/fileinput.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/admin/vendors/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 

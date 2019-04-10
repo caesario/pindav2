@@ -10,10 +10,9 @@
 
             <div class="clearfix"></div>
             <br>
-            <a href="" class="btn btn-success">Tambah Artikel</a>
+            <a href="<?= site_url('Article/add') ?>" class="btn btn-success">Tambah Artikel</a>
             <br>
             <br>
-            <?php var_dump($artikel)?>
             <!-- Notification -->
             <div id="messages"></div>
             <?php if($this->session->flashdata('success')): ?>
@@ -41,7 +40,6 @@
                             <table id="ArtikelTable" class="table table-striped table-bordered table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
                                         <th>ID Artikel</th>
                                         <th>Judul Artikel</th>
                                         <th>Nama Artikel</th>
@@ -49,23 +47,6 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-
-                                <?php $urut=1; foreach( $artikel as $artikeldata ) : ?>
-
-                                    <tr>
-                                        <td  class="small"><?= $urut; ?></td>
-                                        <td  class="small"><?= $artikeldata['id_artikel']; ?></td>
-                                        <td  class="small"><?= $artikeldata['judul_artikel'];?></td>
-                                        <td  class="small"><?= $artikeldata['nama_admin']; ?></td>
-                                        <td  class="small"><?= $artikeldata['tgl_artikel']; ?></td>
-                                        <td>
-                                            <a class="btn btn-sm btn-warning" data-id="<?= $artikeldata['id_artikel']; ?>" href=""><i class="fas fa-pencil-alt text-white"></i></a>
-                                            <a class="btn btn-sm btn-danger" href="" onclick="return confirm('yakin?');"><i class="fas fa-trash-alt"></i></a>
-                                        </td>
-
-                                    </tr>
-
-                                    <?php $urut++; endforeach; ?>
                             </table>
                         </div>
                     </div>
@@ -78,175 +59,9 @@
 
 
 <!-- Modal Section -->
-<!-- create kategori modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah Kategori</h4>
-            </div>
-            <form role="form" action="<?php echo site_url('Category/tambah') ?>" method="post" id="createForm" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nama_kategori">Nama Kategori</label>
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Kategori Proyek" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select class="form-control" id="status" name="status">
-                            <option value="1">Aktif</option>
-                            <option value="2">Tidak Aktif</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="icon" name="icon">
-                            <?php foreach ($icon as $k => $v): ?>
-
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
-
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-                    <br>
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-<!-- create icon -->
-<div class="modal fade" tabindex="-1" role="dialog" id="addIcon">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah icon</h4>
-            </div>
-            <form role="form" action="<?php echo site_url('Category/tambahicon') ?>" method="post" id="createForm" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="product_image">Gambar / Foto</label>
-                        <div class="kv-avatar">
-                            <div class="file-loading">
-                                <input id="iconcat" name="iconcat" type="file">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="nama_icon">Nama Icon</label>
-                        <input type="text" class="form-control" id="nama_icon" name="nama_icon" placeholder="Masukkan Nama Icon" autocomplete="off">
-                    </div>
-                    <br>
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!---->
-<!-- edit brand modal -->
-
-<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
-
-    <div class="modal-dialog" role="document">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                <h4 class="modal-title">Ubah Merk</h4>
-
-            </div>
-
-
-
-            <form role="form" action="<?php echo site_url('Category/update') ?>" method="post" id="updateBrandForm">
-
-
-
-                <div class="modal-body">
-
-                    <div id="messages"></div>
-
-
-
-                    <div class="form-group">
-
-                        <label for="edit_brand_name">Nama Merk</label>
-
-                        <input type="text" class="form-control" id="edit_category_name" name="edit_category_name" placeholder="Masukkan Nama Merk" autocomplete="off">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="edit_active">Status</label>
-
-                        <select class="form-control" id="edit_status" name="edit_status">
-
-                            <option value="1">Aktif</option>
-
-                            <option value="2">Tidak Aktif</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="edit_icon" name="edit_icon">
-                            <?php foreach ($icon as $k => $v): ?>
-
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
-
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-
-                </div>
-
-
-
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-
-                </div>
-
-
-
-            </form>
-
-
-
-
-
-        </div><!-- /.modal-content -->
-
-    </div><!-- /.modal-dialog -->
-
-</div><!-- /.modal -->
-
-
 <!-- remove brand modal -->
 
-<div class="modal fade" tabindex="-1" role="dialog" id="removeModal">
+<div class="modal fade" tabindex="-1" role="dialog" id="removeArtikelModal">
 
     <div class="modal-dialog" role="document">
 
@@ -262,7 +77,7 @@
 
 
 
-            <form role="form" action="<?php echo site_url('Category/remove') ?>" method="post" id="removeBrandForm">
+            <form role="form" action="<?php echo site_url('Article/remove') ?>" method="post" id="removeBrandForm">
 
                 <div class="modal-body">
 
@@ -289,6 +104,8 @@
     </div><!-- /.modal-dialog -->
 
 </div><!-- /.modal -->
+
+<!-- End Modal Section -->
 
 <!-- End Modal Section -->
 
@@ -380,11 +197,352 @@
 
 <script src="<?= base_url('assets/admin/vendors/pdfmake/build/vfs_fonts.js') ?>"></script>
 
-<script>
+<script type="text/javascript">
 
-    $(document).ready(function(){
-        $('#ArtikelTable').DataTable();
+    var manageTable;
+
+    $(document).ready(function() {
+        manageTable = $('#ArtikelTable').DataTable({
+
+            'ajax': 'Article/fetchArtikelData',
+
+            'order': []
+
+        });
+
+        // file upload lib
+        var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
+            'onclick="alert(\'Call your custom code here.\')">' +
+            '<i class="glyphicon glyphicon-tag"></i>' +
+            '</button>';
+        $("#iconcat").fileinput({
+            overwriteInitial: true,
+            maxFileSize: 1500,
+            showClose: false,
+            showCaption: false,
+            browseLabel: '',
+            removeLabel: '',
+            browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+            removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+            removeTitle: 'Cancel or reset changes',
+            elErrorContainer: '#kv-avatar-errors-1',
+            msgErrorClass: 'alert alert-block alert-danger',
+            // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
+            layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+            allowedFileExtensions: ["jpg", "png", "gif"]
+        });
+        // End File Upload
+
+
+        // submit the create from
+
+        $("#createForm").unbind('submit').on('submit', function() {
+
+            var form = $(this);
+            // remove the text-danger
+
+            $(".text-danger").remove();
+
+
+            $.ajax({
+
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: form.serialize(), // /converting the form data into array and sending it to server
+                dataType: 'json',
+                success:function(response) {
+                    manageTable.ajax.reload(null, false);
+                    if(response.success === true) {
+                        $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                            '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+                            '</div>');
+                        // hide the modal
+                        $("#addModal").modal('hide');
+                        // reset the form
+                        $("#createForm")[0].reset();
+                        $("#createForm .form-group").removeClass('has-error').removeClass('has-success');
+                    } else {
+                        if(response.messages instanceof Object) {
+                            $.each(response.messages, function(index, value) {
+                                var id = $("#"+index);
+
+
+
+                                id.closest('.form-group')
+
+                                    .removeClass('has-error')
+
+                                    .removeClass('has-success')
+
+                                    .addClass(value.length > 0 ? 'has-error' : 'has-success');
+
+
+
+                                id.after(value);
+
+
+
+                            });
+
+                        } else {
+
+                            $("#messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+
+                                '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
+
+                                '</div>');
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+
+
+            return false;
+
+        });
+
+
+
+
     });
+
+    // edit function
+
+    function editCategory(id)
+
+    {
+
+        $.ajax({
+
+            url: 'Category/fetchCategoryDataById/'+id,
+
+            type: 'post',
+
+            dataType: 'json',
+
+            success:function(response) {
+
+
+
+                $("#edit_category_name").val(response[0].nama_kategori);
+
+                $("#edit_status").val(response[0].status);
+
+                $("#edit_icon").val(response[0].id_icon);
+
+                // submit the edit from
+
+                $("#updateBrandForm").unbind('submit').bind('submit', function() {
+
+                    var form = $(this);
+
+
+
+                    // remove the text-danger
+
+                    $(".text-danger").remove();
+
+
+
+                    $.ajax({
+
+                        url: form.attr('action') + '/' + id,
+
+                        type: form.attr('method'),
+
+                        data: form.serialize(), // /converting the form data into array and sending it to server
+
+                        dataType: 'json',
+
+                        success:function(response) {
+
+
+
+                            manageTable.ajax.reload(null, false);
+
+
+
+                            if(response.success === true) {
+
+                                $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+
+                                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+
+                                    '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+
+                                    '</div>');
+
+
+
+
+
+                                // hide the modal
+
+                                $("#editModal").modal('hide');
+
+                                $('.modal-backdrop').remove();
+
+                                // reset the form
+
+                                $("#updateBrandForm .form-group").removeClass('has-error').removeClass('has-success');
+
+
+
+                            } else {
+
+
+
+                                if(response.messages instanceof Object) {
+
+                                    $.each(response.messages, function(index, value) {
+
+                                        var id = $("#"+index);
+
+
+
+                                        id.closest('.form-group')
+
+                                            .removeClass('has-error')
+
+                                            .removeClass('has-success')
+
+                                            .addClass(value.length > 0 ? 'has-error' : 'has-success');
+
+
+
+                                        id.after(value);
+
+
+
+                                    });
+
+                                } else {
+
+                                    $("#messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+
+                                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+
+                                        '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
+
+                                        '</div>');
+
+                                }
+
+                            }
+
+                        }
+
+                    });
+
+
+
+                    return false;
+
+                });
+
+
+
+            }
+
+        });
+
+    }
+
+
+    // remove functions
+    function removeFunc(id)
+
+    {
+
+        if(id) {
+
+            $("#removeBrandForm").on('submit', function() {
+
+
+
+                var form = $(this);
+
+
+
+                // remove the text-danger
+
+                $(".text-danger").remove();
+
+
+
+                $.ajax({
+
+                    url: form.attr('action'),
+
+                    type: form.attr('method'),
+
+                    data: { artikel_id:id },
+
+                    dataType: 'json',
+
+                    success:function(response) {
+
+
+
+                        manageTable.ajax.reload(null, false);
+
+
+
+                        if(response.success === true) {
+
+                            $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+
+                                '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+
+                                '</div>');
+
+
+
+                            // hide the modal
+
+                            $("#removeArtikelModal").modal('hide');
+
+                            $('.modal-backdrop').remove();
+
+
+
+                        } else {
+
+
+
+                            $("#messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+
+                                '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
+
+                                '</div>');
+
+                        }
+
+                    }
+
+                });
+
+
+
+                return false;
+
+            });
+
+        }
+
+    }
 
 </script>
 
