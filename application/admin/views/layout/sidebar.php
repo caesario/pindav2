@@ -22,7 +22,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="<?= site_url('Category') ?>">Kategori</a></li>
                                     <li><a href="<?=site_url('Article')?>">Artikel</a></li>
-                                    <li><a href="index3.html">Pesan</a></li>
+                                    <li><a href="<?= site_url('Message')?>">Pesan</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-users"></i> User <span class="fa fa-chevron-down"></span></a>

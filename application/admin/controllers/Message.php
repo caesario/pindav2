@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Article extends MY_Controller
+class Message extends MY_Controller
 {
 	public function __construct()
 	{
@@ -10,16 +10,14 @@ class Article extends MY_Controller
 
 //		$this->not_logged_in();
 
-		$this->data['page_title'] = 'Artikel';
+		$this->data['page_title'] = 'Pesan';
 
 
 	}
 
     public function index()
     {
-
-        $this->data['artikel'] = $this->artikel->getAllArtikel();
-        $this->render_template('artikel/index', $this->data);
+        $this->render_template('pesan/index', $this->data);
     }
 
 
@@ -93,30 +91,38 @@ class Article extends MY_Controller
 
 
 
-    public function fetchArtikelData()
+    public function fetchMessageData()
     {
         $result = array('data' => array());
 
-        $data = $this->artikel->getArtikelData();
+        $data = $this->pesan->getMessageData();
 
         foreach ($data as $key => $value) {
-            $admin = $this->admin->getAdminData($value['id_admin']);
             // button
             $buttons = '';
 
-            $link_address = site_url('Article/edit/'.$value['id_artikel']);
-            $buttons .= '<a href="'.$link_address.'"class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>';
 
-            $buttons .= ' <button type="button" class="btn btn-danger" onclick="removeFunc(&quot;'.$value['id_artikel'].'&quot;)" data-toggle="modal" data-target="#removeArtikelModal"><i class="fa fa-trash"></i></button>';
+            $buttons .= '<button type="button" class="btn btn-warning" onclick="editCategory(&quot;'.$value['id_pesan'].'&quot;)" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></button>';
+
+            $buttons .= ' <button type="button" class="btn btn-danger" onclick="removeFunc(&quot;'.$value['id_pesan'].'&quot;)" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
 
 
+            $status = '';
+            if($value['status'] == 1) {
+                $status = '<span class="label label-success">Aktif</span>';
+            } else if($value['status'] == 2) {
+                $status = '<span class="label label-danger">Tidak Aktif</span>';
+            } else {
+                $status = '<span class="label label-danger">Tidak Diketahui</span>';
+            }
 
 
             $result['data'][$key] = array(
-                $value['id_artikel'],
-                $value['judul_artikel'],
-                $admin['nama_admin'],
-                $value['tgl_artikel'],
+                $value['id_pesan'],
+                $value['nama_anda'],
+                $value['nomor_anda'],
+                $value['email_anda'],
+                $status,
                 $buttons
             );
         } // /foreach

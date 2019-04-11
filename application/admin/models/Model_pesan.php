@@ -1,21 +1,21 @@
 <?php 
 
-class Model_artikel extends CI_Model
+class Model_pesan extends CI_Model
 {
 	public function __construct()
 	{
 		parent::__construct();
 	}
 
-    public function getArtikelData($id = null)
+    public function getMessageData($id = null)
     {
         if($id) {
-            $sql = "SELECT * FROM pinda_artikel WHERE id_artikel= ?";
+            $sql = "SELECT * FROM pinda_pesan WHERE id_pesan= ?";
             $query = $this->db->query($sql, array($id));
             return $query->row_array();
         }
 
-        $sql = "SELECT * FROM pinda_artikel";
+        $sql = "SELECT * FROM pinda_pesan";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -41,21 +41,8 @@ class Model_artikel extends CI_Model
         return $query->result_array();
     }
 
-	public function create($data)
-	{
-		if($data) {
-			$insert = $this->db->insert('pinda_artikel', $data);
-			return ($insert == true) ? true : false;
-		}
-	}
 
-    public function createicon($data)
-    {
-        if($data) {
-            $insert = $this->db->insert('pinda_iconkategori', $data);
-            return ($insert == true) ? true : false;
-        }
-    }
+
 
 	public function update($data, $id)
 	{
