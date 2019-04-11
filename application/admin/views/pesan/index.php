@@ -60,49 +60,7 @@
 <!-- /page content -->
 
 
-<!-- Modal Section -->
-<!-- create kategori modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah Kategori</h4>
-            </div>
-            <form role="form" action="<?php echo site_url('Category/tambah') ?>" method="post" id="createForm" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nama_kategori">Nama Kategori</label>
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Kategori Proyek" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select class="form-control" id="status" name="status">
-                            <option value="1">Aktif</option>
-                            <option value="2">Tidak Aktif</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="icon" name="icon">
-                            <?php foreach ($icon as $k => $v): ?>
 
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
-
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-                    <br>
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 <!-- edit brand modal -->
 
@@ -122,7 +80,7 @@
 
 
 
-            <form role="form" action="<?php echo site_url('Message/update') ?>" method="post" id="updateBrandForm">
+            <form role="form" action="<?php echo site_url('Message/update') ?>" method="post" id="updatePesanForm">
 
 
 
@@ -140,18 +98,36 @@
 
                     <div class="form-group">
                         <label for="edit_brand_name">Nama Pengirim</label>
-                        <input type="text" class="form-control" id="id_pesan" name="id_pesan" placeholder="" autocomplete="off" disabled>
+                        <input type="text" class="form-control" id="nama_pengirim" name="nama_pengirim" placeholder="" autocomplete="off" disabled>
                     </div>
 
                     <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="edit_icon" name="edit_icon">
-                            <?php foreach ($icon as $k => $v): ?>
+                        <label for="nomor_pengirim">Nomor Pengirim</label>
+                        <input type="text" class="form-control" id="nomor_pengirim" name="nomor_pengirim" placeholder="" autocomplete="off" disabled>
+                    </div>
 
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
+                    <div class="form-group">
+                        <label for="email_pengirim">Email Pengirim</label>
+                        <input type="text" class="form-control" id="email_pengirim" name="email_pengirim" placeholder="" autocomplete="off" disabled>
+                    </div>
 
-                            <?php endforeach ?>
+                    <div class="form-group">
+                        <label for="isi_pesan">isi Pesan</label>
+                        <textarea name="isi_pesan" id="isi_pesan" class="form-control" cols="30" rows="10" disabled></textarea>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="edit_status">Status</label>
+
+                        <select class="form-control" id="edit_status" name="edit_status">
+
+                            <option value="1">Belum Dibaca</option>
+                            <option value="2">Sudah Dibaca</option>
+                            <option value="3">Tidak Diketahui</option>
+
                         </select>
+
                     </div>
 
                 </div>
@@ -333,31 +309,27 @@
 
         // edit function
 
-        function editREid)
+        function editPesan(id)
 
         {
 
             $.ajax({
 
-                url: 'Category/fetchCategoryDataById/'+id,
+                url: 'Message/fetchMessageDataById/'+id,
 
                 type: 'post',
 
                 dataType: 'json',
 
                 success:function(response) {
-
-
-
-                    $("#edit_category_name").val(response[0].nama_kategori);
-
-                    $("#edit_status").val(response[0].status);
-
-                    $("#edit_icon").val(response[0].id_icon);
-
+                    $("#id_pesan").val(response.id_pesan);
+                    $("#nama_pengirim").val(response.nama_anda);
+                    $("#nomor_pengirim").val(response.nomor_anda);
+                    $("#email_pengirim").val(response.email_anda);
+                    $("#isi_pesan").val(response.pesan_anda);
+                    $("#edit_status").val(response.status);
                     // submit the edit from
-
-                    $("#updateBrandForm").unbind('submit').bind('submit', function() {
+                    $("#updatePesanForm").unbind('submit').bind('submit', function() {
 
                         var form = $(this);
 

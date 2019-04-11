@@ -47,8 +47,8 @@ class Model_pesan extends CI_Model
 	public function update($data, $id)
 	{
 		if($data && $id) {
-			$this->db->where('id_artikel', $id);
-			$update = $this->db->update('pinda_artikel', $data);
+			$this->db->where('id_pesan', $id);
+			$update = $this->db->update('pinda_pesan', $data);
 			return ($update == true) ? true : false;
 		}
 	}
