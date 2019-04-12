@@ -58,7 +58,7 @@
                                     <li><a href="<?= site_url('Settings/about')?>">Tentang Kami</a></li>
                                     <li><a href="<?= site_url('Settings/kontak')?>">Kontak</a></li>
                                     <li><a href="<?= site_url('Settings/faq')?>">FAQ</a></li>
-                                    <li><a href="other_charts.html">User Administrasi</a></li>
+                                    <li><a href="<?= site_url('Settings/admin')?>">User Administrasi</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-sign-out"></i> Log Out</a>

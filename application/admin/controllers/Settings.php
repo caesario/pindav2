@@ -344,4 +344,207 @@ class Settings extends MY_Controller
 
     }
 
+    // Admin User
+
+    public function admin()
+    {
+        $this->data['page_title'] = 'Admin';
+        $this->render_template('webmin/admin', $this->data);
+    }
+
+    public function fetchAdminData()
+    {
+        $result = array('data' => array());
+
+        $data = $this->setting->getAdminData();
+
+        foreach ($data as $key => $value) {
+            // button
+            $buttons = '';
+
+
+            $buttons .= '<button type="button" class="btn btn-warning" onclick="editAdmin(&quot;'.$value['id_admin'].'&quot;)" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></button>';
+            $buttons .= '<button type="button" class="btn btn-info" onclick="editPass(&quot;'.$value['id_admin'].'&quot;)" data-toggle="modal" data-target="#editPassModal"><i class="fas fa-lock"></i></button>';
+            $buttons .= ' <button type="button" class="btn btn-danger" onclick="removeAdmin(&quot;'.$value['id_admin'].'&quot;)" data-toggle="modal" data-target="#removeAdmModal"><i class="fa fa-trash"></i></button>';
+
+
+
+            $result['data'][$key] = array(
+                $value['id_admin'],
+                $value['nama_admin'],
+                $value['username'],
+                $buttons
+            );
+        } // /foreach
+
+        echo json_encode($result);
+    }
+
+
+    public function adduseradmin() {
+
+        $response = array();
+        $id = uniqid('ADM-');
+        $this->form_validation->set_rules('nama_admin', 'Nama Admin', 'trim|required');
+        $this->form_validation->set_rules('user_admin', 'Username Admin', 'trim|required');
+        $this->form_validation->set_rules('password_admin', 'Kata Sandi', 'trim|required');
+        $this->form_validation->set_rules('passwordkonf_admin', 'Konfirmasi Kata Sandi', 'trim|required|matches[password_admin]');
+
+        $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+        if ($this->form_validation->run() == TRUE) {
+
+            $password = $this->input->post('password_admin');
+            $username = $this->input->post('user_admin');
+            $data = array(
+                'id_admin' => $id,
+                'nama_admin' => $this->input->post('nama_admin'),
+                'username' => $this->input->post('user_admin'),
+                'password' => md5($password),
+                'CreateTime' =>  date('Y-m-d H:i:s')
+            );
+
+            $cek = $this->setting->cekuser('username', $username);
+
+            if ($cek > 0 ) {
+                $response['success'] = false;
+                $response['messages'] = 'username sudah ada';
+            } else {
+                $create = $this->setting->createadmin($data);
+                if($create == true) {
+                    $response['success'] = true;
+                    $response['messages'] = 'Berhasil Menambahkan Admin';
+                }
+                else {
+                    $response['success'] = false;
+                    $response['messages'] = 'Error pada database';
+                }
+            }
+        }
+        else {
+            $response['success'] = false;
+            foreach ($_POST as $key => $value) {
+                $response['messages'][$key] = form_error($key);
+            }
+        }
+
+        echo json_encode($response);
+    }
+
+
+    public function fetchAdminDataById($id)
+    {
+        if($id) {
+            $data = $this->setting->getAdminData($id);
+            echo json_encode($data);
+        }
+
+        return false;
+    }
+    public function updateadmin() {
+
+        $response = array();
+
+        $this->form_validation->set_rules('nama_admin', 'Nama Admin', 'trim');
+        $this->form_validation->set_rules('user_admin', 'Username Admin', 'trim');
+
+        $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+        if ($this->form_validation->run() == TRUE) {
+
+            $id = $this->input->post('edit_idadminpost');
+            $data = array(
+                'nama_admin' => $this->input->post('edit_namaadmin'),
+                'username' => $this->input->post('edit_usernameadmin'),
+                'UpdateTime' =>  date('Y-m-d H:i:s')
+            );
+
+            $update = $this->setting->updateadmin($data, $id);
+            if($update == true) {
+                $response['success'] = true;
+                $response['messages'] = 'Berhasil Mengubah Admin';
+            }
+            else {
+                $response['success'] = false;
+                $response['messages'] = 'Error pada database';
+            }
+        }
+        else {
+            $response['success'] = false;
+            foreach ($_POST as $key => $value) {
+                $response['messages'][$key] = form_error($key);
+            }
+        }
+
+        echo json_encode($response);
+    }
+
+    public function updatepassadmin() {
+
+        $response = array();
+
+        $this->form_validation->set_rules('edit_password', 'Kata Sandi Baru', 'trim|required');
+        $this->form_validation->set_rules('edit_passwordkonf', 'Kata Sandi Baru Konfirmasi', 'trim|required|matches[edit_password]');
+
+        $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+        if ($this->form_validation->run() == TRUE) {
+
+            $passwordlama = md5($this->input->post('edit_passwordlama'));
+            $id = $this->input->post('edit_idadminpasspost');
+            $data = array(
+                'password' => md5($this->input->post('edit_password')),
+                'UpdateTime' =>  date('Y-m-d H:i:s')
+            );
+
+            $cek = $this->setting->cekuser('password', $passwordlama);
+            if($cek == 0 ) {
+                $response['success'] = false;
+                $response['messages'] = 'Kata Sandi Lama salah';
+            } else {
+                $update = $this->setting->updateadmin($data, $id);
+                if($update == true) {
+                    $response['success'] = true;
+                    $response['messages'] = 'Berhasil Mengubah Admin';
+                }
+                else {
+                    $response['success'] = false;
+                    $response['messages'] = 'Error pada database';
+                }
+            }
+        }
+        else {
+            $response['success'] = false;
+            foreach ($_POST as $key => $value) {
+                $response['messages'][$key] = form_error($key);
+            }
+        }
+
+        echo json_encode($response);
+    }
+
+    public function removeadmin() {
+
+        $id_admin = $this->input->post('id_admin');
+        $response = array();
+        if( $id_admin ) {
+            $delete = $this->setting->removeadmin($id_admin);
+
+            if($delete == true) {
+                $response['success'] = true;
+                $response['messages'] = "Successfully removed";
+            }
+            else {
+                $response['success'] = false;
+                $response['messages'] = "Error in the database while removing the brand information";
+            }
+        }
+        else {
+            $response['success'] = false;
+            $response['messages'] = "Refersh the page again!!";
+        }
+
+        echo json_encode($response);
+
+    }
 }

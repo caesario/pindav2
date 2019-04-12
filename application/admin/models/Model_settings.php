@@ -131,39 +131,53 @@ class Model_settings extends CI_Model
     }
     // END Kontak
 
-    public function getArtikelDataDetail($id)
+    // Start Admin
+    public function getAdminData($id = null)
     {
-        $this->db->select('*');
-        $this->db->from('pinda_admin');
-        $this->db->where('id_artikel', $id);
-        $this->db->join('pinda_artikel', 'pinda_artikel.id_admin = pinda_admin.id_admin');
-        $query = $this->db->get();
+        if($id) {
+            $sql = "SELECT * FROM pinda_admin WHERE id_admin= ?";
+            $query = $this->db->query($sql, array($id));
+            return $query->row_array();
+        }
+
+        $sql = "SELECT * FROM pinda_admin";
+        $query = $this->db->query($sql);
         return $query->result_array();
     }
 
-
-
-	public function getAllArtikel() {
-
-        $this->db->select('*');
-        $this->db->from('pinda_admin');
-        $this->db->join('pinda_artikel', 'pinda_artikel.id_admin = pinda_admin.id_admin');
-        $query = $this->db->get();
-        return $query->result_array();
+    public function createadmin($data)
+    {
+        if($data) {
+            $insert = $this->db->insert('pinda_admin', $data);
+            return ($insert == true) ? true : false;
+        }
     }
 
+    public function cekuser($field, $data){
+        $this->db->where($field, $data);
+        $this->db->from('pinda_admin');
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
 
+    public function updateadmin($data, $id)
+    {
+        if($data && $id) {
+            $this->db->where('id_admin', $id);
+            $update = $this->db->update('pinda_admin', $data);
+            return ($update == true) ? true : false;
+        }
+    }
 
+    public function removeadmin($id)
+    {
+        if($id) {
+            $this->db->where('id_admin', $id);
+            $delete = $this->db->delete('pinda_admin');
+            return ($delete == true) ? true : false;
+        }
+    }
 
-
-
-	public function remove($id)
-	{
-		if($id) {
-			$this->db->where('id_artikel', $id);
-			$delete = $this->db->delete('pinda_artikel');
-			return ($delete == true) ? true : false;
-		}
-	}
+    // End Admin
 
 }
