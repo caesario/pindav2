@@ -4,7 +4,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Tambah <small>Artikel</small></h3>
+                    <h3>Tentang<small> Pinda</small></h3>
                 </div>
             </div>
 
@@ -27,57 +27,35 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
 
-                    <form role="form" action="<?php base_url('Article/add') ?>" method="post" enctype="multipart/form-data">
+                    <form role="form" action="<?= site_url('Settings/editabout') ?>" method="post">
 
                         <div class="box-body">
                             <?php echo validation_errors(); ?>
-                            <div class="form-group">
-                                <label for="product_image">Gambar / Foto</label>
-                                <div class="kv-avatar">
-                                    <div class="file-loading">
-                                        <input id="artikel_gambar" name="artikel_gambar" type="file">
-                                    </div>
-                                </div>
-                            </div>
                             <br>
-                            <div class="form-group row">
-                                <div class="col-md-6 col-12 col-xs-12">
-                                    <label for="id_artikel">ID Artikel</label>
-                                    <input type="text" class="form-control" id="id_artikel" name="id_artikel" placeholder="ID ARTIKEL" autocomplete="off" disabled/>
-
-                                </div>
-                                <div class="col-md-6 col-12 col-x-12">
-                                    <label for="id_admin">Nama Admin</label>
-                                    <select class="form-control" id="id_admin" name="id_admin">
-                                    <?php foreach ($admin as $k => $v): ?>
-
-                                        <option value="<?php echo $v['id_admin'] ?>"><?php echo $v['nama_admin'] ?></option>
-
-                                    <?php endforeach ?>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="id_tentang">ID Tentang</label>
+                                <input type="text" class="form-control" id="id_tentang" name="id_tentang"  value="<?= $tentang['id_tentang']?>" autocomplete="off" disabled/>
+                                <input type="hidden" class="form-control" id="id_tentang" name="id_tentang" value="<?= $tentang['id_tentang']?>" autocomplete="off"/>
                             </div>
                             <div class="form-group">
-                                <label for="judul_artikel">Judul Artikel</label>
-                                <input type="text" class="form-control" id="judul_artikel" name="judul_artikel" placeholder="Masukkan judul Artikel" autocomplete="off"/>
+                                    <label for="tentang_atas">Tentang Atas</label>
+                                    <textarea type="text" class="form-control" id="tentang_atas" name="tentang_atas" placeholder="Enter
+                                    description" autocomplete="off" rows="13" cols="20"><?= $tentang['tentang_atas']?></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tentang_bawah">Tentang Bawah</label>
+                                <textarea type="text" class="form-control" id="tentang_bawah" name="tentang_bawah" placeholder="Enter
+                                    description" autocomplete="off" rows="13" cols="20"><?= $tentang['tentang_bawah']?></textarea>
                             </div>
                             <div class="form-group">
-                                    <label for="isi_artikel">Description</label>
-                                    <textarea type="text" class="form-control" id="isi_artikel" name="isi_artikel" placeholder="Enter
-                                    description" autocomplete="off" rows="13" cols="20">
-                                    </textarea>
-                            </div>
-                            <div class="input-group date">
-                                <input type="text" class="form-control" name="tanggal" id="dateTime" value="12-02-2012">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
+                                <label for="updatetime">Update Time</label>
+                                <input type="text" class="form-control" id="updatetime" name="updatetime" value="<?= $tentang['UpdateTime']?>" autocomplete="off" disabled/>
                             </div>
                             <div class="clearfix"></div>
                             <br>
                             <div class="box-footer" style="float: right !important;">
                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                <a href="<?= site_url('Article') ?>" class="btn btn-danger">Back</a>
                             </div>
                     </form>
                 </div>
@@ -87,221 +65,6 @@
     </div>
 <!-- /page content -->
 
-
-<!-- Modal Section -->
-<!-- create kategori modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah Kategori</h4>
-            </div>
-            <form role="form" action="<?php echo site_url('Category/tambah') ?>" method="post" id="createForm" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nama_kategori">Nama Kategori</label>
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Kategori Proyek" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select class="form-control" id="status" name="status">
-                            <option value="1">Aktif</option>
-                            <option value="2">Tidak Aktif</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="icon" name="icon">
-                            <?php foreach ($icon as $k => $v): ?>
-
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
-
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-                    <br>
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-<!-- create icon -->
-<div class="modal fade" tabindex="-1" role="dialog" id="addIcon">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah icon</h4>
-            </div>
-            <form role="form" action="<?php echo site_url('Category/tambahicon') ?>" method="post" id="createForm" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="product_image">Gambar / Foto</label>
-                        <div class="kv-avatar">
-                            <div class="file-loading">
-                                <input id="iconcat" name="iconcat" type="file">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="nama_icon">Nama Icon</label>
-                        <input type="text" class="form-control" id="nama_icon" name="nama_icon" placeholder="Masukkan Nama Icon" autocomplete="off">
-                    </div>
-                    <br>
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
-                </div>
-            </form>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<!---->
-<!-- edit brand modal -->
-
-<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
-
-    <div class="modal-dialog" role="document">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                <h4 class="modal-title">Ubah Merk</h4>
-
-            </div>
-
-
-
-            <form role="form" action="<?php echo site_url('Category/update') ?>" method="post" id="updateBrandForm">
-
-
-
-                <div class="modal-body">
-
-                    <div id="messages"></div>
-
-
-
-                    <div class="form-group">
-
-                        <label for="edit_brand_name">Nama Merk</label>
-
-                        <input type="text" class="form-control" id="edit_category_name" name="edit_category_name" placeholder="Masukkan Nama Merk" autocomplete="off">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="edit_active">Status</label>
-
-                        <select class="form-control" id="edit_status" name="edit_status">
-
-                            <option value="1">Aktif</option>
-
-                            <option value="2">Tidak Aktif</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="edit_icon" name="edit_icon">
-                            <?php foreach ($icon as $k => $v): ?>
-
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
-
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-
-                </div>
-
-
-
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-
-                </div>
-
-
-
-            </form>
-
-
-
-
-
-        </div><!-- /.modal-content -->
-
-    </div><!-- /.modal-dialog -->
-
-</div><!-- /.modal -->
-
-
-<!-- remove brand modal -->
-
-<div class="modal fade" tabindex="-1" role="dialog" id="removeModal">
-
-    <div class="modal-dialog" role="document">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                <h4 class="modal-title">Remove Category</h4>
-
-            </div>
-
-
-
-            <form role="form" action="<?php echo site_url('Category/remove') ?>" method="post" id="removeBrandForm">
-
-                <div class="modal-body">
-
-                    <p>Do you really want to remove?</p>
-
-                </div>
-
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-
-                </div>
-
-            </form>
-
-
-
-
-
-        </div><!-- /.modal-content -->
-
-    </div><!-- /.modal-dialog -->
-
-</div><!-- /.modal -->
-
-<!-- End Modal Section -->
 
 
 <!-- footer content -->
