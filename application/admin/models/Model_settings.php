@@ -106,6 +106,31 @@ class Model_settings extends CI_Model
     }
     // END FAQ
 
+
+    // Start Kontak
+    public function getKontakData($id = null)
+    {
+        if($id) {
+            $sql = "SELECT * FROM pinda_kontak WHERE id_kontak= ?";
+            $query = $this->db->query($sql, array($id));
+            return $query->row_array();
+        }
+
+        $sql = "SELECT * FROM pinda_kontak";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function updatekontak($data, $id)
+    {
+        if($data && $id) {
+            $this->db->where('id_kontak', $id);
+            $update = $this->db->update('pinda_kontak', $data);
+            return ($update == true) ? true : false;
+        }
+    }
+    // END Kontak
+
     public function getArtikelDataDetail($id)
     {
         $this->db->select('*');

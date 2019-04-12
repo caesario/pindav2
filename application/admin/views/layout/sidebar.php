@@ -56,7 +56,7 @@
                                 <ul class="nav child_menu">
                                     <li><a href="<?= site_url('Settings/testimoni')?>">Testimoni</a></li>
                                     <li><a href="<?= site_url('Settings/about')?>">Tentang Kami</a></li>
-                                    <li><a href="morisjs.html">Kontak</a></li>
+                                    <li><a href="<?= site_url('Settings/kontak')?>">Kontak</a></li>
                                     <li><a href="<?= site_url('Settings/faq')?>">FAQ</a></li>
                                     <li><a href="other_charts.html">User Administrasi</a></li>
                                 </ul>

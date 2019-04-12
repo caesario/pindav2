@@ -13,7 +13,7 @@ class Settings extends MY_Controller
 
 	}
 
-        public function about() {
+	public function about() {
 	    $id = 'aboutpinda001';
         $this->data['page_title'] = 'Tentang';
         $this->data['tentang'] = $this->setting->getAboutData($id);
@@ -298,6 +298,48 @@ class Settings extends MY_Controller
             $this->data['faq'] = $this->setting->getfaqData($id);
             $this->data['page_title'] = 'Edit FAQ';
             $this->render_template('webmin/editfaq', $this->data);
+        }
+
+    }
+
+
+    // Kontak
+
+
+    public function kontak() {
+
+        $this->form_validation->set_rules('telepon', 'Telepon', 'trim');
+        $this->form_validation->set_rules('whatsapp', 'Whatsapp', 'trim');
+        $this->form_validation->set_rules('line', 'Line', 'trim');
+        $this->form_validation->set_rules('email', 'Email', 'trim');
+        $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+        $id = 'kontakpinda001';
+        if ($this->form_validation->run() == TRUE) {
+
+            $data = array(
+                'telepon' => $this->input->post('telepon'),
+                'whatsapp' => $this->input->post('whatsapp'),
+                'line' => $this->input->post('line'),
+                'email' => $this->input->post('email'),
+                'UpdateTime' =>  date('Y-m-d H:i:s')
+            );
+
+            $create = $this->setting->updatekontak($data, $id);
+            if($create == true) {
+                $this->session->set_flashdata('success', 'Kontak Berhasil diubah');
+                redirect('Settings/kontak', 'refresh');
+            }
+            else {
+                $this->session->set_flashdata('error', 'Kontak gagal diubah');
+                redirect('Settings/kontak', 'refresh');
+            }
+        }
+        else {
+
+            $this->data['page_title'] = 'Kontak';
+            $this->data['kontak'] = $this->setting->getKontakData($id);
+            $this->render_template('webmin/kontak', $this->data);
         }
 
     }
