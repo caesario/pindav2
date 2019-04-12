@@ -27,6 +27,85 @@ class Model_settings extends CI_Model
 
     // End Tentang Model
 
+
+    // Model Testimoni
+
+    public function getTestimoniData($id = null)
+    {
+        if($id) {
+            $sql = "SELECT * FROM pinda_testimoni WHERE id_testimoni= ?";
+            $query = $this->db->query($sql, array($id));
+            return $query->row_array();
+        }
+
+        $sql = "SELECT * FROM pinda_testimoni";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+
+    public function removetesti($id)
+    {
+        if($id) {
+            $this->db->where('id_testimoni', $id);
+            $delete = $this->db->delete('pinda_testimoni');
+            return ($delete == true) ? true : false;
+        }
+    }
+
+    public function updatetesti($data, $id)
+    {
+        if($data && $id) {
+            $this->db->where('id_testimoni', $id);
+            $update = $this->db->update('pinda_testimoni', $data);
+            return ($update == true) ? true : false;
+        }
+    }
+
+    // End Model testimoni
+
+
+    // Start FAQ
+    public function getfaqData($id = null)
+    {
+        if($id) {
+            $sql = "SELECT * FROM pinda_faq WHERE id_faq= ?";
+            $query = $this->db->query($sql, array($id));
+            return $query->row_array();
+        }
+
+        $sql = "SELECT * FROM pinda_faq";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function removefaq($id)
+    {
+        if($id) {
+            $this->db->where('id_faq', $id);
+            $delete = $this->db->delete('pinda_faq');
+            return ($delete == true) ? true : false;
+        }
+    }
+
+    public function createfaq($data)
+    {
+        if($data) {
+            $insert = $this->db->insert('pinda_faq', $data);
+            return ($insert == true) ? true : false;
+        }
+    }
+
+    public function updatefaq($data, $id)
+    {
+        if($data && $id) {
+            $this->db->where('id_faq', $id);
+            $update = $this->db->update('pinda_faq', $data);
+            return ($update == true) ? true : false;
+        }
+    }
+    // END FAQ
+
     public function getArtikelDataDetail($id)
     {
         $this->db->select('*');
@@ -51,14 +130,7 @@ class Model_settings extends CI_Model
 
 
 
-	public function update($data, $id)
-	{
-		if($data && $id) {
-			$this->db->where('id_pesan', $id);
-			$update = $this->db->update('pinda_pesan', $data);
-			return ($update == true) ? true : false;
-		}
-	}
+
 
 	public function remove($id)
 	{

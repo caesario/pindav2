@@ -54,10 +54,10 @@
                             </li>
                             <li><a><i class="fa fa-gears"></i> Pengaturan <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="chartjs.html">Testimoni</a></li>
+                                    <li><a href="<?= site_url('Settings/testimoni')?>">Testimoni</a></li>
                                     <li><a href="<?= site_url('Settings/about')?>">Tentang Kami</a></li>
                                     <li><a href="morisjs.html">Kontak</a></li>
-                                    <li><a href="echarts.html">FAQ</a></li>
+                                    <li><a href="<?= site_url('Settings/faq')?>">FAQ</a></li>
                                     <li><a href="other_charts.html">User Administrasi</a></li>
                                 </ul>
                             </li>
