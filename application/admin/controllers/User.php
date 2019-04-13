@@ -119,45 +119,57 @@ class User extends MY_Controller
         echo json_encode($result);
     }
 
-    public function add() {
+    public function adduser() {
 
-        $response = array();
-        $id = uniqid('USR-');
-        $this->form_validation->set_rules('judul_artikel', 'Judul Artikel', 'trim|required');
-        $this->form_validation->set_rules('isi_artikel', 'Isi Artikel', 'trim|required');
-        $this->form_validation->set_rules('tanggal', 'Tanggal Waktu', 'trim|required');
-        $this->form_validation->set_rules('id_admin', 'Admin', 'trim|required');
+        $iduser = uniqid('USR-');
+        $iddompet = uniqid('ID-');
+        $this->form_validation->set_rules('username_user', 'Username', 'trim|required');
+        $this->form_validation->set_rules('namauser_user', 'Nama Lengkap', 'trim|required');
+        $this->form_validation->set_rules('email_user', 'Email', 'trim|required|valid_email');
+        $this->form_validation->set_rules('password_user', 'Kata Sandi', 'trim|required');
+        $this->form_validation->set_rules('passwordkonf_user', 'Konfirmasi Kata Sandi', 'trim|required|matches[password_user]');
+        $this->form_validation->set_rules('telephone_user', 'Telephone', 'trim|required');
+        $this->form_validation->set_rules('pekerjaan_user', 'Pekerjaan', 'trim|required');
         $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
 
-        $myTime = strtotime($this->input->post('tanggal'));
-        $time = date("Y-m-d H:i:s", $myTime);
         if ($this->form_validation->run() == TRUE) {
 
-            $uploadgambar = $this->upload_gambarartikel();
+            $uploadfoto = $this->upload_photouser();
             $data = array(
-                'id_artikel' => $id,
-                'judul_artikel' => $this->input->post('judul_artikel'),
-                'isi_artikel' => $this->input->post('isi_artikel'),
-                'tgl_artikel' => $time,
-                'id_admin' => $this->input->post('id_admin'),
-                'gambar_artikel' => $uploadgambar,
+                'id_user' => $iduser,
+                'username' => $this->input->post('username_user'),
+                'nama_user'=> $this->input->post('namauser_user'),
+                'password' => md5($this->input->post('password_user')),
+                'email' => $this->input->post('email_user'),
+                'telephone' => $this->input->post('telephone_user'),
+                'photo' => $uploadfoto,
+                'pekerjaan' => $this->input->post('pekerjaan_user'),
                 'CreateTime' =>  date('Y-m-d H:i:s')
             );
 
-            $create = $this->artikel->create($data);
+            $datadompet = array (
+                'id_dompet' => $iddompet,
+                'id_user' => $iduser,
+                'current_balance' => 0,
+                'CreateTime' =>  date('Y-m-d H:i:s')
+            );
+
+            $create = $this->user->createuser($data);
+
             if($create == true) {
-                $this->session->set_flashdata('success', 'Artikel Berhasil Ditambah');
-                redirect('Article', 'refresh');
+                $this->dompet->createdompet($datadompet);
+                $this->session->set_flashdata('success', 'User  Berhasil Ditambah');
+                redirect('User', 'refresh');
             }
             else {
-                $this->session->set_flashdata('error', 'Artikel gagal Ditambah');
-                redirect('Article', 'refresh');
+                $this->session->set_flashdata('error', 'User gagal Ditambah');
+                redirect('User', 'refresh');
             }
         }
         else {
-            $this->data['page_title'] = 'Tambah Artikel';
-            $this->data['admin'] = $this->admin->getAdminData();
-            $this->render_template('artikel/add.php', $this->data);
+
+            $this->data['page_title'] = 'Tambah User';
+            $this->render_template('user/adduser', $this->data);
         }
 
     }
@@ -191,11 +203,11 @@ class User extends MY_Controller
 
 
 
-    public function upload_gambarartikel()
+    public function upload_photouser()
     {
-        // assets/images/product_image
-        $config['upload_path'] = 'assets/admin/gambarartikel';
-        $config['file_name'] =  uniqid('art');
+        // asset/imguser/
+        $config['upload_path'] = 'assets/imguser';
+        $config['file_name'] =  uniqid('usrpht');
         $config['allowed_types'] = 'gif|jpg|png|svg';
         $config['max_size'] = '1000';
 
@@ -203,7 +215,7 @@ class User extends MY_Controller
         // $config['max_height']  = '768';
 
         $this->load->library('upload', $config);
-        if ( ! $this->upload->do_upload('artikel_gambar'))
+        if ( ! $this->upload->do_upload('user_photo'))
         {
             $error = $this->upload->display_errors();
             return $error;
@@ -211,7 +223,7 @@ class User extends MY_Controller
         else
         {
             $data = array('upload_data' => $this->upload->data());
-            $type = explode('.', $_FILES['artikel_gambar']['name']);
+            $type = explode('.', $_FILES['user_photo']['name']);
             $type = $type[count($type) - 1];
 
             $path = $config['upload_path'].'/'.$config['file_name'].'.'.$type;

@@ -4,7 +4,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Tambah <small>Artikel</small></h3>
+                    <h3>Tambah <small>User</small></h3>
                 </div>
             </div>
 
@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
 
-                    <form role="form" action="<?php base_url('Article/add') ?>" method="post" enctype="multipart/form-data">
+                    <form role="form" action="<?php base_url('User/adduser') ?>" method="post" enctype="multipart/form-data">
 
                         <div class="box-body">
                             <?php echo validation_errors(); ?>
@@ -36,49 +36,59 @@
                                 <label for="product_image">Gambar / Foto</label>
                                 <div class="kv-avatar">
                                     <div class="file-loading">
-                                        <input id="artikel_gambar" name="artikel_gambar" type="file">
+                                        <input id="artikel_gambar" name="user_photo" type="file">
                                     </div>
                                 </div>
                             </div>
                             <br>
                             <div class="form-group row">
                                 <div class="col-md-6 col-12 col-xs-12">
-                                    <label for="id_artikel">ID Artikel</label>
-                                    <input type="text" class="form-control" id="id_artikel" name="id_artikel" placeholder="ID ARTIKEL" autocomplete="off" disabled/>
+                                    <label for="iduser_user">ID User</label>
+                                    <input type="text" class="form-control" id="iduser_user" name="iduser_user" autocomplete="off" disabled/>
 
                                 </div>
                                 <div class="col-md-6 col-12 col-x-12">
-                                    <label for="id_admin">Nama Admin</label>
-                                    <select class="form-control" id="id_admin" name="id_admin">
-                                    <?php foreach ($admin as $k => $v): ?>
-
-                                        <option value="<?php echo $v['id_admin'] ?>"><?php echo $v['nama_admin'] ?></option>
-
-                                    <?php endforeach ?>
-                                    </select>
+                                    <label for="iddompet_user">ID Dompet</label>
+                                    <input type="text" class="form-control" id="iddompet_user" name="iddompet_user" autocomplete="off" disabled/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="judul_artikel">Judul Artikel</label>
-                                <input type="text" class="form-control" id="judul_artikel" name="judul_artikel" placeholder="Masukkan judul Artikel" autocomplete="off"/>
+                                <label for="username_user">Username </label>
+                                <input type="text" class="form-control" id="username_userr" name="username_user" autocomplete="off"/>
                             </div>
                             <div class="form-group">
-                                    <label for="isi_artikel">Description</label>
-                                    <textarea type="text" class="form-control" id="isi_artikel" name="isi_artikel" placeholder="Enter
-                                    description" autocomplete="off" rows="13" cols="20">
-                                    </textarea>
+                                <label for="namauser_user">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="namauser_user" name="namauser_user" autocomplete="off"/>
                             </div>
-                            <div class="input-group date">
-                                <input type="text" class="form-control" name="tanggal" id="dateTime" value="12-02-2012">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
+                            <div class="form-group row">
+                                <div class="col-md-6 col-12 col-xs-12">
+                                    <label for="password_user">Kata Sandi</label>
+                                    <input type="password" class="form-control" id="password_user" name="password_user" autocomplete="off"/>
+
                                 </div>
+                                <div class="col-md-6 col-12 col-x-12">
+                                    <label for="passwordkonf_user">Konfirmasi Kata Sandi</label>
+                                    <input type="password" class="form-control" id="passwordkonf_user" name="passwordkonf_user" autocomplete="off"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email_user">Email</label>
+                                <input type="email" class="form-control" id="email_user" name="email_user" autocomplete="off"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="telephone_user">Nomor Telepon</label>
+                                <input type="number" class="form-control" id="telephone_user" name="telephone_user" autocomplete="off"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pekerjaan_user">Pekerjaan</label>
+                                <input type="text" class="form-control" id="pekerjaan_user" name="pekerjaan_user" autocomplete="off"/>
                             </div>
                             <div class="clearfix"></div>
                             <br>
+                        </div>
                             <div class="box-footer" style="float: right !important;">
                                 <button type="submit" class="btn btn-success">Simpan</button>
-                                <a href="<?= site_url('Article') ?>" class="btn btn-danger">Back</a>
+                                <a href="<?= site_url('User') ?>" class="btn btn-danger">Back</a>
                             </div>
                     </form>
                 </div>

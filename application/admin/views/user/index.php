@@ -10,7 +10,8 @@
 
             <div class="clearfix"></div>
             <br>
-            <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Tambah User</button>
+
+            <a href="<?= site_url('User/adduser')?>" class="btn btn-success">Tambah User</a>
             <br>
             <br>
 

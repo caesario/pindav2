@@ -1,6 +1,6 @@
 <?php 
 
-class Model_user extends CI_Model
+class Model_dompet extends CI_Model
 {
 	public function __construct()
 	{
@@ -29,10 +29,10 @@ class Model_user extends CI_Model
 		}
 	}
 
-    public function createuser($data)
+    public function createdompet($data)
     {
         if($data) {
-            $insert = $this->db->insert('pinda_user', $data);
+            $insert = $this->db->insert('pinda_dompet', $data);
             return ($insert == true) ? true : false;
         }
     }

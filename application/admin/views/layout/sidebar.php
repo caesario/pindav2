@@ -28,7 +28,7 @@
                             <li><a><i class="fa fa-users"></i> User <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="<?= site_url('User') ?>">Daftar User</a></li>
-                                    <li><a href="form_advanced.html">Tambah User</a></li>
+                                    <li><a href="<?= site_url('User/adduser')?>">Tambah User</a></li>
                                     <li><a href="form_validation.html">Laporan</a></li>
                                 </ul>
                             </li>
