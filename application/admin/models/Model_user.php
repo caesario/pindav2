@@ -1,6 +1,6 @@
 <?php 
 
-class Model_admin extends CI_Model
+class Model_user extends CI_Model
 {
 	public function __construct()
 	{
@@ -8,15 +8,15 @@ class Model_admin extends CI_Model
 	}
 
     /* get the brand data */
-    public function getAdminData($id = null)
+    public function getUserData($id = null)
     {
         if($id) {
-            $sql = "SELECT * FROM pinda_admin WHERE id_admin = ?";
+            $sql = "SELECT * FROM pinda_user WHERE id_user = ?";
             $query = $this->db->query($sql, array($id));
             return $query->row_array();
         }
 
-        $sql = "SELECT * FROM pinda_admin";
+        $sql = "SELECT * FROM pinda_user";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
@@ -49,8 +49,8 @@ class Model_admin extends CI_Model
 	public function remove($id)
 	{
 		if($id) {
-			$this->db->where('id_artikel', $id);
-			$delete = $this->db->delete('pinda_artikel');
+			$this->db->where('id_user', $id);
+			$delete = $this->db->delete('pinda_user');
 			return ($delete == true) ? true : false;
 		}
 	}

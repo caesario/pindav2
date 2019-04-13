@@ -22992,7 +22992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (!isFinite(span)) {
 	                return;
 	            }
-	            // User may set axis min 0 and data are all negative
+	            // user may set axis min 0 and data are all negative
 	            // FIXME If it needs to reverse ?
 	            if (span < 0) {
 	                span = -span;
@@ -27269,7 +27269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var interval = scale.getInterval();
 
 	            if (fixedMin != null && fixedMax != null) {
-	                // User set min, max, divide to get new interval
+	                // user set min, max, divide to get new interval
 	                // FIXME precision
 	                scale.setInterval(
 	                    (fixedMax - fixedMin) / splitNumber
@@ -27277,7 +27277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	            else if (fixedMin != null) {
 	                var max;
-	                // User set min, expand extent on the other side
+	                // user set min, expand extent on the other side
 	                do {
 	                    max = fixedMin + interval * splitNumber;
 	                    scale.setExtent(+fixedMin, max);
@@ -27290,7 +27290,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	            else if (fixedMax != null) {
 	                var min;
-	                // User set min, expand extent on the other side
+	                // user set min, expand extent on the other side
 	                do {
 	                    min = fixedMax - interval * splitNumber;
 	                    scale.setExtent(min, +fixedMax);
@@ -38901,7 +38901,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 
 	        /**
-	         * User can get data raw indices on 'axisAreaSelected' event received.
+	         * user can get data raw indices on 'axisAreaSelected' event received.
 	         *
 	         * @public
 	         * @param {string} activeState 'active' or 'inactive' or 'normal'

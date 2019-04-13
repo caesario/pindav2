@@ -161,7 +161,7 @@ define(function (require) {
             var interval = scale.getInterval();
 
             if (fixedMin != null && fixedMax != null) {
-                // User set min, max, divide to get new interval
+                // user set min, max, divide to get new interval
                 // FIXME precision
                 scale.setInterval(
                     (fixedMax - fixedMin) / splitNumber
@@ -169,7 +169,7 @@ define(function (require) {
             }
             else if (fixedMin != null) {
                 var max;
-                // User set min, expand extent on the other side
+                // user set min, expand extent on the other side
                 do {
                     max = fixedMin + interval * splitNumber;
                     scale.setExtent(+fixedMin, max);
@@ -182,7 +182,7 @@ define(function (require) {
             }
             else if (fixedMax != null) {
                 var min;
-                // User set min, expand extent on the other side
+                // user set min, expand extent on the other side
                 do {
                     min = fixedMax - interval * splitNumber;
                     scale.setExtent(min, +fixedMax);

@@ -5713,7 +5713,7 @@ var DayTableMixin = FC.DayTableMixin = {
 	------------------------------------------------------------------------------------------------------------------*/
 
 
-	// Generates the default HTML intro for any row. User classes should override
+	// Generates the default HTML intro for any row. user classes should override
 	renderIntroHtml: function() {
 	},
 

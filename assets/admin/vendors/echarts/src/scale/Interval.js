@@ -128,7 +128,7 @@ define(function (require) {
             if (!isFinite(span)) {
                 return;
             }
-            // User may set axis min 0 and data are all negative
+            // user may set axis min 0 and data are all negative
             // FIXME If it needs to reverse ?
             if (span < 0) {
                 span = -span;

@@ -344,7 +344,7 @@ class Settings extends MY_Controller
 
     }
 
-    // Admin User
+    // Admin user
 
     public function admin()
     {

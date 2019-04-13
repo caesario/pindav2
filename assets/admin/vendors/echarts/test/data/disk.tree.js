@@ -3620,13 +3620,13 @@ window.disk_usage_tree =
             },
             {
                 "value": 64,
-                "name": "Waitfor User Action.action",
-                "path": "Automator/Waitfor User Action.action",
+                "name": "Waitfor user Action.action",
+                "path": "Automator/Waitfor user Action.action",
                 "children": [
                     {
                         "value": 64,
                         "name": "Contents",
-                        "path": "Automator/Waitfor User Action.action/Contents"
+                        "path": "Automator/Waitfor user Action.action/Contents"
                     }
                 ]
             },
@@ -5267,8 +5267,8 @@ window.disk_usage_tree =
                     },
                     {
                         "value": 108,
-                        "name": "User.menu",
-                        "path": "CoreServices/MenuExtras/User.menu"
+                        "name": "user.menu",
+                        "path": "CoreServices/MenuExtras/user.menu"
                     },
                     {
                         "value": 316,
@@ -12578,8 +12578,8 @@ window.disk_usage_tree =
                     },
                     {
                         "value": 8,
-                        "name": "User",
-                        "path": "Perl/5.12/User"
+                        "name": "user",
+                        "path": "Perl/5.12/user"
                     },
                     {
                         "value": 12,
@@ -12870,8 +12870,8 @@ window.disk_usage_tree =
                     },
                     {
                         "value": 8,
-                        "name": "User",
-                        "path": "Perl/5.16/User"
+                        "name": "user",
+                        "path": "Perl/5.16/user"
                     },
                     {
                         "value": 12,

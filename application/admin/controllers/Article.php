@@ -27,7 +27,7 @@ class Article extends MY_Controller
     {
         $this->data['page_title'] = 'Edit Artikel';
         $this->data['detailartikel'] = $this->artikel->getArtikelDataDetail($id);
-        $this->data['admin'] = $this->admin->getAdminData();
+        $this->data['admin'] = $this->setting->getAdminData();
         $this->render_template('artikel/edit', $this->data);
     }
 
@@ -100,7 +100,7 @@ class Article extends MY_Controller
         $data = $this->artikel->getArtikelData();
 
         foreach ($data as $key => $value) {
-            $admin = $this->admin->getAdminData($value['id_admin']);
+            $admin = $this->setting->getAdminData($value['id_admin']);
             // button
             $buttons = '';
 

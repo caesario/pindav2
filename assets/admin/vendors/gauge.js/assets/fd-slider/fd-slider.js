@@ -620,7 +620,7 @@ var fdSlider = (function() {
                         // Not keyboard enabled
                         kbEnabled = false;
                         
-                        // User has set a value
+                        // user has set a value
                         userSet   = true;                                      
                                       
                         // Handle mousedown - initiate drag

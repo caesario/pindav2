@@ -11,6 +11,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('model_admin', 'admin');
         $this->load->model('model_pesan', 'pesan');
         $this->load->model('model_settings', 'setting');
+        $this->load->model('model_user', 'user');
     }
 
     public function render_template($page = null, $data = array())

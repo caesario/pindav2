@@ -731,7 +731,7 @@ class XML_RPC_Client extends CI_Xmlrpc
 			.'Host: '.$this->server.$r
 			.'Content-Type: text/xml'.$r
 			.(isset($this->username, $this->password) ? 'Authorization: Basic '.base64_encode($this->username.':'.$this->password).$r : '')
-			.'User-Agent: '.$this->xmlrpcName.$r
+			.'user-Agent: '.$this->xmlrpcName.$r
 			.'Content-Length: '.strlen($msg->payload).$r.$r
 			.$msg->payload;
 
