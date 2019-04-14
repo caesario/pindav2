@@ -162,7 +162,7 @@ class Dompet extends MY_Controller
             }
 
             $statuskonf = '';
-            if ( $value['amountkonf'] == $konf['amountkonf'] &&  $konf != null ) {
+            if ( $value['amountkonf'] == $konf['amount_konf'] &&  $konf != null ) {
                 $statuskonf = '<span class="label label-info">Terkonfirmasi & cocok</span>';
             } else if ($konf != null ){
                 $statuskonf = '<span class="label label-info">Terkonfirmasi </span>';
@@ -209,19 +209,35 @@ class Dompet extends MY_Controller
             echo json_encode($data);
     }
 
+    public function fetchDompetTrxKonfDataById($id) {
+
+	    $data = $this->dompet->getDompetKonfbyDetailData($id);
+	    echo json_encode($data);
+    }
+
     public function prosestrxtwo() {
 
         $this->form_validation->set_rules('edit_iddompettrxpost', 'ID Dompet Transaksi', 'trim|required');
         if ($this->form_validation->run() == TRUE) {
 
             $id = $this->input->post('edit_iddompettrxpost');
+            $detail_trx = $this->dompet->getDompetTrxDetailData($id);
 
+            // data akun dompet
+            $iddompet = $detail_trx[0]['id_dompet'];
+
+            $nominal = array(
+              'current_balance' => $detail_trx[0]['current_balance'] + $detail_trx[0]['amount']
+            );
+
+            // data status
             $data = array(
-                'status_trx' => 2
+                'status_trx' => 3
             );
 
             $update = $this->dompet->updatetrx($data, $id);
             if($update == true) {
+                $this->dompet->updatedompet($nominal, $iddompet);
                 $response['success'] = true;
                 $response['messages'] = 'Succesfully updated';
             }

@@ -43,12 +43,12 @@ class Model_dompet extends CI_Model
     /* get the brand data */
     public function getDompetTopUpDatalist($id)
     {
-        $datetime = date('Y-m-d 00:00:00');
-        $datetrans = date('Y-m-d H:i:s', strtotime('-3 days', strtotime($datetime)));
+//        $datetime = date('Y-m-d 00:00:00');
+//        $datetrans = date('Y-m-d H:i:s', strtotime('-3 days', strtotime($datetime)));
         $array = array(
             'status_trx ' => $id,
             'trx_type' => 1,
-            'CreateTime >=' => $datetrans
+//            'CreateTime >=' => $datetrans
         );
         $this->db->select('*');
         $this->db->from('pinda_dompettrx');
@@ -81,10 +81,22 @@ class Model_dompet extends CI_Model
         return $result->result_array();
     }
 
+
     public function getDompetKonfDetailData($id)
     {
         $this->db->select('*');
         $this->db->from('pinda_dompetkonf');
+        $this->db->where('id_dompet_trx', $id);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function getDompetKonfbyDetailData($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_dompetkonf');
+        $this->db->join('pinda_user', 'pinda_user.id_user = pinda_dompetkonf.id_user');
+        $this->db->join('pinda_dompet', 'pinda_dompet.id_user = pinda_user.id_user');
         $this->db->where('id_dompet_trx', $id);
         $query = $this->db->get();
         return $query->row_array();
