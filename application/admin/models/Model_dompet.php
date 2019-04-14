@@ -8,17 +8,35 @@ class Model_dompet extends CI_Model
 	}
 
     /* get the brand data */
-    public function getUserData($id = null)
+    public function getDompetData($id = null)
     {
         if($id) {
-            $sql = "SELECT * FROM pinda_user WHERE id_user = ?";
+            $sql = "SELECT * FROM pinda_dompet WHERE id_dompet = ?";
             $query = $this->db->query($sql, array($id));
             return $query->row_array();
         }
 
-        $sql = "SELECT * FROM pinda_user";
+        $sql = "SELECT * FROM pinda_dompet";
         $query = $this->db->query($sql);
         return $query->result_array();
+    }
+    public function updatedompet($data, $id)
+    {
+        if($data && $id) {
+            $this->db->where('id_dompet', $id);
+            $update = $this->db->update('pinda_dompet', $data);
+            return ($update == true) ? true : false;
+        }
+    }
+    public function getDompetDetailData($id) {
+
+
+        $this->db->select('*');
+        $this->db->from('pinda_dompet');
+        $this->db->join('pinda_user', 'pinda_user.id_user = pinda_dompet.id_user');
+        $this->db->where('id_dompet', $id);
+        $result = $this->db->get();
+        return $result->result();
     }
 
 	public function create($data)
@@ -37,14 +55,7 @@ class Model_dompet extends CI_Model
         }
     }
 
-	public function update($data, $id)
-	{
-		if($data && $id) {
-			$this->db->where('id_kategori', $id);
-			$update = $this->db->update('pinda_kategori', $data);
-			return ($update == true) ? true : false;
-		}
-	}
+
 
 	public function remove($id)
 	{
