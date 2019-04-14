@@ -83,8 +83,6 @@ class Article extends MY_Controller
             }
         }
         else {
-            $this->session->set_flashdata('errors', 'Error occurred!!');
-            redirect('Article/edit'.$id_artikel, 'refresh');
         }
     }
 	/* 

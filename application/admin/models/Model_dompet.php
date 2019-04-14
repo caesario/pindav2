@@ -28,6 +28,7 @@ class Model_dompet extends CI_Model
             return ($update == true) ? true : false;
         }
     }
+
     public function getDompetDetailData($id) {
 
 
@@ -39,7 +40,68 @@ class Model_dompet extends CI_Model
         return $result->result();
     }
 
-	public function create($data)
+    /* get the brand data */
+    public function getDompetTopUpDatalist($id)
+    {
+        $datetime = date('Y-m-d 00:00:00');
+        $datetrans = date('Y-m-d H:i:s', strtotime('-3 days', strtotime($datetime)));
+        $array = array(
+            'status_trx ' => $id,
+            'trx_type' => 1,
+            'CreateTime >=' => $datetrans
+        );
+        $this->db->select('*');
+        $this->db->from('pinda_dompettrx');
+        $this->db->where($array);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
+    public function getDompetWithdrawDatalist($id)
+    {
+        $array = array(
+            'status_trx' => $id,
+            'trx_type' => 2
+        );
+        $this->db->select('*');
+        $this->db->from('pinda_dompettrx');
+        $this->db->where($array);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
+    public function getDompetTrxDetailData($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_dompettrx');
+        $this->db->join('pinda_dompet', 'pinda_dompet.id_dompet = pinda_dompettrx.id_dompet');
+        $this->db->join('pinda_user', 'pinda_user.id_user = pinda_dompet.id_user');
+        $this->db->where('id_dompet_trx', $id);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
+    public function getDompetKonfDetailData($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_dompetkonf');
+        $this->db->where('id_dompet_trx', $id);
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+
+    public function updatetrx($data, $id)
+    {
+        if($data && $id) {
+            $this->db->where('id_dompet_trx', $id);
+            $update = $this->db->update('pinda_dompettrx', $data);
+            return ($update == true) ? true : false;
+        }
+    }
+
+
+
+    public function create($data)
 	{
 		if($data) {
 			$insert = $this->db->insert('pinda_kategori', $data);

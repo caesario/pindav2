@@ -45,10 +45,10 @@
                             <li><a><i class="fa fa-credit-card"></i> Dompet <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="<?= site_url('Dompet/daftardompet') ?>">Daftar Akun Dompet</a></li>
-                                    <li><a href="general_elements.html">Daftar Transaksi Top Up</a></li>
-                                    <li><a href="media_gallery.html">Daftar Transkasi Top Up Pending</a></li>
-                                    <li><a href="media_gallery.html">Daftar Transkasi Top Up Gagal</a></li>
-                                    <li><a href="media_gallery.html">Daftar Transkasi Top Up Berhasil</a></li>
+                                    <li><a href="<?= site_url('Dompet/daftartopup') ?>">Daftar Transaksi Top Up</a></li>
+                                    <li><a href="<?= site_url('Dompet/daftartopupproses')?>">Daftar Transkasi Top Up Proses</a></li>
+                                    <li><a href="<?= site_url('Dompet/daftartopupgagal')?>">Daftar Transkasi Top Up Gagal</a></li>
+                                    <li><a href="<?= site_url('Dompet/daftartopupberhasil')?>">Daftar Transkasi Top Up Berhasil</a></li>
                                     <li><a href="general_elements.html">Daftar Transaksi Withdraw</a></li>
                                     <li><a href="media_gallery.html">Daftar Transkasi WithdrawPending</a></li>
                                     <li><a href="media_gallery.html">Daftar Transkasi Withdraw Gagal</a></li>

@@ -4,14 +4,12 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Kategori <small>Daftar</small></h3>
+                    <h3>Top Up <small>Daftar</small></h3>
                 </div>
             </div>
 
             <div class="clearfix"></div>
             <br>
-            <button class="btn btn-success" data-toggle="modal" data-target="#addModal">Tambah Kategori</button>
-            <button class="btn btn-success" data-toggle="modal" data-target="#addIcon">Tambah Icon Kategori</button>
             <br>
             <br>
 
@@ -35,16 +33,20 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Kategori <small>List</small></h2>
+                            <h2>Top Up <small>List</small></h2>
                                 <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <table id="KategoriTable" class="table table-striped table-bordered table-responsive">
+                            <table id="TopUpTable" class="table table-striped table-bordered table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>Icon</th>
-                                        <th>Nama Kategori</th>
-                                        <th>Status</th>
+                                        <th>ID TOP UP</th>
+                                        <th>ID Dompet</th>
+                                        <th>Nama User</th>
+                                        <th>Tipe Transaksi</th>
+                                        <th>Nilai Top Up</th>
+                                        <th>Nilai Top Up konf</th>
+                                        <th>status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -367,36 +369,13 @@
         var manageTable;
 
         $(document).ready(function() {
-            manageTable = $('#KategoriTable').DataTable({
+            manageTable = $('#TopUpTable').DataTable({
 
-                'ajax': 'Category/fetchCategoryData',
+                'ajax': 'fetchTopUpTransData/3',
 
                 'order': []
 
             });
-
-            // file upload lib
-            var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
-                'onclick="alert(\'Call your custom code here.\')">' +
-                '<i class="glyphicon glyphicon-tag"></i>' +
-                '</button>';
-            $("#iconcat").fileinput({
-                overwriteInitial: true,
-                maxFileSize: 1500,
-                showClose: false,
-                showCaption: false,
-                browseLabel: '',
-                removeLabel: '',
-                browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
-                removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
-                removeTitle: 'Cancel or reset changes',
-                elErrorContainer: '#kv-avatar-errors-1',
-                msgErrorClass: 'alert alert-block alert-danger',
-                // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
-                layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
-                allowedFileExtensions: ["jpg", "png", "gif"]
-            });
-            // End File Upload
 
 
             // submit the create from
