@@ -257,10 +257,10 @@ class Dompet extends MY_Controller
 
     public function prosestrxgagal() {
 
-        $this->form_validation->set_rules('edit_iddompettrxpost', 'ID Dompet Transaksi', 'trim|required');
+        $this->form_validation->set_rules('edit_iddompettrxgagalpost', 'ID Dompet Transaksi', 'trim|required');
         if ($this->form_validation->run() == TRUE) {
 
-            $id = $this->input->post('edit_iddompettrxpost');
+            $id = $this->input->post('edit_iddompettrxgagalpost');
 
             $data = array(
                 'status_trx' => 4

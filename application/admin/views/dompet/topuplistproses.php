@@ -143,29 +143,20 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Proses Transaksi</h4>
+                <h4 class="modal-title">Gagal Transaksi</h4>
             </div>
-            <form role="form" action="<?php echo site_url('Dompet/prosestrx') ?>" method="post" id="GagalTransForm">
+            <form role="form" action="<?php echo site_url('Dompet/prosestrxgagal') ?>" method="post" id="GagalTransForm">
                 <div class="modal-body">
                     <div id="messages"></div>
                     <div class="form-group">
                         <label for="edit_iddompettrx">ID Transaksi</label>
-                        <input type="text" class="form-control" id="edit_iddompettrx" name="edit_iddompettrx" autocomplete="off" disabled>
-                        <input type="hidden" class="form-control" id="edit_iddompettrxpost" name="edit_iddompettrxpost" autocomplete="off">
+                        <input type="text" class="form-control" id="edit_iddompettrxgagal" name="edit_iddompettrxgagal" autocomplete="off" disabled>
+                        <input type="hidden" class="form-control" id="edit_iddompettrxgagalpost" name="edit_iddompettrxgagalpost" autocomplete="off">
                     </div>
-                    <div class="form-group">
-                        <label for="edit_dompetusername">Username</label>
-                        <input type="text" class="form-control" id="edit_iddompetusername" name="edit_iddompettrx"" autocomplete="off" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_dompettrxamount"">Amount</label>
-                        <input type="text" class="form-control" id="edit_dompettrxamount" name="edit_dompettrxamount" autocomplete="off" disabled>
-                    </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Proses</button>
+                    <button type="submit" class="btn btn-danger">Gagal</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
@@ -296,6 +287,68 @@
                     $("#edit_konfnamalengkap").val(response.nama_lengkap);
                     $("#edit_konfemail").val(response.email);
                     $("#edit_konfnoref").val(response.no_ref);
+                    // submit the edit from
+                    $("#updateBrandForm").unbind('submit').bind('submit', function() {
+                        var form = $(this);
+                        // remove the text-danger
+                        $(".text-danger").remove();
+                        $.ajax({
+                            url: form.attr('action') + '/' + id,
+                            type: form.attr('method'),
+                            data: form.serialize(), // /converting the form data into array and sending it to server
+                            dataType: 'json',
+                            success:function(response) {
+                                manageTable.ajax.reload(null, false);
+                                if(response.success === true) {
+                                    $("#messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+                                        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                        '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+                                        '</div>');
+                                    // hide the modal
+                                    $("#editTransModal").modal('hide');
+                                    $('.modal-backdrop').remove();
+                                    // reset the form
+                                    $("#updateBrandForm .form-group").removeClass('has-error').removeClass('has-success');
+                                } else {
+                                    if(response.messages instanceof Object) {
+                                        $.each(response.messages, function(index, value) {
+                                            var id = $("#"+index);
+                                            id.closest('.form-group')
+                                                .removeClass('has-error')
+                                                .removeClass('has-success')
+                                                .addClass(value.length > 0 ? 'has-error' : 'has-success');
+                                            id.after(value);
+                                        });
+                                    } else {
+                                        $("#messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+                                            '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                            '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
+                                            '</div>');
+                                        $("#editTransModal").modal('hide');
+                                        $('.modal-backdrop').remove();
+                                        // reset the form
+                                        $("#updateBrandForm .form-group").removeClass('has-error').removeClass('has-success');
+                                    }
+                                }
+                            }
+                        });
+
+                        return false;
+                    });
+                }
+            });
+        }
+
+
+        function prosesgagal(id)
+        {
+            $.ajax({
+                url: 'fetchDompetTrxKonfDataById/'+id,
+                type: 'post',
+                dataType: 'json',
+                success:function(response) {
+                    $("#edit_iddompettrxgagal").val(response.id_dompet_trx);
+                    $("#edit_iddompettrxgagalpost").val(response.id_dompet_trx);
                     // submit the edit from
                     $("#updateBrandForm").unbind('submit').bind('submit', function() {
                         var form = $(this);
