@@ -49,10 +49,10 @@
                                     <li><a href="<?= site_url('Dompet/daftartopupproses')?>">Daftar Transkasi Top Up Proses</a></li>
                                     <li><a href="<?= site_url('Dompet/daftartopupgagal')?>">Daftar Transkasi Top Up Gagal</a></li>
                                     <li><a href="<?= site_url('Dompet/daftartopupberhasil')?>">Daftar Transkasi Top Up Berhasil</a></li>
-                                    <li><a href="general_elements.html">Daftar Transaksi Withdraw</a></li>
-                                    <li><a href="media_gallery.html">Daftar Transkasi WithdrawPending</a></li>
-                                    <li><a href="media_gallery.html">Daftar Transkasi Withdraw Gagal</a></li>
-                                    <li><a href="media_gallery.html">Daftar Transkasi Withdraw Berhasil</a></li>
+                                    <li><a href="<?= site_url('Dompet/daftarwithdraw') ?>">Daftar Transaksi Withdraw</a></li>
+                                    <li><a href="<?= site_url('Dompet/daftarwithdrawproses') ?>">Daftar Transaksi Withdraw Proses</a></li>
+                                    <li><a href="<?= site_url('Dompet/daftarwithdrawgagal')?>">Daftar Transkasi Withdraw Gagal</a></li>
+                                    <li><a href="<?= site_url('Dompet/daftarwithdrawberhasil')?>">Daftar Transkasi Withdraw Berhasil</a></li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-gears"></i> Pengaturan <span class="fa fa-chevron-down"></span></a>
@@ -64,7 +64,7 @@
                                     <li><a href="<?= site_url('Settings/admin')?>">User Administrasi</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-sign-out"></i> Log Out</a>
+                            <li><a href="<?= site_url('Auth/logout')?>"><i class="fa fa-sign-out"></i> Log Out</a>
                         </ul>
                     </div>
 

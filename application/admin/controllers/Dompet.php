@@ -256,7 +256,7 @@ class Dompet extends MY_Controller
     }
 
     public function prosestrxgagal() {
-
+        $response = array();
         $this->form_validation->set_rules('edit_iddompettrxgagalpost', 'ID Dompet Transaksi', 'trim|required');
         if ($this->form_validation->run() == TRUE) {
 
@@ -296,6 +296,96 @@ class Dompet extends MY_Controller
     {
         $this->data['page_title'] = 'Daftar Transaksi Top Up Berhasil';
         $this->render_template('dompet/topuplistberhasil', $this->data);
+
+    }
+
+    public function daftarwithdraw()
+    {
+        $this->data['page_title'] = 'Daftar Transaksi Withdraw';
+        $this->render_template('dompet/withdrawlist', $this->data);
+
+    }
+
+    public function daftarwithdrawproses()
+    {
+        $this->data['page_title'] = 'Withdraw - Proses';
+        $this->render_template('dompet/withdrawproses', $this->data);
+    }
+
+    public function daftarwithdrawgagal()
+    {
+        $this->data['page_title'] = 'Withdraw - Gagal';
+        $this->render_template('dompet/withdrawgagal', $this->data);
+    }
+
+    public function daftarwithdrawberhasil()
+    {
+        $this->data['page_title'] = 'Withdraw - berhasil';
+        $this->render_template('dompet/withdrawberhasil', $this->data);
+    }
+
+    public function fetchWithdrawTransData($id) {
+
+
+        $result = array('data' => array());
+
+        $data = $this->dompet->getDompetWithdrawDatalist($id);
+
+        foreach ($data as $key => $value) {
+
+
+            $user = $this->dompet->getDompetDetailData($value['id_dompet']);
+            $konf = $this->dompet->getDompetKonfDetailData($value['id_dompet_trx']);
+            // button
+            $buttons = '';
+
+
+            $buttons .= '<button type="button" class="btn btn-info" onclick="prosestransaksi(&quot;'.$value['id_dompet_trx'].'&quot;)" data-toggle="modal" data-target="#editTransModal"><i class="fas fa-arrow-circle-right"></i></button>';
+            if( $value['status_trx'] == 2 ) {
+                $buttons .= '<button type="button" class="btn btn-danger" onclick="prosesgagal(&quot;' . $value['id_dompet_trx'] . '&quot;)" data-toggle="modal" data-target="#GagalTransModal"><i class="fas fa-trash-alt"></i></button>';
+            }
+
+            $status = '';
+            if($value['status_trx'] == 1) {
+                $status = '<span class="label label-info">Belum Diproses</span>';
+            } else if($value['status_trx'] == 2) {
+                $status = '<span class="label label-warning">Proses</span>';
+            } else if($value['status_trx'] == 3 ){
+                $status = '<span class="label label-success">Withdraw Berhasil</span>';
+            } else if($value['status_trx'] == 4 ){
+                $status = '<span class="label label-danger">Gagal</span>';
+            }
+
+            $statuskonf = '';
+            if ( $value['amountkonf'] == $konf['amount_konf'] &&  $konf != null ) {
+                $statuskonf = '<span class="label label-info">Terkonfirmasi & cocok</span>';
+            } else if ($konf != null ){
+                $statuskonf = '<span class="label label-info">Terkonfirmasi </span>';
+            } else {
+                $statuskonf = '<span class="label label-danger">Belum Konfirmasi</span>';
+                $statuskonf = '<span class="label label-danger">Belum Konfirmasi</span>';
+            }
+
+            $type = '';
+            if($value['trx_type'] == 1) {
+                $type = '<span class="label label-success">Top Up </span>';
+            } else if($value['trx_type'] == 2) {
+                $type = '<span class="label label-danger">Withdraw</span>';
+            }
+
+            $result['data'][$key] = array(
+                $value['id_dompet_trx'],
+                $value['id_dompet'],
+                $user[0]->username,
+                $value['bankaccount'],
+                $type,
+                $value['amount'],
+                $status,
+                $buttons
+            );
+        } // /foreach
+
+        echo json_encode($result);
     }
 
 }

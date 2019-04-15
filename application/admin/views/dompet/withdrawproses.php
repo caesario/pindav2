@@ -4,7 +4,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Top Up Proses<small>Daftar</small></h3>
+                    <h3>Withhdraw Proses<small>Daftar</small></h3>
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Top Up <small>List</small></h2>
+                            <h2>Withdraw Proses<small>List</small></h2>
                                 <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -45,10 +45,8 @@
                                         <th>Nama User</th>
                                         <th>Bank Account</th>
                                         <th>Tipe Transaksi</th>
-                                        <th>Nilai Top Up</th>
-                                        <th>Nilai Top Up konf</th>
+                                        <th>Nilai Withdraw</>
                                         <th>status</th>
-                                        <th>Konfirmasi</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -63,7 +61,6 @@
 <!-- /page content -->
 
 
-<!-- Modal Section -->
 <!-- Modal Section -->
 <div class="modal fade" tabindex="-1" role="dialog" id="editTransModal">
     <div class="modal-dialog" role="document">
@@ -82,55 +79,16 @@
                     </div>
                     <div class="form-group">
                         <label for="edit_dompetusername">Username</label>
-                        <input type="text" class="form-control" id="edit_iddompetusername" name="edit_iddompettrx" placeholder="Belum Di konfirmasi"  autocomplete="off" disabled>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="edit_dompetusername">Email Konfirmasi</label>
-                            <input type="text" class="form-control" id="edit_konfemail" name="edit_konfemail" placeholder="Belum Di konfirmasi"  autocomplete="off" disabled>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="edit_dompetusername">Nama Lengkap Konfirmasi</label>
-                            <input type="text" class="form-control" id="edit_konfnamalengkap" name="edit_konfnamalengkap" placeholder="Belum Di konfirmasi"  autocomplete="off" disabled>
-                        </div>
+                        <input type="text" class="form-control" id="edit_iddompetusername" name="edit_iddompettrx"" autocomplete="off" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="edit_konftanggal">Tanggal Transfer</label>
-                        <input type="text" class="form-control" id="edit_konftanggal" name="edit_konftanggal" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_konfbank">Transfer Ke Bank</label>
-                        <input type="text" class="form-control" id="edit_konfbank" name="edit_konfbank" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_konfnoref">No Ref</label>
-                        <input type="text" class="form-control" id="edit_konfnoref" name="edit_konfnoref" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-6">
-                            <label for="edit_konfdaribank">Dari Bank</label>
-                            <input type="text" class="form-control" id="edit_konfdaribank" name="edit_konfdaribank" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="edit_konfdarirekening">No Rekening</label>
-                            <input type="text" class="form-control" id="edit_konfdarirekening" name="edit_konfdarirekening" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="edit_konfdarirekeningnama"">Nama Pemilik Rekening</label>
-                            <input type="text" class="form-control" id="edit_konfdarirekeningnama" name="edit_konfdarirekeningnama" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="edit_dompettrxamount"">Nominal Transfer</label>
-                                <input type="text" class="form-control" id="edit_dompettrxamount" name="edit_dompettrxamount" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
-                            </div>
-                        </div>
-
+                        <label for="edit_dompettrxamount"">Amount</label>
+                        <input type="text" class="form-control" id="edit_dompettrxamount" name="edit_dompettrxamount" autocomplete="off" disabled>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-success">Proses</button>
+                    <button type="submit" class="btn btn-primary">Proses</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
@@ -162,7 +120,9 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<!-- End Modal Section -->
+
+
+
 
 
 <!-- footer content -->
@@ -259,9 +219,10 @@
         $(document).ready(function() {
             manageTable = $('#TopUpTable').DataTable({
 
-                'ajax': 'fetchTopUpTransData/2',
+                'ajax': 'fetchWithdrawTransData/2',
 
                 'order': []
+
             });
 
         });
@@ -271,22 +232,14 @@
         function prosestransaksi(id)
         {
             $.ajax({
-                url: 'fetchDompetTrxKonfDataById/'+id,
+                url: 'fetchDompetTrxDataById/'+id,
                 type: 'post',
                 dataType: 'json',
                 success:function(response) {
-                    $("#edit_iddompettrx").val(response.id_dompet_trx);
-                    $("#edit_iddompettrxpost").val(response.id_dompet_trx);
-                    $("#edit_iddompetusername").val(response.username);
-                    $("#edit_dompettrxamount").val(response.amount_konf);
-                    $("#edit_konftanggal").val(response.Tgl_transfer);
-                    $("#edit_konfbank").val(response.Bank);
-                    $("#edit_konfdaribank").val(response.from_acc);
-                    $("#edit_konfdarirekening").val(response.from_accnumb);
-                    $("#edit_konfdarirekeningnama").val(response.from_nameacc);
-                    $("#edit_konfnamalengkap").val(response.nama_lengkap);
-                    $("#edit_konfemail").val(response.email);
-                    $("#edit_konfnoref").val(response.no_ref);
+                    $("#edit_iddompettrx").val(response[0].id_dompet_trx);
+                    $("#edit_iddompettrxpost").val(response[0].id_dompet_trx);
+                    $("#edit_iddompetusername").val(response[0].username);
+                    $("#edit_dompettrxamount").val(response[0].amount);
                     // submit the edit from
                     $("#updateBrandForm").unbind('submit').bind('submit', function() {
                         var form = $(this);
@@ -327,7 +280,7 @@
                                         $("#editTransModal").modal('hide');
                                         $('.modal-backdrop').remove();
                                         // reset the form
-                                        $("#GagalTransForm .form-group").removeClass('has-error').removeClass('has-success');
+                                        $("#updateBrandForm .form-group").removeClass('has-error').removeClass('has-success');
                                     }
                                 }
                             }
@@ -339,16 +292,15 @@
             });
         }
 
-
         function prosesgagal(id)
         {
             $.ajax({
-                url: 'fetchDompetTrxKonfDataById/'+id,
+                url: 'fetchDompetTrxDataById/'+id,
                 type: 'post',
                 dataType: 'json',
                 success:function(response) {
-                    $("#edit_iddompettrxgagal").val(response.id_dompet_trx);
-                    $("#edit_iddompettrxgagalpost").val(response.id_dompet_trx);
+                    $("#edit_iddompettrxgagal").val(response[0].id_dompet_trx);
+                    $("#edit_iddompettrxgagalpost").val(response[0].id_dompet_trx);
                     // submit the edit from
                     $("#GagalTransForm").unbind('submit').bind('submit', function() {
                         var form = $(this);
@@ -389,7 +341,7 @@
                                         $("#GagalTransModal").modal('hide');
                                         $('.modal-backdrop').remove();
                                         // reset the form
-                                        $("#updateBrandForm .form-group").removeClass('has-error').removeClass('has-success');
+                                        $("#GagalTransForm .form-group").removeClass('has-error').removeClass('has-success');
                                     }
                                 }
                             }
@@ -400,7 +352,6 @@
                 }
             });
         }
-
 
 
 </script>
