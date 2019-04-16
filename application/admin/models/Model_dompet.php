@@ -110,6 +110,14 @@ class Model_dompet extends CI_Model
             return ($update == true) ? true : false;
         }
     }
+    public function updatekonf($data, $id)
+    {
+        if($data && $id) {
+            $this->db->where('id_dompet_trxkonf', $id);
+            $update = $this->db->update('pinda_dompetkonf', $data);
+            return ($update == true) ? true : false;
+        }
+    }
 
 
 

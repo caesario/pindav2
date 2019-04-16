@@ -61,34 +61,81 @@
 <!-- /page content -->
 
 
-<!-- Modal Section -->
 <div class="modal fade" tabindex="-1" role="dialog" id="editTransModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Proses Transaksi</h4>
+                <h4 class="modal-title">Proses Konfirmasi Withdraw</h4>
             </div>
-            <form role="form" action="<?php echo site_url('Dompet/prosestrxtwo') ?>" method="post" id="updateBrandForm">
+            <form role="form" action="<?php echo site_url('Dompet/prosestrxwithdraw') ?>" method="post" id="updateBrandForm">
                 <div class="modal-body">
                     <div id="messages"></div>
                     <div class="form-group">
                         <label for="edit_iddompettrx">ID Transaksi</label>
                         <input type="text" class="form-control" id="edit_iddompettrx" name="edit_iddompettrx" autocomplete="off" disabled>
                         <input type="hidden" class="form-control" id="edit_iddompettrxpost" name="edit_iddompettrxpost" autocomplete="off">
+                        <input type="hidden" class="form-control" id="edit_idkonftrxpost" name="edit_idkonftrxpost" autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label for="edit_dompetusername">Username</label>
-                        <input type="text" class="form-control" id="edit_iddompetusername" name="edit_iddompettrx"" autocomplete="off" disabled>
+                        <input type="text" class="form-control" id="edit_iddompetusername" name="edit_iddompettrx" placeholder="Belum Di konfirmasi"  autocomplete="off" disabled>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="edit_konfdaribank">Bank</label>
+                            <input type="text" class="form-control" id="edit_konfdaribank" name="edit_konfdaribank" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="edit_konfdarirekening">No Rekening</label>
+                            <input type="text" class="form-control" id="edit_konfdarirekening" name="edit_konfdarirekening" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="edit_konfdarirekeningnama"">Nama Pemilik Rekening</label>
+                            <input type="text" class="form-control" id="edit_konfdarirekeningnama" name="edit_konfdarirekeningnama" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="edit_dompettrxamount"">Nominal Withdraw</label>
+                                <input type="text" class="form-control" id="edit_dompettrxamount" name="edit_dompettrxamount" placeholder="Belum Di konfirmasi" autocomplete="off" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5>Form Konfirmasi Admin</h5>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="edit_dompetusername">Email Konfirmasi</label>
+                            <input type="text" class="form-control" id="edit_konfemail" name="edit_konfemail" value="admin@hellopinda.tech"  autocomplete="off" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="edit_dompetusername">Nama Lengkap Konfirmasi</label>
+                            <input type="text" class="form-control" id="edit_konfnamalengkap" name="edit_konfnamalengkap" value="PT PINDA KARYA ANAK BANGSA"  autocomplete="off" disabled>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="edit_dompettrxamount"">Amount</label>
-                        <input type="text" class="form-control" id="edit_dompettrxamount" name="edit_dompettrxamount" autocomplete="off" disabled>
+                        <label for="edit_konfnoref">No Ref</label>
+                        <input type="text" class="form-control" id="edit_konfnoref" name="edit_konfnoref" placeholder="Belum Di konfirmasi" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_konftanggal">Tanggal Transfer</label>
+                        <input type="date" class="form-control" id="edit_konftanggal" name="edit_konftanggal" placeholder="Belum Di konfirmasi" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                            <label for="edit_konfdaribank">Dari Bank</label>
+                            <select name="edit_konfdaribank" id="edit_konfdaribank" class="form-control">
+                                <option value="BCA - 012345678 An PT PINDA Karya Anak Bangsa">BCA - 012345678 An PT PINDA Karya Anak Bangsa</option>
+                                <option value="BNI - 111111111 An PT PINDA Karya Anak Bangsa">BNI - 111111111 An PT PINDA Karya Anak Bangsa</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_konfnominalwd">Nominal Withdraw</label>
+                        <input type="number" class="form-control" id="edit_konfnominalwd" name="edit_konfnominalwd" placeholder="Belum Di konfirmasi" autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Proses</button>
+                    <button type="submit" class="btn btn-success">Proses</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
@@ -232,14 +279,18 @@
         function prosestransaksi(id)
         {
             $.ajax({
-                url: 'fetchDompetTrxDataById/'+id,
+                url: 'fetchDompetTrxKonfDataById/'+id,
                 type: 'post',
                 dataType: 'json',
                 success:function(response) {
-                    $("#edit_iddompettrx").val(response[0].id_dompet_trx);
-                    $("#edit_iddompettrxpost").val(response[0].id_dompet_trx);
-                    $("#edit_iddompetusername").val(response[0].username);
-                    $("#edit_dompettrxamount").val(response[0].amount);
+                    $("#edit_iddompettrx").val(response.id_dompet_trx);
+                    $("#edit_iddompettrxpost").val(response.id_dompet_trx);
+                    $("#edit_iddompetusername").val(response.username);
+                    $("#edit_dompettrxamount").val(response.amount)
+                    $("#edit_konfdaribank").val(response.acc);
+                    $("#edit_konfdarirekening").val(response.accnumb);
+                    $("#edit_konfdarirekeningnama").val(response.nameacc);
+                    $("#edit_idkonftrxpost").val(response.id_dompet_trxkonf)
                     // submit the edit from
                     $("#updateBrandForm").unbind('submit').bind('submit', function() {
                         var form = $(this);

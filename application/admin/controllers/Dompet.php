@@ -255,6 +255,58 @@ class Dompet extends MY_Controller
         echo json_encode($response);
     }
 
+    public function prosestrxwithdraw() {
+
+        $this->form_validation->set_rules('edit_iddompettrxpost', 'ID Dompet Transaksi', 'trim|required');
+        if ($this->form_validation->run() == TRUE) {
+
+            $iddompet_trx = $this->input->post('edit_iddompettrxpost');
+            $idkonf = $this->input->post('edit_idkonftrxpost');
+            $detail_trx = $this->dompet->getDompetTrxDetailData($iddompet_trx);
+
+            // data akun dompet
+            $iddompet = $detail_trx[0]['id_dompet'];
+
+            $nominal = array(
+                'current_balance' => $detail_trx[0]['current_balance'] - $detail_trx[0]['amount']
+            );
+
+            // data status
+            $data = array(
+                'status_trx' => 3,
+                'amountkonf' => $this->input->post('edit_konfnominalwd')
+            );
+
+            $datakonf = array(
+                'nama_konf' => 'PT PINDA KARYA ANAK BANGSA',
+                'email_konf' => 'admin@hellopinda.tech',
+                'no_ref' => $this->input->post('edit_konfnoref'),
+                'Tgl_transfer' => $this->input->post('edit_konftanggal'),
+                'Bank' => $this->input->post('edit_konfdaribank'),
+                'amount_konf' => $this->input->post('edit_konfnominalwd')
+            );
+
+            $update = $this->dompet->updatetrx($data, $iddompet_trx);
+            if($update == true) {
+                $this->dompet->updatedompet($nominal, $iddompet);
+                $this->dompet->updatekonf($datakonf, $idkonf);
+                $response['success'] = true;
+                $response['messages'] = 'Succesfully updated';
+            }
+            else {
+                $response['success'] = false;
+                $response['messages'] = 'Error in the database while updated the brand information';
+            }
+
+        } else {
+            $response['success'] = false;
+            foreach ($_POST as $key => $value) {
+                $response['messages'][$key] = form_error($key);
+            }
+        }
+        echo json_encode($response);
+    }
+
     public function prosestrxgagal() {
         $response = array();
         $this->form_validation->set_rules('edit_iddompettrxgagalpost', 'ID Dompet Transaksi', 'trim|required');

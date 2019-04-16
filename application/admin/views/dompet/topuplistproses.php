@@ -281,10 +281,10 @@
                     $("#edit_dompettrxamount").val(response.amount_konf);
                     $("#edit_konftanggal").val(response.Tgl_transfer);
                     $("#edit_konfbank").val(response.Bank);
-                    $("#edit_konfdaribank").val(response.from_acc);
-                    $("#edit_konfdarirekening").val(response.from_accnumb);
-                    $("#edit_konfdarirekeningnama").val(response.from_nameacc);
-                    $("#edit_konfnamalengkap").val(response.nama_lengkap);
+                    $("#edit_konfdaribank").val(response.acc);
+                    $("#edit_konfdarirekening").val(response.accnumb);
+                    $("#edit_konfdarirekeningnama").val(response.nameacc);
+                    $("#edit_konfnamalengkap").val(response.nama_konf);
                     $("#edit_konfemail").val(response.email);
                     $("#edit_konfnoref").val(response.no_ref);
                     // submit the edit from
