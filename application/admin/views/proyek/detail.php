@@ -4,7 +4,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Tambah <small>Artikel</small></h3>
+                    <h3>Detail Proyek <small>Artikel</small></h3>
                 </div>
             </div>
 
@@ -23,69 +23,259 @@
                 </div>
             <?php endif; ?>
             <!-- End Notification -->
-
             <!--   Tabel konten         -->
+          <div class="container-fluid">
+              <div class="row">
+
+
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="x_panel tile">
+                          <div class="x_title">
+                              <h2><i class="fa fa-clock-o text-success"></i> Waktu Proyek</h2>
+                              <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                              <form action="">
+                                  <div class="form-group">
+                                      <label for="">Tanggal Mulai</label>
+                                      <input type="date" name="" id="" class="form-control" value="<?= $detailproyek['DateAwal']?>">
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="">Tanggal Berakhir</label>
+                                      <input type="date" name="" id="" class="form-control" value="<?= $detailproyek['DateAkhir']?>">
+                                  </div>
+                                  <div class="form-group" style="float:  right !important;">
+                                      <button type="submit" class="btn btn-success">Ubah</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                      <div class="x_panel tile">
+                          <div class="x_title">
+                              <h2><i class="fa fa-money-bill-alt text-success"></i> Pembayaran dan Nilai Proyek</h2>
+                              <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content">
+                              <form action="">
+                                  <div class="form-group">
+                                      <label for="nominal_Proyek">Nominal</label>
+                                      <input type="number" name="nominal_Proyek" id="nominal_Proyek" class="form-control" value="<?= $detailproyek['nilai_pembayaran']?>">
+                                  </div>
+                                  <div class="form-group" style="float:  right !important;">
+                                      <button type="submit" class="btn btn-success">Ubah</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+
+
+              <div class="row">
+                  <div class="x_panel">
+                      <div class="x_title">
+                          <h2>Detail<small>Umum</small></h2>
+                          <div class="clearfix"></div>
+                      </div>
+                      <div class="x_content">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+
+                              <form role="form" action="<?php base_url('Article/add') ?>" method="post" enctype="multipart/form-data">
+
+                                  <div class="box-body">
+                                      <?php echo validation_errors(); ?>
+                                      <br>
+                                      <div class="form-group row">
+                                          <div class="col-md-6 col-12 col-xs-12">
+                                              <label for="id_proyek">ID Proyek</label>
+                                              <input type="text" class="form-control" id="id_proyek" name="id_artikel" value="<?= $detailproyek['id_proyek']?>" autocomplete="off" disabled/>
+                                              <input type="hidden" class="form-control" id="id_proyekpost" name="id_proyekpost" value="<?= $detailproyek['id_proyek']?>" autocomplete="off" disabled/>
+                                          </div>
+                                          <div class="col-md-6 col-12 col-xs-12">
+                                              <label for="nama_proyek">Nama Proyek</label>
+                                              <input type="text" class="form-control" id="nama_proyek" name="nama_proyek" value="<?= $detailproyek['nama_proyek']?>" autocomplete="off"/>
+                                          </div>
+                                      </div>
+                                      <br>
+                                      <div class="form-group row">
+                                          <div class="col-md-6 col-12 col-x-12">
+                                              <label for="id_kategori">Kategori</label>
+                                              <select class="form-control" id="id_admin" name="id_kategori">
+                                                  <option value="<?= $datakategori['id_kategori']?>"><?= $datakategori['nama_kategori']?></option>
+                                                  <?php foreach ($list_kategori as $k => $v): ?>
+                                                      <?php if($v['id_kategori'] == $datakategori['id_kategori'] ) : ?>
+
+                                                      <?php else  : ?>
+                                                          <option value="<?php echo $v['id_kategori'] ?>"><?php echo $v['nama_kategori'] ?></option>
+                                                      <?php endif; ?>
+                                                  <?php endforeach ?>
+                                              </select>
+                                          </div>
+                                          <div class="col-md-6 col-12 col-xs-12">
+                                              <label for="nama_proyek">Jenis Proyek</label>
+                                              <select name="jenis_proyek" class="form-control" id="jenis_proyek">
+                                                  <?php if($detailproyek['jenis'] == 1 ) : ?>
+                                                      <option value="1" selected>Campaign</option>
+                                                      <option value="2">Partner / Hiring</option>
+                                                  <?php elseif ($detailproyek['jenis'] == 2 ) : ?>
+                                                      <option value="1" >Campaign</option>
+                                                      <option value="2" selected>Partner / Hiring</option>
+                                                  <?php else : ?>
+
+                                                  <?php endif; ?>
+                                              </select>
+                                          </div>
+                                      </div>
+
+                                      <div class="form-group">
+                                          <label for="tagline">Tagline</label>
+                                          <textarea name="tagline" id="tagline" cols="10" rows="3" class="form-control"><?= $detailproyek['tagline'] ?></textarea>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="detail_proyek">Detail proyek</label>
+                                          <textarea type="text" class="form-control" id="detail_proyek" name="detail_proyek" autocomplete="off" rows="13" cols="20"><?= $detailproyek['detail_proyek']?></textarea>
+                                      </div>
+
+                                      <div class="clearfix"></div>
+                                      <br>
+                                      <div class="box-footer" style="float: right !important;">
+                                          <button type="submit" class="btn btn-success">Simpan</button>
+                                          <a href="<?= site_url('Article') ?>" class="btn btn-danger">Back</a>
+                                      </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
 
-                    <form role="form" action="<?php base_url('Article/add') ?>" method="post" enctype="multipart/form-data">
 
-                        <div class="box-body">
-                            <?php echo validation_errors(); ?>
-                            <div class="form-group">
-                                <label for="product_image">Gambar / Foto</label>
-                                <div class="kv-avatar">
-                                    <div class="file-loading">
-                                        <input id="artikel_gambar" name="artikel_gambar" type="file">
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group row">
-                                <div class="col-md-6 col-12 col-xs-12">
-                                    <label for="id_artikel">ID Artikel</label>
-                                    <input type="text" class="form-control" id="id_artikel" name="id_artikel" placeholder="ID ARTIKEL" autocomplete="off" disabled/>
-
-                                </div>
-                                <div class="col-md-6 col-12 col-x-12">
-                                    <label for="id_admin">Nama Admin</label>
-                                    <select class="form-control" id="id_admin" name="id_admin">
-                                    <?php foreach ($admin as $k => $v): ?>
-
-                                        <option value="<?php echo $v['id_admin'] ?>"><?php echo $v['nama_admin'] ?></option>
-
-                                    <?php endforeach ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="judul_artikel">Judul Artikel</label>
-                                <input type="text" class="form-control" id="judul_artikel" name="judul_artikel" placeholder="Masukkan judul Artikel" autocomplete="off"/>
-                            </div>
-                            <div class="form-group">
-                                    <label for="isi_artikel">Description</label>
-                                    <textarea type="text" class="form-control" id="isi_artikel" name="isi_artikel" placeholder="Enter
-                                    description" autocomplete="off" rows="13" cols="20">
-                                    </textarea>
-                            </div>
-                            <div class="input-group date">
-                                <input type="text" class="form-control" name="tanggal" id="dateTime" value="12-02-2012">
-                                <div class="input-group-addon">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                </div>
-                            </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="x_panel tile fixed_height_320">
+                        <div class="x_title">
+                            <h2>Foto Proyek</h2>
                             <div class="clearfix"></div>
-                            <br>
-                            <div class="box-footer" style="float: right !important;">
-                                <button type="submit" class="btn btn-success">Simpan</button>
-                                <a href="<?= site_url('Article') ?>" class="btn btn-danger">Back</a>
-                            </div>
-                    </form>
+                        </div>
+                        <div class="x_content">
+                            <h4>App Usage across versions</h4>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="x_panel tile fixed_height_320">
+                        <div class="x_title">
+                            <h2>File Proyek</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <h4>App Usage across versions</h4>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+           <div class="">
+               <div class="row">
+                   <div class="x_panel">
+                       <div class="x_title">
+                           <h2>Proyek <small>List</small></h2>
+                           <div class="clearfix"></div>
+                       </div>
+                       <div class="x_content">
+                           <table id="ProyekTable" class="table table-striped table-bordered table-responsive">
+                               <thead>
+                               <tr>
+                                   <th>ID Proyek</th>
+                                   <th>Nama Proyek</th>
+                                   <th>Pembuat</th>
+                                   <th>Tipe Proyek</th>
+                                   <th>Kategori</th>
+                                   <th>Tanggal Mulai</th>
+                                   <th>Tanggal Berakhir</th>
+                                   <th>Status</th>
+                                   <th>Action</th>
+                               </tr>
+                               </thead>
+                           </table>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+            <div class="">
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Proyek <small>List</small></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table id="ProyekTable" class="table table-striped table-bordered table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>ID Proyek</th>
+                                    <th>Nama Proyek</th>
+                                    <th>Pembuat</th>
+                                    <th>Tipe Proyek</th>
+                                    <th>Kategori</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Berakhir</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Proyek <small>List</small></h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table id="ProyekTable" class="table table-striped table-bordered table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>ID Proyek</th>
+                                    <th>Nama Proyek</th>
+                                    <th>Pembuat</th>
+                                    <th>Tipe Proyek</th>
+                                    <th>Kategori</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Berakhir</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--   Tabel konten         -->
         </div>
     </div>
+</div>
 </div>
 <!-- /page content -->
 

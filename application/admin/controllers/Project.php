@@ -36,8 +36,8 @@ class Project extends MY_Controller
             // button
             $buttons = '';
 
-
-            $buttons .= '<button type="button" class="btn btn-warning" onclick="editPesan(&quot;' . $value['id_proyek'] . '&quot;)" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></button>';
+            $link_address = site_url('Project/editpage/'.$value['id_proyek']);
+            $buttons .= '<a href="'.$link_address.'"class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>';
 
             $buttons .= ' <button type="button" class="btn btn-danger" onclick="removeFunc(&quot;' . $value['id_proyek'] . '&quot;)" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
 
@@ -77,5 +77,16 @@ class Project extends MY_Controller
         echo json_encode($result);
     }
 
+
+    public function editpage($id) {
+
+	    $dataproyek = $this->proyek->getProjectData($id);
+	    $this->data['datauser'] = $this->user->getUserData($dataproyek['id_user']);
+        $this->data['datakategori'] = $this->category->getCategoryData($dataproyek['id_kategori']);
+        $this->data['detailproyek'] = $this->proyek->getProjectData($id);
+        $this->data['list_kategori'] = $this->category->getCategoryData();
+	    $this->data['page_title'] = 'Detail Proyek';
+	    $this->render_template('proyek/detail', $this->data);
+    }
 
 }
