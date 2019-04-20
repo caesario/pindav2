@@ -1,6 +1,6 @@
 <?php 
 
-class Model_user extends CI_Model
+class Model_project extends CI_Model
 {
 	public function __construct()
 	{
@@ -8,15 +8,15 @@ class Model_user extends CI_Model
 	}
 
     /* get the brand data */
-    public function getUserData($id = null)
+    public function getProjectData($id = null)
     {
         if($id) {
-            $sql = "SELECT * FROM pinda_user WHERE id_user = ?";
+            $sql = "SELECT * FROM pinda_proyek WHERE id_proyek = ?";
             $query = $this->db->query($sql, array($id));
             return $query->row_array();
         }
 
-        $sql = "SELECT * FROM pinda_user";
+        $sql = "SELECT * FROM pinda_proyek";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

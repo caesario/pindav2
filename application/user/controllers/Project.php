@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Project extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -19,17 +19,7 @@ class Auth extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-    {
-        $this->load->view('Home');
-    }
-
-    public function register()
-    {
-        $this->load->view('auth/Register');
-    }
-
-    public function login()
-    {
-        $this->load->view('auth/Login');
-    }
+	{
+		$this->load->view('Proyek/Buatproyek');
+	}
 }

@@ -13,6 +13,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('model_settings', 'setting');
         $this->load->model('model_user', 'user');
         $this->load->model('model_dompet', 'dompet');
+        $this->load->model('model_project', 'proyek');
     }
 
     public function render_template($page = null, $data = array())

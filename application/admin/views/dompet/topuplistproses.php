@@ -72,7 +72,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Proses Transaksi</h4>
             </div>
-            <form role="form" action="<?php echo site_url('Dompet/prosestrxtwo') ?>" method="post" id="updateBrandForm">
+            <form role="form" action="<?php echo site_url('Dompet/prosestrxthree') ?>" method="post" id="updateBrandForm">
                 <div class="modal-body">
                     <div id="messages"></div>
                     <div class="form-group">

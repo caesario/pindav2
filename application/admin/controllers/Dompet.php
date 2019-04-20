@@ -215,7 +215,7 @@ class Dompet extends MY_Controller
 	    echo json_encode($data);
     }
 
-    public function prosestrxtwo() {
+    public function prosestrxthree() {
 
         $this->form_validation->set_rules('edit_iddompettrxpost', 'ID Dompet Transaksi', 'trim|required');
         if ($this->form_validation->run() == TRUE) {
@@ -238,6 +238,38 @@ class Dompet extends MY_Controller
             $update = $this->dompet->updatetrx($data, $id);
             if($update == true) {
                 $this->dompet->updatedompet($nominal, $iddompet);
+                $response['success'] = true;
+                $response['messages'] = 'Succesfully updated';
+            }
+            else {
+                $response['success'] = false;
+                $response['messages'] = 'Error in the database while updated the brand information';
+            }
+
+        } else {
+            $response['success'] = false;
+            foreach ($_POST as $key => $value) {
+                $response['messages'][$key] = form_error($key);
+            }
+        }
+        echo json_encode($response);
+    }
+
+    public function prosestrxtwo() {
+
+        $this->form_validation->set_rules('edit_iddompettrxpost', 'ID Dompet Transaksi', 'trim|required');
+        if ($this->form_validation->run() == TRUE) {
+
+            $id = $this->input->post('edit_iddompettrxpost');
+            $detail_trx = $this->dompet->getDompetTrxDetailData($id);
+
+            // data status
+            $data = array(
+                'status_trx' => 2
+            );
+
+            $update = $this->dompet->updatetrx($data, $id);
+            if($update == true) {
                 $response['success'] = true;
                 $response['messages'] = 'Succesfully updated';
             }

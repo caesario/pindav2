@@ -10,49 +10,65 @@ class Project extends MY_Controller
 
 //		$this->not_logged_in();
 
-		$this->data['page_title'] = 'Pesan';
 
 
 	}
 
     public function index()
     {
-        $this->render_template('pesan/index', $this->data);
+
+        $this->data['page_title'] = 'Daftar Proyek';
+        $this->render_template('proyek/index', $this->data);
     }
 
-
-
-    public function fetchMessageData()
+    public function fetchProyekData()
     {
         $result = array('data' => array());
 
-        $data = $this->pesan->getMessageData();
+        $data = $this->proyek->getProjectData();
 
         foreach ($data as $key => $value) {
+
+
+
+            $user = $this->user->getUserData($value['id_user']);
+            $kategori = $this->category->getCategoryData($value['id_kategori']);
             // button
             $buttons = '';
 
 
-            $buttons .= '<button type="button" class="btn btn-warning" onclick="editPesan(&quot;'.$value['id_pesan'].'&quot;)" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></button>';
+            $buttons .= '<button type="button" class="btn btn-warning" onclick="editPesan(&quot;' . $value['id_proyek'] . '&quot;)" data-toggle="modal" data-target="#editModal"><i class="fas fa-pencil-alt"></i></button>';
 
-            $buttons .= ' <button type="button" class="btn btn-danger" onclick="removeFunc(&quot;'.$value['id_pesan'].'&quot;)" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
+            $buttons .= ' <button type="button" class="btn btn-danger" onclick="removeFunc(&quot;' . $value['id_proyek'] . '&quot;)" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button>';
 
 
             $status = '';
-            if($value['status'] == 1) {
-                $status = '<span class="label label-success">Belum Dibaca</span>';
-            } else if($value['status'] == 2) {
-                $status = '<span class="label label-danger">Sudah Dibaca</span>';
+            if ($value['status_proyek'] == 1) {
+                $status = '<span class="label label-warning">Proses</span>';
+            } else if ($value['status_proyek'] == 2) {
+                $status = '<span class="label label-success">Berhasil & Selesai</span>';
             } else {
-                $status = '<span class="label label-danger">Tidak Diketahui</span>';
+                $status = '<span class="label label-danger">Gagal</span>';
+            }
+
+            $tipe = '';
+            if  ($value['jenis'] == 1 ){
+                $tipe = '<span class="label label-info">Campaign</span>';
+            } else if ($value['jenis'] == 2 ){
+                $tipe = '<span class="label label-info">Find Partner</span>';
+            } else {
+                $tipe = '<span class="label label-danger">Tidak Diketahui</span>';
             }
 
 
             $result['data'][$key] = array(
-                $value['id_pesan'],
-                $value['nama_anda'],
-                $value['nomor_anda'],
-                $value['email_anda'],
+                $value['id_proyek'],
+                $value['nama_proyek'],
+                $user['nama_user'],
+                $tipe,
+                $kategori['nama_kategori'],
+                $value['DateAwal'],
+                $value['DateAkhir'],
                 $status,
                 $buttons
             );
@@ -61,85 +77,5 @@ class Project extends MY_Controller
         echo json_encode($result);
     }
 
-
-
-
-
-    public function remove()
-    {
-
-        $artikel_id = $this->input->post('artikel_id');
-        $response = array();
-        if( $artikel_id ) {
-            $delete = $this->artikel->remove($artikel_id );
-
-            if($delete == true) {
-                $response['success'] = true;
-                $response['messages'] = "Successfully removed";
-            }
-            else {
-                $response['success'] = false;
-                $response['messages'] = "Error in the database while removing the brand information";
-            }
-        }
-        else {
-            $response['success'] = false;
-            $response['messages'] = "Refersh the page again!!";
-        }
-
-        echo json_encode($response);
-    }
-
-    public function fetchMessageDataById($id)
-    {
-        if($id) {
-            $data = $this->pesan->getMessageData($id);
-            echo json_encode($data);
-        }
-
-        return false;
-    }
-
-
-    public function update($id)
-    {
-
-        $response = array();
-
-        if($id) {
-            $this->form_validation->set_rules('edit_status', 'Status', 'trim');
-
-
-            $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
-
-            if ($this->form_validation->run() == TRUE) {
-                $data = array(
-                    'status' => $this->input->post('edit_status')
-                );
-
-                $update = $this->pesan->update($data, $id);
-                if($update == true) {
-                    $response['success'] = true;
-                    $response['messages'] = 'Succesfully updated';
-                }
-                else {
-                    $response['success'] = false;
-                    $response['messages'] = 'Error in the database while updated the brand information';
-                }
-            }
-            else {
-                $response['success'] = false;
-                foreach ($_POST as $key => $value) {
-                    $response['messages'][$key] = form_error($key);
-                }
-            }
-        }
-        else {
-            $response['success'] = false;
-            $response['messages'] = 'Error please refresh the page again!!';
-        }
-
-        echo json_encode($response);
-    }
 
 }
