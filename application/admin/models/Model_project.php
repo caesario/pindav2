@@ -21,21 +21,40 @@ class Model_project extends CI_Model
         return $query->result_array();
     }
 
-	public function create($data)
-	{
-		if($data) {
-			$insert = $this->db->insert('pinda_kategori', $data);
-			return ($insert == true) ? true : false;
-		}
-	}
 
-    public function createuser($data)
+    public function getSubmitData($id)
     {
-        if($data) {
-            $insert = $this->db->insert('pinda_user', $data);
-            return ($insert == true) ? true : false;
-        }
+        $this->db->select('*');
+        $this->db->from('pinda_trx_submit');
+        $this->db->join('pinda_trx_submitdetail', 'pinda_trx_submitdetail.id_detail_submit = pinda_trx_submit.id_detail_submit');
+        $this->db->join('pinda_user', 'pinda_user.id_user = pinda_trx_submitdetail.id_user');
+        $this->db->where('id_proyek', $id);
+        $result = $this->db->get();
+        return $result->result_array();
     }
+
+    public function getApplyData($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_trx_lamar');
+        $this->db->join('pinda_trx_lamardetail', 'pinda_trx_lamardetail.id_detail_lamar = pinda_trx_lamar.id_detail_lamar');
+        $this->db->join('pinda_user', 'pinda_user.id_user = pinda_trx_lamardetail.id_user');
+        $this->db->where('id_proyek', $id);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
+    public function getIdeData($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_trx_ide');
+        $this->db->join('pinda_trx_idedetail', 'pinda_trx_idedetail.id_detail_ide = pinda_trx_ide.id_detail_ide');
+        $this->db->join('pinda_user', 'pinda_user.id_user = pinda_trx_idedetail.id_user');
+        $this->db->where('id_proyek', $id);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
 
 	public function update($data, $id)
 	{
@@ -46,13 +65,31 @@ class Model_project extends CI_Model
 		}
 	}
 
-	public function remove($id)
+	public function removeSubmit($id)
 	{
 		if($id) {
-			$this->db->where('id_user', $id);
-			$delete = $this->db->delete('pinda_user');
+			$this->db->where('id_submit', $id);
+			$delete = $this->db->delete('pinda_trx_submit');
 			return ($delete == true) ? true : false;
 		}
 	}
+
+    public function removeApply($id)
+    {
+        if($id) {
+            $this->db->where('id_lamar', $id);
+            $delete = $this->db->delete('pinda_trx_lamar');
+            return ($delete == true) ? true : false;
+        }
+    }
+
+    public function removeIde($id)
+    {
+        if($id) {
+            $this->db->where('id_ide', $id);
+            $delete = $this->db->delete('pinda_trx_ide');
+            return ($delete == true) ? true : false;
+        }
+    }
 
 }

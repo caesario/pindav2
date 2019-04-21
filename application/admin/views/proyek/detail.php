@@ -4,7 +4,7 @@
         <div class="">
             <div class="page-title">
                 <div class="title_left">
-                    <h3>Detail Proyek <small>Artikel</small></h3>
+                    <h3>Detail Proyek <small/></small></h3>
                 </div>
             </div>
 
@@ -26,8 +26,6 @@
             <!--   Tabel konten         -->
           <div class="container-fluid">
               <div class="row">
-
-
                   <div class="col-md-6 col-sm-6 col-xs-12">
                       <div class="x_panel tile">
                           <div class="x_title">
@@ -51,7 +49,6 @@
                           </div>
                       </div>
                   </div>
-
                   <div class="col-md-6 col-sm-6 col-xs-12">
                       <div class="x_panel tile">
                           <div class="x_title">
@@ -64,6 +61,10 @@
                                       <label for="nominal_Proyek">Nominal</label>
                                       <input type="number" name="nominal_Proyek" id="nominal_Proyek" class="form-control" value="<?= $detailproyek['nilai_pembayaran']?>">
                                   </div>
+                                  <div class="form-group">
+                                      <label for="qty_member">Partner </label>
+                                      <input type="number" name="qty_member" id="qty_member" class="form-control" value="<?= $detailproyek['qty_member']?>">
+                                  </div>
                                   <div class="form-group" style="float:  right !important;">
                                       <button type="submit" class="btn btn-success">Ubah</button>
                                   </div>
@@ -71,11 +72,7 @@
                           </div>
                       </div>
                   </div>
-
-
               </div>
-
-
               <div class="row">
                   <div class="x_panel">
                       <div class="x_title">
@@ -138,9 +135,12 @@
                                       </div>
                                       <div class="form-group">
                                           <label for="detail_proyek">Detail proyek</label>
-                                          <textarea type="text" class="form-control" id="detail_proyek" name="detail_proyek" autocomplete="off" rows="13" cols="20"><?= $detailproyek['detail_proyek']?></textarea>
+                                          <textarea type="text" class="form-control" id="detail_proyek" name="detail_proyek" autocomplete="off" rows="8" cols="20"><?= $detailproyek['detail_proyek']?></textarea>
                                       </div>
-
+                                      <div class="form-group">
+                                          <label for="teks_desain">Teks Desain</label>
+                                          <textarea type="text" class="form-control" id="teks_desain" name="teks_desain" autocomplete="off" rows="8" cols="20"><?= $detailproyek['teks_desain']?></textarea>
+                                      </div>
                                       <div class="clearfix"></div>
                                       <br>
                                       <div class="box-footer" style="float: right !important;">
@@ -157,8 +157,6 @@
 
 
             <div class="row">
-
-
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="x_panel tile fixed_height_320">
                         <div class="x_title">
@@ -166,12 +164,20 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <h4>App Usage across versions</h4>
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="product_image">Gambar / Foto</label>
+                                    <div class="kv-avatar">
+                                        <div class="file-loading">
+                                            <input id="artikel_gambar" name="artikel_gambar" type="file">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
 
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="x_panel tile fixed_height_320">
                         <div class="x_title">
@@ -179,34 +185,44 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <h4>App Usage across versions</h4>
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="product_image">File Proyek</label>
+                                    <div class="kv-avatar">
+                                        <div class="file-loading">
+                                            <input id="artikel_gambar2" name="artikel_gambar2" type="file">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" style="">
+                                    <button class="btn btn-success" type="submit">Ubah</button>
+                                </div>
+                            </form>
 
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
 
-           <div class="">
+            <!--            -->
+            <div id="Submitmessages"></div>
+            <div class="">
                <div class="row">
                    <div class="x_panel">
                        <div class="x_title">
-                           <h2>Proyek <small>List</small></h2>
+                           <h2>Submit<small>List</small></h2>
                            <div class="clearfix"></div>
                        </div>
                        <div class="x_content">
-                           <table id="ProyekTable" class="table table-striped table-bordered table-responsive">
+                           <table id="SubmitTable" class="table table-striped table-bordered table-responsive">
                                <thead>
                                <tr>
-                                   <th>ID Proyek</th>
-                                   <th>Nama Proyek</th>
-                                   <th>Pembuat</th>
-                                   <th>Tipe Proyek</th>
-                                   <th>Kategori</th>
-                                   <th>Tanggal Mulai</th>
-                                   <th>Tanggal Berakhir</th>
+                                   <th>ID Submit</th>
+                                   <th>Nama User</th>
+                                   <th>File Desain</th>
+                                   <th>Keterangan Submit</th>
                                    <th>Status</th>
                                    <th>Action</th>
                                </tr>
@@ -216,25 +232,25 @@
                    </div>
                </div>
            </div>
+            <!--            -->
 
+            <!--            -->
+            <div id="Applymessages"></div>
             <div class="">
                 <div class="row">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Proyek <small>List</small></h2>
+                            <h2>Apply <small>List</small></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <table id="ProyekTable" class="table table-striped table-bordered table-responsive">
+                            <table id="ApplyTable" class="table table-striped table-bordered table-responsive">
                                 <thead>
                                 <tr>
-                                    <th>ID Proyek</th>
-                                    <th>Nama Proyek</th>
-                                    <th>Pembuat</th>
-                                    <th>Tipe Proyek</th>
-                                    <th>Kategori</th>
-                                    <th>Tanggal Mulai</th>
-                                    <th>Tanggal Berakhir</th>
+                                    <th>ID Detail Apply</th>
+                                    <th>Nama User</th>
+                                    <th>Alasan Bergabung</th>
+                                    <th>File CV</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -244,26 +260,25 @@
                     </div>
                 </div>
             </div>
+            <!--            -->
 
+            <!--            -->
+            <div id="Idemessages"></div>
             <div class="">
                 <div class="row">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Proyek <small>List</small></h2>
+                            <h2>Ide <small>List</small></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <table id="ProyekTable" class="table table-striped table-bordered table-responsive">
+                            <table id="IdeTable" class="table table-striped table-bordered table-responsive">
                                 <thead>
                                 <tr>
-                                    <th>ID Proyek</th>
-                                    <th>Nama Proyek</th>
-                                    <th>Pembuat</th>
-                                    <th>Tipe Proyek</th>
-                                    <th>Kategori</th>
-                                    <th>Tanggal Mulai</th>
-                                    <th>Tanggal Berakhir</th>
-                                    <th>Status</th>
+                                    <th>ID Detail Ide</th>
+                                    <th>Nama User</th>
+                                    <th>Ide Saran</th>
+                                    <th>Point Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -272,6 +287,7 @@
                     </div>
                 </div>
             </div>
+            <!--            -->
             <!--   Tabel konten         -->
         </div>
     </div>
@@ -281,217 +297,72 @@
 
 
 <!-- Modal Section -->
-<!-- create kategori modal -->
-<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+<!-- Remove Submit -->
+<div class="modal fade" tabindex="-1" role="dialog" id="removeSubmit">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah Kategori</h4>
+                <h4 class="modal-title">Hapus Submit Desain</h4>
             </div>
-            <form role="form" action="<?php echo site_url('Category/tambah') ?>" method="post" id="createForm" enctype="multipart/form-data">
+            <form role="form" action="<?php echo site_url('Project/hapussubmit') ?>" method="post" id="removeSubmitForm">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="nama_kategori">Nama Kategori</label>
-                        <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Kategori Proyek" autocomplete="off">
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select class="form-control" id="status" name="status">
-                            <option value="1">Aktif</option>
-                            <option value="2">Tidak Aktif</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="icon" name="icon">
-                            <?php foreach ($icon as $k => $v): ?>
-
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
-
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-                    <br>
-                    <br>
+                    <p>Apakah Anda yakin untuk menghapus user ini?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Hapus</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<!-- End Remove Submit -->
 
-
-<!-- create icon -->
-<div class="modal fade" tabindex="-1" role="dialog" id="addIcon">
+<!-- Remove Apply -->
+<div class="modal fade" tabindex="-1" role="dialog" id="removeApply">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Tambah icon</h4>
+                <h4 class="modal-title">Hapus Apply User</h4>
             </div>
-            <form role="form" action="<?php echo site_url('Category/tambahicon') ?>" method="post" id="createForm" enctype="multipart/form-data">
+            <form role="form" action="<?php echo site_url('Project/hapusapply') ?>" method="post" id="removeApplyForm">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="product_image">Gambar / Foto</label>
-                        <div class="kv-avatar">
-                            <div class="file-loading">
-                                <input id="iconcat" name="iconcat" type="file">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="nama_icon">Nama Icon</label>
-                        <input type="text" class="form-control" id="nama_icon" name="nama_icon" placeholder="Masukkan Nama Icon" autocomplete="off">
-                    </div>
-                    <br>
-                    <br>
+                    <p>Apakah Anda yakin untuk menghapus apply user ini?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Hapus</button>
                 </div>
             </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<!---->
-<!-- edit brand modal -->
+<!-- End Remove Apply -->
 
-<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
 
+<!-- Remove Apply -->
+<div class="modal fade" tabindex="-1" role="dialog" id="removeIde">
     <div class="modal-dialog" role="document">
-
         <div class="modal-content">
-
             <div class="modal-header">
-
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                <h4 class="modal-title">Ubah Merk</h4>
-
+                <h4 class="modal-title">Hapus Ide User</h4>
             </div>
-
-
-
-            <form role="form" action="<?php echo site_url('Category/update') ?>" method="post" id="updateBrandForm">
-
-
-
+            <form role="form" action="<?php echo site_url('Project/hapuside') ?>" method="post" id="removeIdeForm">
                 <div class="modal-body">
-
-                    <div id="messages"></div>
-
-
-
-                    <div class="form-group">
-
-                        <label for="edit_brand_name">Nama Merk</label>
-
-                        <input type="text" class="form-control" id="edit_category_name" name="edit_category_name" placeholder="Masukkan Nama Merk" autocomplete="off">
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="edit_active">Status</label>
-
-                        <select class="form-control" id="edit_status" name="edit_status">
-
-                            <option value="1">Aktif</option>
-
-                            <option value="2">Tidak Aktif</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="edit_icon" name="edit_icon">
-                            <?php foreach ($icon as $k => $v): ?>
-
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
-
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-
+                    <p>Apakah Anda yakin untuk menghapus Ide user ini?</p>
                 </div>
-
-
-
                 <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-
-                </div>
-
-
-
-            </form>
-
-
-
-
-
-        </div><!-- /.modal-content -->
-
-    </div><!-- /.modal-dialog -->
-
-</div><!-- /.modal -->
-
-
-<!-- remove brand modal -->
-
-<div class="modal fade" tabindex="-1" role="dialog" id="removeModal">
-
-    <div class="modal-dialog" role="document">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                <h4 class="modal-title">Remove Category</h4>
-
-            </div>
-
-
-
-            <form role="form" action="<?php echo site_url('Category/remove') ?>" method="post" id="removeBrandForm">
-
-                <div class="modal-body">
-
-                    <p>Do you really want to remove?</p>
-
-                </div>
-
-                <div class="modal-footer">
-
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-
+                    <button type="submit" class="btn btn-primary">Hapus</button>
                 </div>
-
             </form>
-
-
-
-
-
         </div><!-- /.modal-content -->
-
     </div><!-- /.modal-dialog -->
-
 </div><!-- /.modal -->
+<!-- End Remove Apply -->
 
 <!-- End Modal Section -->
 
@@ -588,6 +459,37 @@
 
 <script>
 
+    var SubmitTable;
+    var ApplyTable;
+    var IdeTable;
+
+    $(document).ready(function() {
+        SubmitTable = $('#SubmitTable').DataTable({
+
+            'ajax': '<?= site_url('Project/fetchSubmitData/'.$detailproyek['id_proyek'])?>',
+
+            'order': []
+
+        });
+
+        ApplyTable = $('#ApplyTable').DataTable({
+
+            'ajax': '<?= site_url('Project/fetchApplyData/'.$detailproyek['id_proyek'])?>',
+
+            'order': []
+
+        });
+
+        IdeTable = $('#IdeTable').DataTable({
+
+            'ajax': '<?= site_url('Project/fetchIdeData/'.$detailproyek['id_proyek'])?>',
+
+            'order': []
+
+        });
+
+    });
+
     $("#description").wysihtml5();
 
     var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
@@ -597,6 +499,8 @@
         '<i class="glyphicon glyphicon-tag"></i>' +
 
         '</button>';
+
+
     $("#artikel_gambar").fileinput({
 
         overwriteInitial: true,
@@ -629,7 +533,198 @@
 
     });
 
-    $('#dateTime').datetimepicker();
+    $("#description2").wysihtml5();
+
+    var btnCust = '<button type="button" class="btn btn-secondary" title="Add picture tags" ' +
+
+        'onclick="alert(\'Call your custom code here.\')">' +
+
+        '<i class="glyphicon glyphicon-tag"></i>' +
+
+        '</button>';
+
+
+    $("#artikel_gambar2").fileinput({
+
+        overwriteInitial: true,
+
+        maxFileSize: 1500,
+
+        showClose: false,
+
+        showCaption: false,
+
+        browseLabel: '',
+
+        removeLabel: '',
+
+        browseIcon: '<i class="glyphicon glyphicon-folder-open"></i>',
+
+        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+
+        removeTitle: 'Cancel or reset changes',
+
+        elErrorContainer: '#kv-avatar-errors-1',
+
+        msgErrorClass: 'alert alert-block alert-danger',
+
+        // defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar">',
+
+        layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+
+        allowedFileExtensions: ["jpg", "png", "gif"]
+
+    });
+
+    // remove functions
+    function removeSubmit(id)
+
+    {
+
+        if(id) {
+
+            $("#removeSubmitForm").on('submit', function() {
+                var form = $(this);
+                // remove the text-danger
+                $(".text-danger").remove();
+                $.ajax({
+                    url: form.attr('action'),
+                    type: form.attr('method'),
+                    data: { submit_id:id },
+                    dataType: 'json',
+                    success:function(response) {
+                        SubmitTable.ajax.reload(null, false);
+                        if(response.success === true) {
+                            $("#Submitmessages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+                                '</div>');
+                            // hide the modal
+                            $("#removeSubmit").modal('hide');
+                            $('.modal-backdrop').remove();
+                        } else {
+                            $("#Submitmessages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
+                                '</div>');
+                            $("#removeSubmit").modal('hide');
+                            $('.modal-backdrop').remove();
+
+                        }
+
+                    }
+
+                });
+
+
+
+                return false;
+
+            });
+
+        }
+
+    }
+
+    function removeApply(id)
+
+    {
+
+        if(id) {
+
+            $("#removeApplyForm").on('submit', function() {
+                var form = $(this);
+                // remove the text-danger
+                $(".text-danger").remove();
+                $.ajax({
+                    url: form.attr('action'),
+                    type: form.attr('method'),
+                    data: { apply_id:id },
+                    dataType: 'json',
+                    success:function(response) {
+                        ApplyTable.ajax.reload(null, false);
+                        if(response.success === true) {
+                            $("#Applymessages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+                                '</div>');
+                            // hide the modal
+                            $("#removeApply").modal('hide');
+                            $('.modal-backdrop').remove();
+                        } else {
+                            $("#Applymessages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
+                                '</div>');
+                            $("#removeApply").modal('hide');
+                            $('.modal-backdrop').remove();
+
+                        }
+
+                    }
+
+                });
+
+
+
+                return false;
+
+            });
+
+        }
+
+    }
+
+    function removeIde(id)
+
+    {
+
+        if(id) {
+
+            $("#removeIdeForm").on('submit', function() {
+                var form = $(this);
+                // remove the text-danger
+                $(".text-danger").remove();
+                $.ajax({
+                    url: form.attr('action'),
+                    type: form.attr('method'),
+                    data: { ide_id:id },
+                    dataType: 'json',
+                    success:function(response) {
+                        IdeTable.ajax.reload(null, false);
+                        if(response.success === true) {
+                            $("#Idemessages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+                                '</div>');
+                            // hide the modal
+                            $("#removeIde").modal('hide');
+                            $('.modal-backdrop').remove();
+                        } else {
+                            $("#Idemessages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+                                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                                '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
+                                '</div>');
+                            $("#removeIde").modal('hide');
+                            $('.modal-backdrop').remove();
+
+                        }
+
+                    }
+
+                });
+
+
+
+                return false;
+
+            });
+
+        }
+
+    }
+
+
 
 </script>
 
