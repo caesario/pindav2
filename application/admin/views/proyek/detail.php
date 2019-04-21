@@ -33,14 +33,14 @@
                               <div class="clearfix"></div>
                           </div>
                           <div class="x_content">
-                              <form action="">
+                              <form action="<?= site_url('Project/updatetanggal/'.$detailproyek['id_proyek'])?>" method="post">
                                   <div class="form-group">
-                                      <label for="">Tanggal Mulai</label>
-                                      <input type="date" name="" id="" class="form-control" value="<?= $detailproyek['DateAwal']?>">
+                                      <label for="edit_tanggalmulai">Tanggal Mulai</label>
+                                      <input type="date" name="edit_tanggalmulai" id="edit_tanggalmulai" class="form-control" value="<?= $detailproyek['DateAwal']?>">
                                   </div>
                                   <div class="form-group">
-                                      <label for="">Tanggal Berakhir</label>
-                                      <input type="date" name="" id="" class="form-control" value="<?= $detailproyek['DateAkhir']?>">
+                                      <label for="edit_tanggalberakhir">Tanggal Berakhir</label>
+                                      <input type="date" name="edit_tanggalberakhir" id="edit_tanggalberakhir" class="form-control" value="<?= $detailproyek['DateAkhir']?>">
                                   </div>
                                   <div class="form-group" style="float:  right !important;">
                                       <button type="submit" class="btn btn-success">Ubah</button>
@@ -56,14 +56,14 @@
                               <div class="clearfix"></div>
                           </div>
                           <div class="x_content">
-                              <form action="">
+                              <form action="<?= site_url('Project/updatepemb/'.$detailproyek['id_proyek'])?>" method="post">
                                   <div class="form-group">
-                                      <label for="nominal_Proyek">Nominal</label>
-                                      <input type="number" name="nominal_Proyek" id="nominal_Proyek" class="form-control" value="<?= $detailproyek['nilai_pembayaran']?>">
+                                      <label for="edit_nominalproyek">Nominal</label>
+                                      <input type="number" name="edit_nominalproyek" id="edit_nominalproyek" class="form-control" value="<?= $detailproyek['nilai_pembayaran']?>">
                                   </div>
                                   <div class="form-group">
-                                      <label for="qty_member">Partner </label>
-                                      <input type="number" name="qty_member" id="qty_member" class="form-control" value="<?= $detailproyek['qty_member']?>">
+                                      <label for="edit_qtymember">Partner </label>
+                                      <input type="number" name="edit_qtymember" id="edit_qtymember" class="form-control" value="<?= $detailproyek['qty_member']?>">
                                   </div>
                                   <div class="form-group" style="float:  right !important;">
                                       <button type="submit" class="btn btn-success">Ubah</button>
@@ -82,7 +82,7 @@
                       <div class="x_content">
                           <div class="col-md-12 col-sm-12 col-xs-12">
 
-                              <form role="form" action="<?php base_url('Article/add') ?>" method="post" enctype="multipart/form-data">
+                              <form role="form" action="<?= site_url('Project/updateumum/'.$detailproyek['id_proyek']) ?>" method="post">
 
                                   <div class="box-body">
                                       <?php echo validation_errors(); ?>
@@ -91,18 +91,17 @@
                                           <div class="col-md-6 col-12 col-xs-12">
                                               <label for="id_proyek">ID Proyek</label>
                                               <input type="text" class="form-control" id="id_proyek" name="id_artikel" value="<?= $detailproyek['id_proyek']?>" autocomplete="off" disabled/>
-                                              <input type="hidden" class="form-control" id="id_proyekpost" name="id_proyekpost" value="<?= $detailproyek['id_proyek']?>" autocomplete="off" disabled/>
                                           </div>
                                           <div class="col-md-6 col-12 col-xs-12">
-                                              <label for="nama_proyek">Nama Proyek</label>
-                                              <input type="text" class="form-control" id="nama_proyek" name="nama_proyek" value="<?= $detailproyek['nama_proyek']?>" autocomplete="off"/>
+                                              <label for="edit_namaproyek">Nama Proyek</label>
+                                              <input type="text" class="form-control" id="edit_namaproyek" name="edit_namaproyek" value="<?= $detailproyek['nama_proyek']?>" autocomplete="off"/>
                                           </div>
                                       </div>
                                       <br>
                                       <div class="form-group row">
                                           <div class="col-md-6 col-12 col-x-12">
-                                              <label for="id_kategori">Kategori</label>
-                                              <select class="form-control" id="id_admin" name="id_kategori">
+                                              <label for="edit_idkategori">Kategori</label>
+                                              <select class="form-control" id="edit_idkategori" name="edit_idkategori">
                                                   <option value="<?= $datakategori['id_kategori']?>"><?= $datakategori['nama_kategori']?></option>
                                                   <?php foreach ($list_kategori as $k => $v): ?>
                                                       <?php if($v['id_kategori'] == $datakategori['id_kategori'] ) : ?>
@@ -114,8 +113,8 @@
                                               </select>
                                           </div>
                                           <div class="col-md-6 col-12 col-xs-12">
-                                              <label for="nama_proyek">Jenis Proyek</label>
-                                              <select name="jenis_proyek" class="form-control" id="jenis_proyek">
+                                              <label for="edit_jenisproyek">Jenis Proyek</label>
+                                              <select name="edit_jenisproyek" class="form-control" id="edit_jenisproyek">
                                                   <?php if($detailproyek['jenis'] == 1 ) : ?>
                                                       <option value="1" selected>Campaign</option>
                                                       <option value="2">Partner / Hiring</option>
@@ -130,22 +129,21 @@
                                       </div>
 
                                       <div class="form-group">
-                                          <label for="tagline">Tagline</label>
-                                          <textarea name="tagline" id="tagline" cols="10" rows="3" class="form-control"><?= $detailproyek['tagline'] ?></textarea>
+                                          <label for="edit_tagline">Tagline</label>
+                                          <textarea name="edit_tagline" id="edit_tagline" cols="10" rows="3" class="form-control"><?= $detailproyek['tagline'] ?></textarea>
                                       </div>
                                       <div class="form-group">
-                                          <label for="detail_proyek">Detail proyek</label>
-                                          <textarea type="text" class="form-control" id="detail_proyek" name="detail_proyek" autocomplete="off" rows="8" cols="20"><?= $detailproyek['detail_proyek']?></textarea>
+                                          <label for="edit_detailproyek">Detail proyek</label>
+                                          <textarea type="text" class="form-control" id="edit_detailproyek" name="edit_detailproyek" autocomplete="off" rows="8" cols="20"><?= $detailproyek['detail_proyek']?></textarea>
                                       </div>
                                       <div class="form-group">
-                                          <label for="teks_desain">Teks Desain</label>
-                                          <textarea type="text" class="form-control" id="teks_desain" name="teks_desain" autocomplete="off" rows="8" cols="20"><?= $detailproyek['teks_desain']?></textarea>
+                                          <label for="edit_teksdesain">Teks Desain</label>
+                                          <textarea type="text" class="form-control" id="edit_teksdesain" name="edit_teksdesain" autocomplete="off" rows="8" cols="20"><?= $detailproyek['teks_desain']?></textarea>
                                       </div>
                                       <div class="clearfix"></div>
                                       <br>
-                                      <div class="box-footer" style="float: right !important;">
-                                          <button type="submit" class="btn btn-success">Simpan</button>
-                                          <a href="<?= site_url('Article') ?>" class="btn btn-danger">Back</a>
+                                      <div class="form-group" style="float:  right !important;">
+                                          <button type="submit" class="btn btn-success">Ubah</button>
                                       </div>
                               </form>
                           </div>

@@ -285,4 +285,106 @@ class Project extends MY_Controller
 	    $this->render_template('proyek/detail', $this->data);
     }
 
+    public function updatetanggal($id)
+    {
+
+        if($id) {
+            $this->form_validation->set_rules('edit_tanggalmulai', 'Tanggal Mulai', 'trim');
+            $this->form_validation->set_rules('edit_tanggalberakhir', 'Tanggal Berakhir', 'trim');
+
+            $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+            if ($this->form_validation->run() == TRUE) {
+                $data = array(
+                    'DateAwal' => $this->input->post('edit_tanggalmulai'),
+                    'DateAkhir' => $this->input->post('edit_tanggalberakhir'),
+                );
+
+                $update = $this->proyek->updateproyek($data, $id);
+                if($update == true) {
+                    $this->session->set_flashdata('success', 'Successfully updated');
+                    redirect('Project/editpage/'.$id, 'refresh');
+                }
+                else {
+                    $this->session->set_flashdata('errors', 'Error occurred!!');
+                    redirect('Project/editpage/'.$id, 'refresh');
+                }
+            }
+            else {
+
+            }
+        }
+    }
+
+    public function updatepemb($id)
+    {
+
+        if($id) {
+            $this->form_validation->set_rules('edit_nominalproyek', 'Nominal Proyek', 'trim');
+            $this->form_validation->set_rules('edit_qtymember', 'anggota Proyek', 'trim');
+
+            $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+            if ($this->form_validation->run() == TRUE) {
+                $data = array(
+                    'nilai_pembayaran' => $this->input->post('edit_nominalproyek'),
+                    'qty_member' => $this->input->post('edit_qtymember'),
+                );
+
+                $update = $this->proyek->updateproyek($data, $id);
+                if($update == true) {
+                    $this->session->set_flashdata('success', 'Successfully updated');
+                    redirect('Project/editpage/'.$id, 'refresh');
+                }
+                else {
+                    $this->session->set_flashdata('errors', 'Error occurred!!');
+                    redirect('Project/editpage/'.$id, 'refresh');
+                }
+            }
+            else {
+
+            }
+        }
+    }
+
+    public function updateumum($id)
+    {
+
+        if($id) {
+            $this->form_validation->set_rules('edit_namaproyek', 'Nama Proyek', 'trim');
+            $this->form_validation->set_rules('edit_idkategori', 'Kategori', 'trim');
+            $this->form_validation->set_rules('edit_jenisproyek', 'Jenis Proyek', 'trim');
+            $this->form_validation->set_rules('edit_tagline', 'Tagline', 'trim');
+            $this->form_validation->set_rules('edit_detailproyek', 'Detail Proyek', 'trim');
+            $this->form_validation->set_rules('edit_teksdesain', 'Teks Desain', 'trim');
+
+            $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+            if ($this->form_validation->run() == TRUE) {
+                $data = array(
+                    'nama_proyek' => $this->input->post('edit_namaproyek'),
+                    'tagline' => $this->input->post('edit_tagline'),
+                    'teks_desain' => $this->input->post('edit_teksdesain'),
+                    'id_kategori' => $this->input->post('edit_idkategori'),
+                    'detail_proyek' => $this->input->post('edit_detailproyek'),
+                    'jenis' => $this->input->post('edit_jenisproyek')
+
+                );
+
+                $update = $this->proyek->updateproyek($data, $id);
+                if($update == true) {
+                    $this->session->set_flashdata('success', 'Successfully updated');
+                    redirect('Project/editpage/'.$id, 'refresh');
+                }
+                else {
+                    $this->session->set_flashdata('errors', 'Error occurred!!');
+                    redirect('Project/editpage/'.$id, 'refresh');
+                }
+            }
+            else {
+
+            }
+        }
+    }
+
 }

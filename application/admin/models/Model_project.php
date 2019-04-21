@@ -65,11 +65,11 @@ class Model_project extends CI_Model
     }
 
 
-	public function update($data, $id)
+	public function updateproyek($data, $id)
 	{
 		if($data && $id) {
-			$this->db->where('id_kategori', $id);
-			$update = $this->db->update('pinda_kategori', $data);
+			$this->db->where('id_proyek', $id);
+			$update = $this->db->update('pinda_proyek', $data);
 			return ($update == true) ? true : false;
 		}
 	}
