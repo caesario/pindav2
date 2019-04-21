@@ -156,20 +156,23 @@
 
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="x_panel tile fixed_height_320">
+                    <div class="x_panel tile">
                         <div class="x_title">
                             <h2>Foto Proyek</h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <form action="">
+                            <form action="<?= site_url('Project/uploadfotoproyek/'.$detailproyek['id_proyek'])?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="product_image">Gambar / Foto</label>
                                     <div class="kv-avatar">
                                         <div class="file-loading">
-                                            <input id="artikel_gambar" name="artikel_gambar" type="file">
+                                            <input id="foto_proyek" name="foto_proyek" type="file">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group" style="">
+                                    <button class="btn btn-success" type="submit">Ubah</button>
                                 </div>
                             </form>
 
@@ -177,18 +180,18 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="x_panel tile fixed_height_320">
+                    <div class="x_panel tile">
                         <div class="x_title">
                             <h2>File Proyek</h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <form action="">
+                            <form action="<?= site_url('Project/uploadfileproyek/'.$detailproyek['id_proyek'])?>" method="post" enctype="multipart/form-data" >
                                 <div class="form-group">
                                     <label for="product_image">File Proyek</label>
                                     <div class="kv-avatar">
                                         <div class="file-loading">
-                                            <input id="artikel_gambar2" name="artikel_gambar2" type="file">
+                                            <input id="file_proyek" name="file_proyek" type="file">
                                         </div>
                                     </div>
                                 </div>
@@ -499,7 +502,7 @@
         '</button>';
 
 
-    $("#artikel_gambar").fileinput({
+    $("#foto_proyek").fileinput({
 
         overwriteInitial: true,
 
@@ -542,7 +545,7 @@
         '</button>';
 
 
-    $("#artikel_gambar2").fileinput({
+    $("#file_proyek").fileinput({
 
         overwriteInitial: true,
 
@@ -570,7 +573,7 @@
 
         layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
 
-        allowedFileExtensions: ["jpg", "png", "gif"]
+        allowedFileExtensions: ["jpg", "png", "gif", "pdf", "doc", "xls", "jpeg", "ppt"]
 
     });
 

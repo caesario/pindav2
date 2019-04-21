@@ -387,4 +387,130 @@ class Project extends MY_Controller
         }
     }
 
+    public function uploadfotoproyek($id) {
+
+	    $getdetailfoto = $this->proyek->getProjectData($id);
+
+	    if ($getdetailfoto['foto_proyek'] != null && $_FILES['foto_proyek']['size'] > 0 ){
+            $upload_image = $this->upload_fotoproyek();
+            $upload_image = array('foto_proyek' => $upload_image);
+
+           $update =  $this->proyek->updateproyek($upload_image, $id);
+            if($update == true) {
+                $this->session->set_flashdata('success', 'Successfully updated');
+                redirect('Project/editpage/'.$id, 'refresh');
+            }
+            else {
+                $this->session->set_flashdata('errors', 'Error occurred!!');
+                redirect('Project/editpage/'.$id, 'refresh');
+            }
+        } elseif ($_FILES['foto_proyek']['size'] > 0) {
+            $uploadfoto = $this->upload_fotoproyek();
+
+            $upload_image = array(
+                'foto_proyek' => $uploadfoto
+            );
+            $update =  $this->proyek->updateproyek($upload_image, $id);
+            if($update == true) {
+                $this->session->set_flashdata('success', 'Successfully added');
+                redirect('Project/editpage/'.$id, 'refresh');
+            }
+            else {
+                $this->session->set_flashdata('errors', 'Error occurred!!');
+                redirect('Project/editpage/'.$id, 'refresh');
+            }
+        }
+    }
+
+    public function uploadfileproyek($id) {
+
+        $getdetailfoto = $this->proyek->getProjectData($id);
+
+        if ($getdetailfoto['file_proyek'] != null && $_FILES['file_proyek']['size'] > 0 ){
+            $upload_image = $this->upload_fileproyek();
+            $upload_image = array('file_proyek' => $upload_image);
+
+            $update =  $this->proyek->updateproyek($upload_image, $id);
+            if($update == true) {
+                $this->session->set_flashdata('success', 'Successfully updated');
+                redirect('Project/editpage/'.$id, 'refresh');
+            }
+            else {
+                $this->session->set_flashdata('errors', 'Error occurred!!');
+                redirect('Project/editpage/'.$id, 'refresh');
+            }
+        } elseif ($_FILES['file_proyek']['size'] > 0) {
+            $uploadfoto = $this->upload_fileproyek();
+
+            $upload_image = array(
+                'file_proyek' => $uploadfoto
+            );
+            $update =  $this->proyek->updateproyek($upload_image, $id);
+            if($update == true) {
+                $this->session->set_flashdata('success', 'Successfully added');
+                redirect('Project/editpage/'.$id, 'refresh');
+            }
+            else {
+                $this->session->set_flashdata('errors', 'Error occurred!!');
+                redirect('Project/editpage/'.$id, 'refresh');
+            }
+        }
+    }
+
+    public function upload_fotoproyek()
+    {
+        // assets/images/product_image
+        $config['upload_path'] = 'assets/fotoproyek';
+        $config['file_name'] =  uniqid('fotoproyek');
+        $config['allowed_types'] = 'gif|jpg|png|svg';
+        $config['max_size'] = '1000';
+
+        // $config['max_width']  = '1024';s
+        // $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('foto_proyek'))
+        {
+            $error = $this->upload->display_errors();
+            return $error;
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $type = explode('.', $_FILES['foto_proyek']['name']);
+            $type = $type[count($type) - 1];
+
+            $path = $config['upload_path'].'/'.$config['file_name'].'.'.$type;
+            return ($data == true) ? $path : false;
+        }
+    }
+
+    public function upload_fileproyek()
+    {
+        // assets/images/product_image
+        $config['upload_path'] = 'assets/fileproyek';
+        $config['file_name'] =  uniqid('fileproyek');
+        $config['allowed_types'] = 'pdf|doc|xls|png|jpg|jpeg|ppt';
+        $config['max_size'] = '1000';
+
+        // $config['max_width']  = '1024';s
+        // $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('file_proyek'))
+        {
+            $error = $this->upload->display_errors();
+            return $error;
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $type = explode('.', $_FILES['file_proyek']['name']);
+            $type = $type[count($type) - 1];
+
+            $path = $config['upload_path'].'/'.$config['file_name'].'.'.$type;
+            return ($data == true) ? $path : false;
+        }
+    }
+
 }
