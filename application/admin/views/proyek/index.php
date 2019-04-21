@@ -372,7 +372,7 @@
         $(document).ready(function() {
             manageTable = $('#ProyekTable').DataTable({
 
-                'ajax': 'Project/fetchProyekData',
+                'ajax': 'Project/fetchProyekData/1',
 
                 'order': []
 

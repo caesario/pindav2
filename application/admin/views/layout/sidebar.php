@@ -35,8 +35,8 @@
                             <li><a><i class="fa fa-exchange"></i> Transaksi Proyek <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="<?= site_url('Project')?>">Daftar Transaksi</a></li>
-                                    <li><a href="typography.html">Transaksi Gagal</a></li>
-                                    <li><a href="icons.html">Transaksi Berhasil</a></li>
+                                    <li><a href="<?= site_url('Project/gagal')?>">Transaksi Gagal</a></li>
+                                    <li><a href="<?= site_url('Project/sukses') ?>">Transaksi Berhasil</a></li>
                                     <li><a href="glyphicons.html">Laporan</a></li>
 
                                 </ul>

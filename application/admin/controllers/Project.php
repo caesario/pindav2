@@ -21,11 +21,25 @@ class Project extends MY_Controller
         $this->render_template('proyek/index', $this->data);
     }
 
-    public function fetchProyekData()
+    public function sukses()
+    {
+
+        $this->data['page_title'] = 'Daftar Proyek Berhasil';
+        $this->render_template('proyek/proyekberhasil', $this->data);
+    }
+
+    public function gagal()
+    {
+
+        $this->data['page_title'] = 'Daftar Proyek Gagal';
+        $this->render_template('proyek/proyekgagal', $this->data);
+    }
+
+    public function fetchProyekData($id)
     {
         $result = array('data' => array());
 
-        $data = $this->proyek->getProjectData();
+        $data = $this->proyek->getProjectDataAll($id);
 
         foreach ($data as $key => $value) {
 

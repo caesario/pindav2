@@ -21,6 +21,15 @@ class Model_project extends CI_Model
         return $query->result_array();
     }
 
+    public function getProjectDataAll($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_proyek');
+        $this->db->where('status_proyek', $id);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
 
     public function getSubmitData($id)
     {
