@@ -25,4 +25,12 @@ class MY_Controller extends CI_Controller
         $this->load->view($page, $data);
     }
 
+    public function render_login($page = null, $data = array())
+    {
+
+        $this->load->view('layout/headerlogin',$data);
+        $this->load->view($page, $data);
+        $this->load->view('layout/footerlogin', $data);
+    }
+
 }
