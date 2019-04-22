@@ -118,6 +118,7 @@ class Category extends MY_Controller
                 'icon' => $this->input->post('icon'),
                 'nama_kategori' => $this->input->post('nama_kategori'),
                 'status' => $this->input->post('status'),
+                'CreateTime' => date('Y-m-d H:i:s')
             );
 
             $create = $this->model_category->create($data);

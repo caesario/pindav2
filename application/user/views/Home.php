@@ -240,102 +240,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <div class="row">
+            <?php if ($category != null ) : ?>
+            <?php foreach ($category as $cat => $value) : ?>
             <div class="col-md-6 col-lg-3 mb-3 mb-lg-0 justify-content-center">
-                <a href="">
+                <a href="<?= site_url('Category/search/'.$value->nama_kategori)?>">
                     <div class="category-card  text-center">
                         <div class="category-card-img">
-                            <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
+                            <img class="img-fluid-50" src="<?= base_url().$value->icon ?>" alt="">
                         </div>
                         <div class="category-card-body">
-                            <h3>Logo</h3>
+                            <h3><?= $value->nama_kategori?></h3>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                <a href="">
-                    <div class="category-card  text-center">
-                        <div class="category-card-img">
-                            <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
-                        </div>
-                        <div class="category-card-body">
-                            <h3>Business Card</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                <a href="">
-                    <div class="category-card  text-center">
-                        <div class="category-card-img">
-                            <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
-                        </div>
-                        <div class="category-card-body">
-                            <h3>Web Desain</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                <a href="">
-                    <div class="category-card  text-center">
-                        <div class="category-card-img">
-                            <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
-                        </div>
-                        <div class="category-card-body">
-                            <h3>Icon</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                <a href="">
-                    <div class="category-card  text-center">
-                        <div class="category-card-img">
-                            <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
-                        </div>
-                        <div class="category-card-body">
-                            <h3>Poster</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                <a href="">
-                    <div class="category-card  text-center">
-                        <div class="category-card-img">
-                            <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
-                        </div>
-                        <div class="category-card-body">
-                            <h3>Flyer Desain</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                <a href="">
-                    <div class="category-card  text-center">
-                        <div class="category-card-img">
-                            <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
-                        </div>
-                        <div class="category-card-body">
-                            <h3>Banner Desain</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                <a href="">
-                    <div class="category-card  text-center">
-                        <div class="category-card-img">
-                            <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
-                        </div>
-                        <div class="category-card-body">
-                            <h3>Video Maker</h3>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <?php endforeach; ?>
+            <?php else : ?>
+            <?php endif; ?>
         </div>
     </div>
 </section>

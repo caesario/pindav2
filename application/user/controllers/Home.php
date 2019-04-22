@@ -40,6 +40,7 @@ class Home extends MY_Controller {
 	    $this->data['page_title'] = 'Home';
 	    $this->data['total_user'] = $this->user->getUserTotal();
 	    $this->data['total_proyek'] = $this->proyek->getProyekBerhasil();
+	    $this->data['category'] = $this->category->getCategoryData();
 		$this->load->view('Home', $this->data);
 	}
 }

@@ -9,7 +9,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('Model_webmin', 'webmin');
         $this->load->model('Model_user', 'user');
         $this->load->model('Model_proyek', 'proyek');
-
+        $this->load->model('Model_category', 'category');
     }
 
     public function render_template($page = null, $data = array())
