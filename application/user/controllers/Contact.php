@@ -31,4 +31,43 @@ class Contact extends MY_Controller {
         $this->render_template('webmin/kontak', $this->data);
     }
 
+    public function kirim() {
+
+        $id = uniqid('PSN-');
+        $this->form_validation->set_rules('nama_anda', 'Nama', 'trim|required');
+        $this->form_validation->set_rules('nomor_anda', 'Nomor telepon', 'trim|required');
+        $this->form_validation->set_rules('email_anda', 'Email', 'trim|required');
+        $this->form_validation->set_rules('saran_anda', 'Pesan', 'trim|required');
+        $this->form_validation->set_error_delimiters('<p class="text-danger">','</p>');
+
+        if ($this->form_validation->run() == TRUE) {
+
+            $data = array(
+                'id_pesan' => $id,
+                'nama_anda' => $this->input->post('nama_anda'),
+                'nomor_anda' => $this->input->post('nomor_anda'),
+                'email_anda' => $this->input->post('email_anda'),
+                'pesan_anda' => $this->input->post('saran_anda'),
+                'status' => 1,
+                'CreateTime' =>  date('Y-m-d H:i:s')
+            );
+
+            $create = $this->webmin->createpesan($data);
+            if($create == true) {
+                $this->session->set_flashdata('success', 'Pesan Berhasil Ditambah');
+                redirect('Contact', 'refresh');
+            }
+            else {
+                $this->session->set_flashdata('error', 'Artikel gagal Ditambah');
+                redirect('Contact', 'refresh');
+            }
+        }
+        else {
+            $this->data['kontak'] = $this->webmin->getKontakData();
+            $this->data['page_title'] = 'Contact';
+            $this->render_template('webmin/kontak', $this->data);
+        }
+
+    }
+
 }

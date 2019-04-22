@@ -44,4 +44,11 @@ class Model_webmin extends CI_Model
         return $result->result_array();
     }
 
+    public function createpesan($data) {
+        if($data) {
+            $insert = $this->db->insert('pinda_pesan', $data);
+            return ($insert == true) ? true : false;
+        }
+    }
+
 }

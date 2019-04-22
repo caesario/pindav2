@@ -3,6 +3,7 @@
 
 
 <!--================ Get Started =================-->
+
 <section class="section-padding" style="padding-top: 10em; padding-bottom: 20em;">
     <div class="container ">
         <div class="section-intro text-center pb-90px">
@@ -36,6 +37,19 @@
                 <p class="text-center"><?= $kontak[0]['email'] ?></p>
             </div>
         </div>
+        <?php echo validation_errors(); ?>
+        <div id="messages"></div>
+        <?php if($this->session->flashdata('success')): ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo $this->session->flashdata('success'); ?>
+            </div>
+        <?php elseif($this->session->flashdata('error')): ?>
+            <div class="alert alert-error alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo $this->session->flashdata('error'); ?>
+            </div>
+        <?php endif; ?>
         <div class="section-intro text-center pb-90px mt-5">
             <p> Masih belum Cukup? ashiaaap....</p>
         </div>
@@ -46,25 +60,25 @@
             </div>
 
             <div class="col-md-6">
-                <form action="">
+                <form action="<?= site_url('Contact/kirim')?>" method="post">
                     <div class="form-group">
                         <h5>Kritik & Saran</h5>
-                        <label for="">
+                        <label for="nama_anda">
                             Nama Anda :
                         </label>
-                        <input type="text" class="form-control">
-                        <label for="">
+                        <input type="text" class="form-control" id="nama_anda" name="nama_anda">
+                        <label for="nomor_anda">
                             Nomor Anda :
                         </label>
-                        <input type="number" class="form-control">
-                        <label for="">
+                        <input type="number" class="form-control" id="nomor_anda" name="nomor_anda">
+                        <label for="email_anda">
                            Email Anda :
                         </label>
-                        <input type="email" class="form-control">
+                        <input type="email" class="form-control" id="email_anda" name="email_anda">
                         <label for="">
                             Pesan Anda :
                         </label>
-                        <textarea class="form-control" rows="8" cols="10"></textarea>
+                        <textarea class="form-control" rows="8" cols="10" id="saran_anda" name="saran_anda"></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-info">Kirim</button>

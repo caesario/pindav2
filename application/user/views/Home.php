@@ -38,8 +38,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <ul class="nav navbar-nav menu_nav justify-content-start">
                         <li class="nav-item"><a class="nav-link" href="index.html">Kategori</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">Semua Proyek</a></li>
-                        <li class="nav-item"><a class="nav-link" href="package.html">Tata Cara</a></li>
-                        <li class="nav-item"><a class="nav-link" href="package.html">Tentang Pinda</a>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('FAQ')?>">Tata Cara</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('About')?>">Tentang Pinda</a>
 
 
                     </ul>
@@ -554,10 +554,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="row">
                         <div class="col">
                             <ul>
-                                <li><a href="#">Beranda</a></li>
+                                <li><a href="<?= site_url('Home')?>">Beranda</a></li>
                                 <li><a href="#">Semua Proyek</a></li>
-                                <li><a href="#">Tata Cara</a></li>
-
+                                <li><a href="<?= site_url('FAQ')?>">Tata Cara</a></li>
+                                <li><a href="<?= site_url('About')?>">Tentang</a></li>
                             </ul>
                         </div>
                         <div class="col">
