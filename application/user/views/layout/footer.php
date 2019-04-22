@@ -25,8 +25,8 @@
                         <div class="col">
                             <ul>
                                 <li><a href="#">Tim</a></li>
-                                <li><a href="#">Artikel</a></li>
-                                <li><a href="#">Kontak</a></li>
+                                <li><a href="<?= site_url('Contact')?>">Artikel</a></li>
+                                <li><a href="<?= site_url('Contact')?>">Kontak</a></li>
                             </ul>
                         </div>
                     </div>

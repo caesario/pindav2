@@ -7,6 +7,8 @@ class MY_Controller extends CI_Controller
         parent::__construct();
 
         $this->load->model('Model_webmin', 'webmin');
+        $this->load->model('Model_user', 'user');
+        $this->load->model('Model_proyek', 'proyek');
 
     }
 

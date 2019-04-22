@@ -88,25 +88,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-12 mb-4 mb-md-0 d-block m-auto">
                 <img class="img-fluid mx-auto d-block mb-1" src="<?= base_url('assets/user/img/home/trophy.png')?>" alt="">
-                <h3 class="text-center">5000</h3>
+                <h3 class="text-center"><?= $total_point[0]->point_reputasi; ?></h3>
                 <hr>
                 <p class="text-center">Piala</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 mb-4 mb-md-0">
                 <img class="img-fluid mx-auto d-block mb-1" src="<?= base_url('assets/user/img/home/user.png')?>" alt="">
-                <h3 class="text-center">5000</h3>
+                <h3 class="text-center"><?= $total_user;?></h3>
                 <hr>
                 <p class="text-center">Pengguna</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 mb-4 mb-md-0">
                 <img class="img-fluid mx-auto d-block mb-1" src="<?= base_url('assets/user/img/home/submission.png')?>" alt="">
-                <h3 class="text-center">5000</h3>
+                <h3 class="text-center"><?= $total_submisi?></h3>
                 <hr>
                 <p class="text-center">Submisi</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-12 mb-4 mb-md-0">
                 <img class="img-fluid mx-auto d-block mb-1" src="<?= base_url('assets/user/img/home/startup.png')?>" alt="">
-                <h3 class="text-center">5000</h3>
+                <h3 class="text-center"><?= $total_proyek;?></h3>
                 <hr>
                 <p class="text-center">Proyek Selesai</p>
             </div>
@@ -127,8 +127,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="col-lg-5 col-md-6 align-self-center about-content">
                 <h2>Kolaborasi adalah <br class="d-none d-xl-block"> Hal yang Utama <br class="d-none d-xl-block"></h2>
-                <p>Tadinya bingung mau nulis apa disini karena kita cuma bertiga dan nggak ada bagian UX writer, Pusing kan? Hasilnya jadi kurang memuaskan, tapi tenang aja sesuai namanya, disini, kami nggak akan biarin kamu kerja sendiri</p>
-                <a class="button" href="<?= site_url('About')?>">Sekut!
+                <p>Tadinya bingung mau nulis apa disini karena kita cuma bertiga dan nggak ada bagian UX writer, Pusing kan? Hasilnya jadi kurang memuaskan, tapi tenang aja sesuai namanya, disini, kami nggak akan biarin kamu kerja sendirian</p>
+                <a class="button" href="<?= site_url('About')?>">Boleh Juga!
                 </a>
             </div>
         </div>
@@ -564,7 +564,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <ul>
                                 <li><a href="#">Tim</a></li>
                                 <li><a href="#">Artikel</a></li>
-                                <li><a href="#">Kontak</a></li>
+                                <li><a href="<?= site_url('Contact')?>">Kontak</a></li>
                             </ul>
                         </div>
                     </div>

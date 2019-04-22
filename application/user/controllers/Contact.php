@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends MY_Controller {
+class Contact extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,28 +18,17 @@ class Home extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-
     public function __construct()
     {
         parent::__construct();
 
 //		$this->not_logged_in();
     }
-
-
 	public function index()
     {
-    $totalide = $this->proyek->getTotalSubmitIde();
-    $totallamar = $this->proyek->getTotalLamar();
-    $totalsubmit = $this->proyek->getTotalSubmitDesain();
+        $this->data['kontak'] = $this->webmin->getKontakData();
+        $this->data['page_title'] = 'Contact';
+        $this->render_template('webmin/kontak', $this->data);
+    }
 
-	    $total_submit = $totalide + $totallamar + $totalsubmit;
-
-        $this->data['total_point'] = $this->user->getPointTotal();
-	    $this->data['total_submisi'] = $total_submit;
-	    $this->data['page_title'] = 'Home';
-	    $this->data['total_user'] = $this->user->getUserTotal();
-	    $this->data['total_proyek'] = $this->proyek->getProyekBerhasil();
-		$this->load->view('Home', $this->data);
-	}
 }
