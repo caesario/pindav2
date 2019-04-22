@@ -126,9 +126,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="col-lg-5 col-md-6 align-self-center about-content">
-                <h2>Kolaborasi adalah <br class="d-none d-xl-block"> Hal yang Utama <br class="d-none d-xl-block"> di Pinda </h2>
-                <p>keterangan</p>
-                <a class="button" href="#">Tentang
+                <h2>Kolaborasi adalah <br class="d-none d-xl-block"> Hal yang Utama <br class="d-none d-xl-block"></h2>
+                <p>Tadinya bingung mau nulis apa disini karena kita cuma bertiga dan nggak ada bagian UX writer, Pusing kan? Hasilnya jadi kurang memuaskan, tapi tenang aja sesuai namanya, disini, kami nggak akan biarin kamu kerja sendiri</p>
+                <a class="button" href="<?= site_url('About')?>">Sekut!
                 </a>
             </div>
         </div>

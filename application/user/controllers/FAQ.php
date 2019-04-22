@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class About extends MY_Controller {
+class FAQ extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -26,9 +26,9 @@ class About extends MY_Controller {
     }
 	public function index()
     {
-        $this->data['about'] = $this->webmin->getAboutData();
-        $this->data['page_title'] = 'Tentang Pinda';
-        $this->render_template('webmin/About', $this->data);
+        $this->data['FAQ'] = $this->webmin->getFAQData();
+        $this->data['page_title'] = 'FAQ';
+        $this->render_template('webmin/FAQ', $this->data);
     }
 
 }

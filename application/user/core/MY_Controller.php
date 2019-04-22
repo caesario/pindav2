@@ -6,6 +6,7 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
 
+        $this->load->model('Model_webmin', 'webmin');
 
     }
 
@@ -13,6 +14,7 @@ class MY_Controller extends CI_Controller
     {
 
         $this->load->view('layout/header',$data);
+        $this->load->view('layout/menu',$data);
         $this->load->view($page, $data);
         $this->load->view('layout/footer', $data);
     }
