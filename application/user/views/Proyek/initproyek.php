@@ -10,7 +10,8 @@
             <p> Sekut jika ada tanya di hati dan pikiranmuuu...</p>
         </div>
         <form action="<?= site_url('Project/add')?>" id="myForm" role="form" data-toggle="validator" method="post" accept-charset="utf-8">
-            <div class="form-group row">
+            <div class="form-group row jenisproyek
+">
                     <div class="col-md-6 col-lg-6 mb-3 mb-lg-0">
                         <label>
                             <input type="radio" name="product" value="" class="card-input-element" />
@@ -41,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="form-group justify-content-center">
+            <div class="form-group row justify-content-center">
                 <button type="submit" class="button btn-succes">Lanjut</button>
             </div>
         </form>

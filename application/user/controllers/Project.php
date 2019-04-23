@@ -32,8 +32,23 @@ class Project extends MY_Controller {
 
 	public function init() {
 
+
         $this->data['page_title'] = 'Buat Proyek';
         $this->render_template('Proyek/initproyek', $this->data);
+
+    }
+
+    public function category() {
+        $this->data['category'] = $this->category->getCategoryDataAll();
+        $this->data['page_title'] = 'Pilih Kategori';
+        $this->render_template('Proyek/selectcategory', $this->data);
+
+    }
+
+    public function info() {
+
+        $this->data['page_title'] = 'Informasi Umum';
+        $this->render_template('Proyek/infoumum', $this->data);
 
     }
 }
