@@ -7,6 +7,23 @@ class Model_user extends CI_Model
 		parent::__construct();
 	}
 
+    public function getUserTotal() {
+        $this->db->select('*');
+        $this->db->from('pinda_user');
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getPointTotal() {
+
+        $this->db->select_sum('point_reputasi');
+        $result = $this->db->get('pinda_user');
+
+        return $result->result();
+    }
+
+
     /* get the brand data */
     public function getUserData($id = null)
     {

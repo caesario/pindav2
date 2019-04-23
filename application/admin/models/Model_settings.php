@@ -180,4 +180,68 @@ class Model_settings extends CI_Model
 
     // End Admin
 
+
+    // dashboard
+
+    public function getProyekBerhasil() {
+        $this->db->select('*');
+        $this->db->from('pinda_proyek');
+        $this->db->where('status_proyek',2 );
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getProyekGagal() {
+        $this->db->select('*');
+        $this->db->from('pinda_proyek');
+        $this->db->where('status_proyek',3 );
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getProyekProses() {
+        $this->db->select('*');
+        $this->db->from('pinda_proyek');
+        $this->db->where('status_proyek',1);
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getProyekTotal() {
+        $this->db->select('*');
+        $this->db->from('pinda_proyek');
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getTotalSubmitIde() {
+        $this->db->select('*');
+        $this->db->from('pinda_trx_ide');
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getTotalLamar()
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_trx_lamar');
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getTotalSubmitDesain(){
+
+        $this->db->select('*');
+        $this->db->from('pinda_trx_submit');
+        $result = $this->db->get();
+
+        return $result->num_rows();
+
+    }
 }

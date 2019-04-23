@@ -7,40 +7,213 @@
         <div class="right_col" role="main">
           <!-- top tiles -->
           <div class="row tile_count">
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">2500</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-info-circle"></i> Total Pengguna</span>
+              <div class="count"><?= $total_user ?></div>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-              <div class="count">123.50</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-info-circle"></i> Total Proyek Selesai</span>
+              <div class="count"><?= $total_proyek ?></div>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-              <div class="count green">2,500</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-info-circle"></i> Total Point Diberikan</span>
+              <div class="count green"><?= $total_point[0]->point_reputasi; ?></div>
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-              <div class="count">4,567</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">7,325</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+            <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-info-circle"></i> Total Submision</span>
+              <div class="count"><?= $total_submisi?></div>
             </div>
           </div>
           <!-- /top tiles -->
 
           <br />
+
+            <div class="row">
+
+
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="x_panel tile fixed_height_320">
+                        <div class="x_title">
+                            <h2>Data Transaksi Proyek</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Sukses</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persenberhasil']?>%;">
+                                            <span class="sr-only"><?= $chartproyek['persenberhasil']?> Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['databerhasil']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Proses</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-blue-sky" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persenproses']?>%;">
+                                            <span class="sr-only"><?= $chartproyek['dataproses']?>% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['dataproses']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Gagal</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persengagal']?>%; background-color: red;">
+                                            <span class="sr-only"><?= $chartproyek['datagagal']?>% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['datagagal']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="x_panel tile fixed_height_320">
+                        <div class="x_title">
+                            <h2>Data Transaksi Dompet</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Sukses</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persenberhasil']?>%;">
+                                            <span class="sr-only"><?= $chartproyek['persenberhasil']?> Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['databerhasil']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Proses</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-blue-sky" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persenproses']?>%;">
+                                            <span class="sr-only"><?= $chartproyek['dataproses']?>% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['dataproses']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Gagal</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persengagal']?>%; background-color: red;">
+                                            <span class="sr-only"><?= $chartproyek['datagagal']?>% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['datagagal']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="x_panel tile fixed_height_320">
+                        <div class="x_title">
+                            <h2>Data Submit, Apply dan Ide</h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Sukses</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persenberhasil']?>%;">
+                                            <span class="sr-only"><?= $chartproyek['persenberhasil']?> Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['databerhasil']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Proses</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-blue-sky" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persenproses']?>%;">
+                                            <span class="sr-only"><?= $chartproyek['dataproses']?>% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['dataproses']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="widget_summary">
+                                <div class="w_left w_25">
+                                    <span>Gagal</span>
+                                </div>
+                                <div class="w_center w_55">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?= $chartproyek['persengagal']?>%; background-color: red;">
+                                            <span class="sr-only"><?= $chartproyek['datagagal']?>% Complete</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w_right w_20">
+                                    <span><?= $chartproyek['datagagal']?></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
@@ -99,7 +272,7 @@
     <script src="<?= base_url('assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="<?= base_url('assets/admin/build/js/custom.min.js') ?>"></script>
+    <script src="<?= base_url('assets/admin/build/js/custom.js') ?>"></script>
 
 
 

@@ -126,8 +126,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="col-lg-5 col-md-6 align-self-center about-content">
-                <h2>Kolaborasi adalah <br class="d-none d-xl-block"> Hal yang Utama <br class="d-none d-xl-block"></h2>
-                <p>Tadinya bingung mau nulis apa disini karena kita cuma bertiga dan nggak ada bagian UX writer, Pusing kan? Hasilnya jadi kurang memuaskan, tapi tenang aja sesuai namanya, disini, kami nggak akan biarin kamu kerja sendirian</p>
+                <h2>Kolaborasi adalah <br class="d-none d-xl-block"> Hal yang Utama (?)<br class="d-none d-xl-block"></h2>
+                <p>Tadinya kita bingung mau nulis apa disini.
+                    karena kita cuma bertiga dan nggak ada bagian UX writer, jadinya tulisannya begini doang,
+                    nggak jelas ya? maaf ya, tapi tenang... sesuai namanya, Kami Janji,
+                    disini, kami nggak akan biarin kamu kerja sendirian. (masa kalah sama gambar sebelah)</p>
                 <a class="button" href="<?= site_url('About')?>">Boleh Juga!
                 </a>
             </div>
