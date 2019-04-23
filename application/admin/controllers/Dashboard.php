@@ -52,6 +52,7 @@ class Dashboard extends MY_Controller {
 
         );
 
+
         $totalide = $this->setting->getTotalSubmitIde();
         $totallamar = $this->setting->getTotalLamar();
         $totalsubmit = $this->setting->getTotalSubmitDesain();
@@ -67,4 +68,78 @@ class Dashboard extends MY_Controller {
         $this->data['chartproyek'] = $proyekdata;
         $this->render_template('Dashboard', $this->data);
     }
+
+    public function fetchUserNewData()
+    {
+        $result = array('data' => array());
+
+        $data = $this->setting->getUserNewData();
+
+        foreach ($data as $key => $value) {
+            // button
+
+
+            $result['data'][$key] = array(
+                $value['id_user'],
+                $value['nama_user'],
+                $value['username'],
+                $value['email']
+            );
+        } // /foreach
+
+        echo json_encode($result);
+
+
+    }
+
+    public function fetchProyekNewData()
+    {
+        $result = array('data' => array());
+
+        $data = $this->setting->getProyekUserData();
+
+        foreach ($data as $key => $value) {
+
+
+
+            $user = $this->user->getUserData($value['id_user']);
+            $kategori = $this->category->getCategoryData($value['id_kategori']);
+            // button
+
+            $status = '';
+            if ($value['status_proyek'] == 1) {
+                $status = '<span class="label label-warning">Proses</span>';
+            } else if ($value['status_proyek'] == 2) {
+                $status = '<span class="label label-success">Berhasil & Selesai</span>';
+            } else {
+                $status = '<span class="label label-danger">Gagal</span>';
+            }
+
+            $tipe = '';
+            if  ($value['jenis'] == 1 ){
+                $tipe = '<span class="label label-info">Campaign</span>';
+            } else if ($value['jenis'] == 2 ){
+                $tipe = '<span class="label label-info">Find Partner</span>';
+            } else {
+                $tipe = '<span class="label label-danger">Tidak Diketahui</span>';
+            }
+
+
+            $result['data'][$key] = array(
+                $value['id_proyek'],
+                $value['nama_proyek'],
+                $user['nama_user'],
+                $tipe,
+                $kategori['nama_kategori'],
+                $value['DateAwal'],
+                $value['DateAkhir'],
+                $status,
+            );
+        } // /foreach
+
+        echo json_encode($result);
+    }
+
+
+
 }

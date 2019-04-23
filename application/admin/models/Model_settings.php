@@ -201,6 +201,30 @@ class Model_settings extends CI_Model
         return $result->num_rows();
     }
 
+    public function getTrxSubmit() {
+        $this->db->select('*');
+        $this->db->from('pinda_trx_submit');
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getTrxLamar() {
+        $this->db->select('*');
+        $this->db->from('pinda_trx_lamar');
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
+    public function getTrxIde() {
+        $this->db->select('*');
+        $this->db->from('pinda_trx_ide');
+        $result = $this->db->get();
+
+        return $result->num_rows();
+    }
+
     public function getProyekProses() {
         $this->db->select('*');
         $this->db->from('pinda_proyek');
@@ -243,5 +267,24 @@ class Model_settings extends CI_Model
 
         return $result->num_rows();
 
+    }
+
+    public function getUserNewData() {
+	    $this->db->select('*');
+	    $this->db->from('pinda_user');
+	    $this->db->order_by('CreateTime','DESC');
+	    $result = $this->db->get();
+
+	    return $result->result_array();
+    }
+
+    public function  getProyekUserData() {
+	    $this->db->select('*');
+	    $this->db->from('pinda_proyek');
+	    $this->db->order_by('CreateTime', 'DESC');
+
+	    $result = $this->db->get();
+
+	    return $result->result_array();
     }
 }
