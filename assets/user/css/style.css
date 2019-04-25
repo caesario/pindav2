@@ -3127,25 +3127,44 @@ button.button {
   line-height: 35px;
 }
 .progressbar li.active + li:after {
-  background-color: red;
+  background-color: #5D6D81;
   border: 5px #5D6D81 solid;
 }
 
-.example {
-  padding: 10px;
-  border: 1px solid #ccc;
+.dropzone-wrapper {
+  border: 2px dashed #91b0b3;
+  color: #92b0b3;
+  position: relative;
+  height: 150px;
 }
-
-#drop_zone {
-  border: 2px dashed #bbb;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  padding: 25px;
+.dropzone-desc {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
   text-align: center;
-  font: 20pt bold 'Vollkorn';
-  color: #bbb;
+  width: 40%;
+  top: 50px;
+  font-size: 16px;
 }
-
-
-
+.dropzone,
+.dropzone:focus {
+  position: absolute;
+  outline: none !important;
+  width: 100%;
+  height: 150px;
+  cursor: pointer;
+  opacity: 0;
+}
+.dropzone-wrapper:hover,
+.dropzone-wrapper.dragover {
+  background: #ecf0f5;
+}
+.preview-zone {
+  text-align: center;
+}
+.preview-zone .box {
+  box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}

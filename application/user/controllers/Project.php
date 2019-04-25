@@ -51,4 +51,23 @@ class Project extends MY_Controller {
         $this->render_template('Proyek/infoumum', $this->data);
 
     }
+
+    public function infotim() {
+
+        $this->data['page_title'] = 'Informasi Tim';
+        $this->render_template('Proyek/infotim', $this->data);
+    }
+
+    public function pembayaran() {
+
+        $this->data['page_title'] = 'Pembayaran';
+        $this->render_template('Proyek/infopemb', $this->data);
+    }
+
+
+    public function detail()
+    {
+        $this->data['page_title'] = 'Detail Proyek';
+        $this->render_template('Proyek/detail', $this->data);
+    }
 }

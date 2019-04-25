@@ -96,33 +96,57 @@
 
 
 <script>
-    function handleFileSelect(evt) {
-        evt.stopPropagation();
-        evt.preventDefault();
+    /**
+     *
+     * app.js
+     *
+     */
+    function readFile(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-        var files = evt.dataTransfer.files; // FileList object.
+            reader.onload = function (e) {
+                var htmlPreview =
+                    '<img width="200" src="' + e.target.result + '" />'+
+                    '<p>' + input.files[0].name + '</p>';
+                var wrapperZone = $(input).parent();
+                var previewZone = $(input).parent().parent().find('.preview-zone');
+                var boxZone = $(input).parent().parent().find('.preview-zone').find('.box').find('.box-body');
 
-        // files is a FileList of File objects. List some properties.
-        var output = [];
-        for (var i = 0, f; f = files[i]; i++) {
-            output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                f.size, ' bytes, last modified: ',
-                f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
-                '</li>');
+                wrapperZone.removeClass('dragover');
+                previewZone.removeClass('hidden');
+                boxZone.empty();
+                boxZone.append(htmlPreview);
+            };
+
+            reader.readAsDataURL(input.files[0]);
         }
-        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
     }
-
-    function handleDragOver(evt) {
-        evt.stopPropagation();
-        evt.preventDefault();
-        evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+    function reset(e) {
+        e.wrap('<form>').closest('form').get(0).reset();
+        e.unwrap();
     }
-
-    // Setup the dnd listeners.
-    var dropZone = document.getElementById('drop_zone');
-    dropZone.addEventListener('dragover', handleDragOver, false);
-    dropZone.addEventListener('drop', handleFileSelect, false);
+    $(".dropzone").change(function(){
+        readFile(this);
+    });
+    $('.dropzone-wrapper').on('dragover', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).addClass('dragover');
+    });
+    $('.dropzone-wrapper').on('dragleave', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).removeClass('dragover');
+    });
+    $('.remove-preview').on('click', function() {
+        var boxZone = $(this).parents('.preview-zone').find('.box-body');
+        var previewZone = $(this).parents('.preview-zone');
+        var dropzone = $(this).parents('.form-group').find('.dropzone');
+        boxZone.empty();
+        previewZone.addClass('hidden');
+        reset(dropzone);
+    });
 </script>
 </body>
 </html>
