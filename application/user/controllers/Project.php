@@ -70,4 +70,22 @@ class Project extends MY_Controller {
         $this->data['page_title'] = 'Detail Proyek';
         $this->render_template('Proyek/detail', $this->data);
     }
+
+    public function submitdesain()
+    {
+        $this->data['page_title'] = 'submit Desain';
+        $this->render_template('submit/submitdesain', $this->data);
+    }
+
+    public function bergabung()
+    {
+        $this->data['page_title'] = 'Submit Lamaran';
+        $this->render_template('submit/submitlamaran', $this->data);
+    }
+    
+    public function submitide()
+    {
+        $this->data['page_title'] = 'Submit Ide/Saran';
+        $this->render_template('submit/submitide', $this->data);
+    }
 }

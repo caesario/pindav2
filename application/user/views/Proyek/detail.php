@@ -61,7 +61,7 @@
         <br>
         <div class="row">
             <div class="col-md-8">
-                <div class="card p-4"
+                <div class="card p-4">
                     <h3>Kategori Proyek</h3>
                     <p>Logo</p>
                     <h3>Tagline Proyek</h3>
