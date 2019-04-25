@@ -3168,3 +3168,8 @@ button.button {
   border-radius: 0;
   margin-bottom: 0;
 }
+
+
+.bread-profile a {
+  color: #2A2A2A !important;
+}

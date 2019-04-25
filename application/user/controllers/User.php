@@ -30,4 +30,10 @@ class User extends MY_Controller {
 		$this->load->view('Proyek/Buatproyek');
 	}
 
+	public function dashboard ()
+    {
+        $this->data['page_title'] = 'Dashboard Profile';
+        $this->render_template('User/dashboard', $this->data);
+    }
+
 }
