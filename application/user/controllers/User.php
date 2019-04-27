@@ -66,4 +66,47 @@ class User extends MY_Controller {
         $this->render_template('User/Editpassword', $this->data);
     }
 
+    public function fotosaya()
+    {
+        $this->data['page_title'] = 'Foto Saya';
+        $this->render_template('User/Myfoto', $this->data);
+    }
+
+    public function mywallet()
+    {
+        $this->data['page_title'] = 'Dompet Saya';
+        $this->render_template('User/Mywallet', $this->data);
+
+    }
+
+    public function topup() {
+
+        $this->data['page_title'] = 'Top Up';
+        $this->render_template('Dompet/topup', $this->data);
+    }
+
+    public function topupdetail() {
+
+        $this->data['page_title'] = 'Top up - Detail';
+        $this->render_template('Dompet/topupdetail', $this->data);
+    }
+
+    public function konfirmasitopup() {
+
+        $this->data['page_title'] = 'Top up - Konfirmasi';
+        $this->render_template('Dompet/topupkonfirmasi', $this->data);
+    }
+
+    public function withdraw() {
+        $this->data['page_title'] = 'Withdraw';
+        $this->render_template('Dompet/withdraw', $this->data);
+    }
+
+    public function withdrawdetail() {
+        $this->data['page_title'] = 'Withdraw - Detail';
+        $this->render_template('Dompet/withdrawdetail', $this->data);
+    }
+
+
+
 }
