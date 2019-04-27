@@ -95,12 +95,82 @@
 <script src="<?= base_url('assets/user/js/main.js') ?>"></script>
 
 
+<!-- Datatables -->
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.print.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/jszip/dist/jszip.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/pdfmake/build/pdfmake.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/pdfmake/build/vfs_fonts.js') ?>"></script>
+<script>
+    // user profile dashboard
+    var DashboardTable;
+    var MyprojectTable;
+    var MykaryaTable;
+
+    $(document).ready(function() {
+        DashboardTable = $('DashboardTable').DataTable({
+
+            'ajax': '',
+
+            'order': []
+
+        });
+    });
+
+    $(document).ready(function() {
+        MyprojectTable= $('MyprojectTable').DataTable({
+
+            'ajax': '',
+
+            'order': []
+
+        });
+    });
+
+    $(document).ready(function() {
+        MykaryaTable = $('MykaryaTable').DataTable({
+
+            'ajax': '',
+
+            'order': []
+
+        });
+    });
+</script>
+
 <script>
     /**
      *
      * app.js
      *
      */
+
+
     function readFile(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -147,6 +217,9 @@
         previewZone.addClass('hidden');
         reset(dropzone);
     });
+
+
+
 </script>
 </body>
 </html>

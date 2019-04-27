@@ -36,4 +36,34 @@ class User extends MY_Controller {
         $this->render_template('User/dashboard', $this->data);
     }
 
+    public function Myproject()
+    {
+        $this->data['page_title'] = 'Proyek Saya';
+        $this->render_template('User/myproject', $this->data);
+    }
+
+    public function Karyasaya()
+    {
+        $this->data['page_title'] = 'Karya Saya';
+        $this->render_template('User/karyasaya', $this->data);
+    }
+
+    public function Mycontribution()
+    {
+        $this->data['page_title'] = 'Kontribusi Saya';
+        $this->render_template('User/Mycontribution', $this->data);
+    }
+
+    public function Editprofile()
+    {
+        $this->data['page_title'] = 'Ubah Profile Saya';
+        $this->render_template('User/Editprofile', $this->data);
+    }
+
+    public function Editpassword()
+    {
+        $this->data['page_title'] = 'Ubah Password Saya';
+        $this->render_template('User/Editpassword', $this->data);
+    }
+
 }

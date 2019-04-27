@@ -23,37 +23,83 @@
 
                     <br>
                     <div class="list-group text-left">
-                        <a href="#" class="list-group-item list-group-item-action small">
-                            Cras justo odio
+                        <a href="#" class="list-group-item list-group-item-action small text-info">
+                            <i class="fa fa-tachometer-alt"></i>  Dashboard
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action small">Dapibus ac facilisis in</a>
-                        <a href="#" class="list-group-item list-group-item-action small">Morbi leo risus</a>
-                        <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                        <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+                        <a href="#" class="list-group-item list-group-item-action small">
+                            <i class="fas fa-code-branch"></i> Proyek Saya</a>
+                        <a href="#" class="list-group-item list-group-item-action small">
+                            <i class="fas fa-flask"></i> Karya Saya</a>
+                        <a href="#" class="list-group-item list-group-item-action small">
+                            <i class="fas fa-puzzle-piece"></i> Kontribusi Saya</a>
+                        <a href="#" class="list-group-item list-group-item-action small">
+                            <i class="fa fa-user-alt"></i> Ubah Profile</a>
+                        <a href="#" class="list-group-item list-group-item-action small">
+                            <i class="fa fa-lock"></i> Ubah Password</a>
+                        <a href="#" class="list-group-item list-group-item-action small">
+                            <i class="fa fa-image"></i> Foto Saya</a>
+                        <a href="#" class="list-group-item list-group-item-action small">
+                            <i class="fa fa-wallet"> </i> Dompet Saya</a>
                     </div>
                 </div>
                 <br>
             </div>
             <div class="col-md-8">
                 <div class="card p-4">
-                    <form action="">
-                        <div class="form-group">
-                            <h3>ID User</h3>
-                            <input type="text" class="form-control w-50" disabled>
-                        </div>
-                        <div class="form-group">
-                            <h3>Nama User</h3>
-                            <input type="text" class="form-control w-50" disabled>
-                        </div>
-                        <div class="form-group">
-                            <h3>Ide / Saran</h3>
-                            <textarea class="form-control" rows="10" placeholder="Deskripsikan Ide dan Saran Anda"></textarea>
-                        </div>
-                        <div class="form-group float-right">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                        </div>
-                    </form>
+                    <h3><i class="fa fa-tachometer-alt"></i> Dashboard</h3>
+                    <hr>
 
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card p-3 shadow">
+                                   <div class="row">
+                                       <div class="col-md-4">
+                                           <img src="<?= base_url('assets/user/userprofile/rocket1.png')?>" alt="">
+                                       </div>
+                                       <div class="col-md-8">
+                                           <h3 class="text-center text-info">Proyek Saya</h3>
+                                           <p class="text-center font-weight-bold">10</p>
+                                       </div>
+                                   </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card p-3 shadow">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="<?= base_url('assets/user/userprofile/fileproject.png')?>" alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3 class="text-center text-info">Kontribusi</h3>
+                                            <p class="text-center font-weight-bold">10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card p-3 shadow">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img src="<?= base_url('assets/user/userprofile/awards.png')?>" alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3 class="text-center text-info">Point Saya</h3>
+                                            <p class="text-center font-weight-bold">10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                       <div class="card mt-3 p-3">
+                           <h3 class="text-center">Aktivitas Saya</h3>
+                           <hr>
+                           <table id="DashboardTable" class="table table-responsive w-100">
+
+                           </table>
+                       </div>
                 </div>
         </div>
         </div>
