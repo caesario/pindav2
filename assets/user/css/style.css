@@ -512,6 +512,7 @@ h3, .h3 {
   .navbar .container {
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 10px;
   }
   .nav {
     padding: 0px 0px;
@@ -617,6 +618,26 @@ h3, .h3 {
   }
   .price_inner {
     margin-bottom: -30px;
+
+  }
+}
+
+.title-login {
+  margin-left: 55% !important;
+  font-size: 2em;
+}
+
+@media (max-width: 319px) {
+  .title-login {
+    font-size: 2em;
+    margin-left: -1% !important;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 1023px ) {
+  .title-login {
+    font-size: 2em;
+    margin-left: -0% !important;
   }
 }
 
@@ -3172,4 +3193,65 @@ button.button {
 
 .bread-profile a {
   color: #2A2A2A !important;
+}
+
+
+.inp {
+  position: relative;
+  margin: auto;
+  width: 100%;
+}
+.inp .label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  font-size: 16px;
+  color: #9098a9;
+  font-weight: 500;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+}
+.inp .border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #07f;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
+}
+.inp input {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  padding: 12px 0;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid #c8ccd4;
+  background: none;
+  border-radius: 0;
+  color: #223254;
+  transition: all 0.15s ease;
+}
+.inp input:hover {
+  background: rgba(34,50,84,0.03);
+}
+.inp input:not(:placeholder-shown) + span {
+  color: #5a667f;
+  transform: translateY(-26px) scale(0.75);
+}
+.inp input:focus {
+  background: none;
+  outline: none;
+}
+.inp input:focus + span {
+  color: #07f;
+  transform: translateY(-26px) scale(0.75);
+}
+.inp input:focus + span + .border {
+  transform: scaleX(1);
 }

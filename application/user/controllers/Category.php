@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends MY_Controller {
+class Category extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -30,10 +30,11 @@ class Auth extends MY_Controller {
         $this->load->view('Home');
     }
 
-    public function register()
+    public function allcategory()
     {
-        $this->data['page_title'] = 'Daftar';
-        $this->load->view('auth/Register', $this->data);
+        $this->data['category'] = $this->category->getCategoryData();
+        $this->data['page_title'] = 'Daftar Kategori';
+        $this->render_template('list/allcategory', $this->data);
     }
 
     public function login()

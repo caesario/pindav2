@@ -88,4 +88,5 @@ class Project extends MY_Controller {
         $this->data['page_title'] = 'Submit Ide/Saran';
         $this->render_template('submit/submitide', $this->data);
     }
+
 }

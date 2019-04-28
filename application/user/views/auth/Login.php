@@ -1,118 +1,150 @@
-<?php $this->load->view('layout/header.php')?>
-<!-- Style tambahan -->
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pinda - <?= $page_title; ?></title>
+    <link rel="icon" href="<?= base_url('assets/user/img/pindaic.png') ?>" type="image/png">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/bootstrap/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/fontawesome/css/all.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/owl-carousel/owl.theme.default.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/owl-carousel/owl.carousel.min.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/flat-icon/font/flaticon.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/nice-select/nice-select.css')?>">
+
+    <link rel="stylesheet" href="<?= base_url('assets/user/css/style.css')?>">
 
 
+<body style="height: 0% !important;">
 
-<!--===============================================================================================-->
+<!-- Content    -->
+<header class="header_area" style="margin-bottom: 20em">
+    <div class="main_menu">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container box_1620">
+                <a class="navbar-brand logo_h" style="font-size: 1em;" href="<?= site_url('Home')?>"><i class="fa fa-arrow-left"></i> Kembali Ke Beranda</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css'); ?>">
-
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/user/css/login.css'); ?>">
-<link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/mainlogin.css'); ?>">
-<!--===============================================================================================-->
-</head>
-
-
-<body>
-
-<!-- -->
-
-<!-- Brand/logo -->
-<a href="<?= site_url('/') ?>" class="m-l-11"><i class="fa fa-arrow-left"></i>  Kembali Ke Beranda</a>
-
-<!-- -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav menu_nav justify-content-center">
+                        <li class="nav-item title-login" ><a class="nav-link" href="<?= site_url('About')?>">PINDA</a>
 
 
+                    </ul>
+                    <ul class="nav navbar-nav menu_nav justify-content-end">
+                        <li class="nav-item"><p class="nav-link m-0">Tidak Punya Akun?</p></li>
+                        <li class="nav-item" style="padding-top: 5%;"><a class="buttonpost p-2 nav-link "  href="package.html">Daftar akun</a>
 
-
-
-
-<!-- -->
-
-<!-- Halaman Login -->
-
-<?php if ($this->session->flashdata('daftar_berhasil')) { ?>
-    <div class="container ">
-        <div class="alert alert-success text-center "> <?= $this->session->flashdata('daftar_berhasil') ?> </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
-<?php }  ?>
-<?php if ($this->session->flashdata('daftar_gagal')) { ?>
-    <div class="container">
-        <div class="alert alert-danger text-center"> <?= $this->session->flashdata('daftar_gagal') ?> </div>
-    </div>
-<?php } ?>
+</header>
 
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100 p-t-30 p-b-20">
-            <form class="login100-form validate-form" method="post" action="<?= site_url('Auth/daftar')?>">
-					<span class="login100-form-title p-b-40">
-						DAFTAR
-					</span>
+<div class="container" style="margin-top: 13em">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form action="">
+                <div class="form-group">
+                    <label for="inp" class="inp mb-4">
+                        <div class="row">
+                            <div class="col-1 d-flex align-self-center text-center p-2 pt-3">
+                                <i class="fa fa-user mt-2 mr-5"></i>
+                            </div>
+                            <div class="col-10 p-0">
+                                <input type="text" id="inp" class="inline" placeholder="&nbsp;">
+                                <span class="label">Username</span>
+                                <span class="border"></span>
+                            </div>
+                        </div>
+                    </label>
 
+                    <label for="password" class="inp mb-4">
+                        <div class="row">
+                            <div class="col-1 d-flex align-self-center text-center p-2 pt-3">
+                                <i class="fa fa-lock mt-2 mr-5"></i>
+                            </div>
+                            <div class="col-10 p-0">
+                                <input type="text" id="password" class="inline" placeholder="&nbsp;">
+                                <span class="label">Password</span>
+                                <span class="border"></span>
+                            </div>
+                        </div>
+                    </label>
 
-                <div class="wrap-input100 validate-input m-b-30" data-validate = "Enter username">
-                    <input class="input100" type="text" name="username">
-                    <span class="focus-input100" data-placeholder="Nama Akun"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-30" data-validate="Enter password">
-                    <input class="input100" type="password" name="pass">
-                    <span class="focus-input100" data-placeholder="Kata Sandi"></span>
-                </div>
-
-                <div class="wrap-input100 validate-input m-b-30" data-validate="Enter password">
-                    <input class="input100" type="password" name="passkonf">
-                    <span class="focus-input100" data-placeholder="Konfirmasi Kata Sandi"></span>
-                </div>
-
-                <div class="wrap-input100 validate-input m-b-30" data-validate="Enter Full Name">
-                    <input class="input100" type="text" name="namalengkap">
-                    <span class="focus-input100" data-placeholder="Nama Lengkap"></span>
-                </div>
-
-
-
-                <div class="container-login100-form-btn">
-                    <button type="submit" class="login100-form-btn">
-                        DAFTAR
+                <div class="form-group float-right mb-5 mr-2">
+                    <button type="submit" class="btn btn-sm bg-info text-white pl-3 pr-3 pt-2 pb-2">
+                        Masuk
                     </button>
                 </div>
 
-                <ul class="login-more p-t-30">
 
-
-                    <li>
-							<span class="txt1">
-								Sudah Punya Akun?
-							</span>
-
-
-                        <a href="<?= site_url('login')?>" class="txt2">
-                            Masuk
-                        </a>
-                    </li>
-                </ul>
             </form>
+            <div class="text-center" style="margin-top: 15em">
+                <p>Anda Lupa Kata Sandi? <a href="" class="text-dark">Klik disini!</a></p>
+            </div>
         </div>
+
     </div>
 </div>
 
 
-<div id="dropDownSelect1"></div>
-
-<!--===============================================================================================-->
-
-<?php $this->load->view('layout/footer.php')?>
-<!--===============================================================================================-->
-<script src="<?= base_url('assets/user/js/loginjs.js'); ?>"></script>
-
-
-<!-- Halaman Login -->
 
 
 
+
+
+<!-- Footer-->
+
+<script src="<?= base_url('assets/user/vendors/jquery/jquery-3.2.1.min.js') ?>"></script>
+<script src="<?= base_url('assets/user/vendors/bootstrap/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/user/vendors/owl-carousel/owl.carousel.min.js') ?>"></script>
+<script src="<?= base_url('assets/user/vendors/nice-select/jquery.nice-select.min.js')?>"></script>
+<script src="<?= base_url('assets/user/js/jquery.ajaxchimp.min.js') ?>"></script>
+<script src="<?= base_url('assets/user/js/mail-script.js')?>"></script>
+<script src="<?= base_url('assets/user/js/main.js') ?>"></script>
+
+
+<!-- Datatables -->
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.print.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/jszip/dist/jszip.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/pdfmake/build/pdfmake.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/pdfmake/build/vfs_fonts.js') ?>"></script>
 </body>
 </html>

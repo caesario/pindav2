@@ -1,18 +1,31 @@
-<?php $this->load->view('layout/header.php'); ?>
-<link rel="stylesheet" href="<?= base_url('assets/user/auth/css/font-awesome-4.7.0/css/font-awesome.min.css')?>">
-<link rel="stylesheet" href="<?= base_url('assets/user/auth/css/iconic/css/material-design-iconic-font.min.css')?>">
-<link rel="stylesheet" href="<?= base_url('assets/user/auth/css/main.css')?>">
-<link rel="stylesheet" href="<?= base_url('assets/user/auth/css/util.css')?>">
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pinda - <?= $page_title; ?></title>
+    <link rel="icon" href="<?= base_url('assets/user/img/pindaic.png') ?>" type="image/png">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/bootstrap/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/fontawesome/css/all.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/owl-carousel/owl.theme.default.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/owl-carousel/owl.carousel.min.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/flat-icon/font/flaticon.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/user/vendors/nice-select/nice-select.css')?>">
 
-</head>
-<body>
-<!--================ Header Menu Area start =================-->
-<header class="header_area">
+    <link rel="stylesheet" href="<?= base_url('assets/user/css/style.css')?>">
+
+
+<body style="height: 0% !important;">
+
+<!-- Content    -->
+<header class="header_area" style="margin-bottom: 20em">
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container box_1620">
-
-                <a href="<?= site_url('/') ?>" class="navbar-brand text-small" style="font-size: 15px"><i class="fa fa-arrow-left"></i>  Kembali Ke Beranda</a>
+                <a class="navbar-brand logo_h" style="font-size: 1em;" href="<?= site_url('Home')?>"><i class="fa fa-arrow-left"></i> Kembali Ke Beranda</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -21,76 +34,160 @@
 
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav justify-content-center">
+                        <li class="nav-item title-login" ><a class="nav-link" href="<?= site_url('About')?>">PINDA</a>
+
+
                     </ul>
                     <ul class="nav navbar-nav menu_nav justify-content-end">
-                        <li class="nav-item"><a class="nav-link" href="about.html" disabled="">Punya Akun? </a></li>
-                        <li class="nav-item" style="padding-top: 5%;"><a class="buttonpost pt-2 pb-2 pr-4 pl-4 nav-link"  href="package.html">Login</a>
+                        <li class="nav-item"><p class="nav-link m-0">Sudah Punya Akun?</p></li>
+                        <li class="nav-item" style="padding-top: 5%;"><a class="buttonpost p-2 nav-link "  href="package.html">Masuk Kuy!</a>
 
                     </ul>
                 </div>
             </div>
         </nav>
-
     </div>
 </header>
-<!--================Header Menu Area =================-->
 
-<!--================ Header Menu Area start =================-->
-<!-- Data Pinda -->
-<section class="pt-5">
-    <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-md-5">
-              <div class="limiter">
-                  <div class="container-login100">
-                      <div class="wrap-login100">
-                          <form class="login100-form validate-form">
+<div class="container" style="margin-top: 13em">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form action="">
+                <div class="form-group">
+                    <label for="inp" class="inp mb-2">
+                        <div class="row">
+                            <div class="col-1 d-flex align-self-center text-center p-2 pt-3">
+                                <i class="fa fa-user mt-2 mr-5"></i>
+                            </div>
+                            <div class="col-10 p-0">
+                                <input type="text" id="inp" class="inline" placeholder="&nbsp;">
+                                <span class="label">Username</span>
+                                <span class="border"></span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
 
-                              <span class="login100-form-title p-b-34 p-t-27">
-						Log in
-					</span>
+                <div class="form-group">
+                    <label for="password" class="inp mb-2">
+                        <div class="row">
+                            <div class="col-1 d-flex align-self-center text-center p-2 pt-3">
+                                <i class="fa fa-lock mt-2 mr-5"></i>
+                            </div>
+                            <div class="col-10 p-0">
+                                <input type="text" id="password" class="inline" placeholder="&nbsp;">
+                                <span class="label">Password</span>
+                                <span class="border"></span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
 
-                              <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                                  <input class="input100" type="text" name="username" placeholder="Username">
-                                  <span class="focus-input100" data-placeholder="&#xf207;"></span>
-                              </div>
+                <div class="form-group">
+                    <label for="passwordkonf" class="inp mb-2">
+                        <div class="row">
+                            <div class="col-1 d-flex align-self-center text-center p-2 pt-3">
+                                <i class="fa fa-lock mt-2 mr-5"></i>
+                            </div>
+                            <div class="col-10 p-0">
+                                <input type="text" id="passwordkonf" class="inline" placeholder="&nbsp;">
+                                <span class="label">konfirmasi kata Sandi</span>
+                                <span class="border"></span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
 
-                              <div class="wrap-input100 validate-input" data-validate="Enter password">
-                                  <input class="input100" type="password" name="pass" placeholder="Password">
-                                  <span class="focus-input100" data-placeholder="&#xf191;"></span>
-                              </div>
+                <div class="form-group">
+                    <label for="fullname" class="inp mb-2">
+                        <div class="row">
+                            <div class="col-1 d-flex align-self-center text-center p-2 pt-3">
+                                <i class="fa fa-signature mt-2 mr-5"></i>
+                            </div>
+                            <div class="col-10 p-0">
+                                <input type="text" id="fullname" class="inline" placeholder="&nbsp;">
+                                <span class="label">Nama Lengkap</span>
+                                <span class="border"></span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
 
-                              <div class="contact100-form-checkbox">
-                                  <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                                  <label class="label-checkbox100" for="ckb1">
-                                      Remember me
-                                  </label>
-                              </div>
+                <div class="form-group">
+                    <label for="phone" class="inp mb-2">
+                        <div class="row">
+                            <div class="col-1 d-flex align-self-center text-center p-2 pt-3">
+                                <i class="fa fa-phone-square mt-2 mr-5"></i>
+                            </div>
+                            <div class="col-10 p-0">
+                                <input type="text" id="fullname" class="inline" placeholder="&nbsp;">
+                                <span class="label">Nomor Telepon</span>
+                                <span class="border"></span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
 
-                              <div class="container-login100-form-btn">
-                                  <button class="login100-form-btn">
-                                      Login
-                                  </button>
-                              </div>
+                <div class="form-group float-right mb-5 mr-2">
+                    <button type="submit" class="btn btn-sm bg-info text-white pl-3 pr-3 pt-2 pb-2">
+                        Daftar
+                    </button>
+                </div>
 
-                              <div class="text-center p-t-90">
-                                  <a class="txt1" href="#">
-                                      Forgot Password?
-                                  </a>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+
+            </form>
+        </div>
+
     </div>
-</section>
-<!-- End Data Pinda -->
-<!--================Header Menu Area =================-->
-<?php $this->load->view('layout/footer.php'); ?>
-<link rel="stylesheet" href="<?= base_url('assets/user/auth/js/jquery/jquery-3.2.1.min.js')?>">
-<link rel="stylesheet" href="<?= base_url('assets/user/auth/js/main.js')?>">
+</div>
+
+
+
+
+
+
+
+<!-- Footer-->
+
+<script src="<?= base_url('assets/user/vendors/jquery/jquery-3.2.1.min.js') ?>"></script>
+<script src="<?= base_url('assets/user/vendors/bootstrap/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/user/vendors/owl-carousel/owl.carousel.min.js') ?>"></script>
+<script src="<?= base_url('assets/user/vendors/nice-select/jquery.nice-select.min.js')?>"></script>
+<script src="<?= base_url('assets/user/js/jquery.ajaxchimp.min.js') ?>"></script>
+<script src="<?= base_url('assets/user/js/mail-script.js')?>"></script>
+<script src="<?= base_url('assets/user/js/main.js') ?>"></script>
+
+
+<!-- Datatables -->
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-buttons/js/buttons.print.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/jszip/dist/jszip.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/pdfmake/build/pdfmake.min.js') ?>"></script>
+
+<script src="<?= base_url('assets/admin/vendors/pdfmake/build/vfs_fonts.js') ?>"></script>
 </body>
 </html>
-

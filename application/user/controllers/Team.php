@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends MY_Controller {
+class Team extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,7 +18,6 @@ class Auth extends MY_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-
     public function __construct()
     {
         parent::__construct();
@@ -27,18 +26,9 @@ class Auth extends MY_Controller {
     }
 	public function index()
     {
-        $this->load->view('Home');
+
+        $this->data['page_title'] = 'Tim Pinda';
+        $this->render_template('webmin/Team', $this->data);
     }
 
-    public function register()
-    {
-        $this->data['page_title'] = 'Daftar';
-        $this->load->view('auth/Register', $this->data);
-    }
-
-    public function login()
-    {
-        $this->data['page_title'] = 'Login';
-        $this->load->view('auth/Login', $this->data);
-    }
 }

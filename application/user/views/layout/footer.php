@@ -24,7 +24,7 @@
                         </div>
                         <div class="col">
                             <ul>
-                                <li><a href="#">Tim</a></li>
+                                <li><a href="<?= site_url('Team') ?>">Tim</a></li>
                                 <li><a href="<?= site_url('Contact')?>">Artikel</a></li>
                                 <li><a href="<?= site_url('Contact')?>">Kontak</a></li>
                             </ul>
@@ -127,7 +127,19 @@
 
 <script src="<?= base_url('assets/admin/vendors/pdfmake/build/vfs_fonts.js') ?>"></script>
 <script>
-    // user profile dashboard
+
+    $(document).ready(function() {
+        $("#searchbox").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $('div[data-role="kategori"]').filter(function() {
+                $(this).toggle($(this).find('h3').text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+
+
+
+// user profile dashboard
     var DashboardTable;
     var MyprojectTable;
     var MykaryaTable;

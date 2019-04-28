@@ -24,7 +24,7 @@
                     <ul class="nav navbar-nav menu_nav justify-content-end">
                         <li class="nav-item"><a class="nav-link" href="index.html">Masuk</a></li>
                         <li class="nav-item"><a class="nav-link" href="about.html">Daftar</a></li>
-                        <li class="nav-item" style="padding-top: 5%;"><a class="buttonpost p-2 nav-link"  href="package.html">Buat Proyek</a>
+                        <li class="nav-item" style="padding-top: 5%;"><a class="buttonpost p-2 nav-link"  href="package.html">Buat Proyek</a></li>
 
                     </ul>
                 </div>
