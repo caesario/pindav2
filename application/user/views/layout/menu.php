@@ -14,8 +14,8 @@
 
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                     <ul class="nav navbar-nav menu_nav justify-content-start">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Kategori</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">Semua Proyek</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('Category/allcategory')?>">Kategori</a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= site_url('Project/allproject')?>">Semua Proyek</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= site_url('FAQ'); ?>">Tata Cara</a></li>
                         <li class="nav-item"><a class="nav-link" href="<?= site_url('About')?>">Tentang Pinda</a>
 

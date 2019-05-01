@@ -17,7 +17,7 @@
                         <div class="col">
                             <ul>
                                 <li><a href="<?= site_url('Home') ?>">Beranda</a></li>
-                                <li><a href="#">Semua Proyek</a></li>
+                                <li><a href="<?= site_url('Project/allproject')?>">Semua Proyek</a></li>
                                 <li><a href="<?= site_url('FAQ')?>">Tata Cara</a></li>
 
                             </ul>

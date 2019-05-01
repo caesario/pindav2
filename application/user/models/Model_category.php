@@ -34,5 +34,16 @@ class Model_category extends CI_Model
         return $result->result();
     }
 
+    public function getCategoryDetail($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_kategori');
+        $this->db->where('id_kategori', $id);
+        $result = $this->db->get();
+
+
+        return $result->result_array();
+    }
+
 
 }

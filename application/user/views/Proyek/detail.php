@@ -7,7 +7,7 @@
     <div class="container ">
         <div class="section-intro text-center pb-90px">
             <h2>Detail Proyek</h2>
-            <p> Campaign / Partner - Logo pertamina</p>
+            <p> <?php if ($detailproyek['jenis'] == 1) : ?> <?= 'Campaign' ?> <?php elseif ($detailproyek['jenis']== 2 ) : ?> <?= 'Find Partner' ?> <?php endif;?> - <?= $detailproyek['nama_proyek']?></p>
         </div>
         <div class="card">
              <div class="row">
@@ -18,7 +18,11 @@
                         </div>
                         <div class="col-md-7 pt-2">
                             <h5 >Status Proyek</h5>
+                            <?php if ( $detailproyek['status_proyek'] == 2 || $detailproyek['status_proyek'] == 3 || $detailproyek['sisa_hari'] == 0 ) :?>
+                            <p>Closed</p>
+                            <?php else : ?>
                             <p>Open</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -29,7 +33,7 @@
                         </div>
                         <div class="col-md-7 pt-2">
                             <h5 >Batas Waktu</h5>
-                            <p>3 Hari Lagi</p>
+                            <p><?= $detailproyek['sisa_hari']?> Hari Lagi</p>
                         </div>
                     </div>
                 </div>
@@ -40,7 +44,7 @@
                         </div>
                         <div class="col-md-7 pt-2">
                             <h5 >Nilai Pembayaran</h5>
-                            <p>Rp 100.000</p>
+                            <p>Rp <?= $detailproyek['nilai_pembayaran']?></p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +55,7 @@
                         </div>
                         <div class="col-md-7 pt-2">
                             <h5 >Anggota</h5>
-                            <p>3 / 4 orang</p>
+                            <p> <?= $detailproyek['total_terima']?> / <?= $detailproyek['butuh_anggota']?> orang</p>
                         </div>
                     </div>
                 </div>
@@ -63,13 +67,13 @@
             <div class="col-md-8">
                 <div class="card p-4">
                     <h3>Kategori Proyek</h3>
-                    <p>Logo</p>
+                    <p><?= $detailproyek['nama_kategori'] ?></p>
                     <h3>Tagline Proyek</h3>
-                    <p>Membuat logo sebagus bagusnya</p>
+                    <p><?= $detailproyek['tagline'] ?></p>
                     <h3>Deskripsi Proyek</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda consectetur cupiditate doloremque dolorum ea earum eius libero molestiae natus nemo nesciunt, odio praesentium quaerat quibusdam recusandae saepe soluta, voluptatibus! Natus?</p>
+                    <p><?= $detailproyek['detail_proyek'] ?></p>
                     <h3>Teks desain</h3>
-                    <p>Pertamina, Asik Asik joss</p>
+                    <p><?= $detailproyek['teks_desain']?></p>
                     <h3>Syarat Desain</h3>
                     <p>
                         1. syarat satu <br>
@@ -88,15 +92,19 @@
             <div class="col-md-4">
                 <div class="card p-3 text-center">
                     <h3 class="">Pembuat Proyek</h3>
-                    <img class="img-fluid mx-auto d-block mb-3 mt-3" src="<?= base_url('assets/user/img/home/pictureprojectdetail.png')?>" alt="">
+                    <?php if($detailproyek['foto_user'] != '<p>You did not select a file to upload.</p>') : ?>
+                        <img class="img-fluid mx-auto d-block mb-3 mt-3" src="<?= base_url().$detailproyek['foto_user'] ;?>" alt="">
+                    <?php else : ?>
+                        <img class="img-fluid mx-auto d-block mb-3 mt-3" src="<?= base_url('assets/user/img/home/pictureprojectdetail.png')?>" alt="">
+                    <?php endif; ?>
                     <h3>Nama</h3>
-                    <p>Ricky Ariansyah</p>
+                    <p><?= $detailproyek['nama_user']?></p>
                     <h3>Tanggal Bergabung</h3>
-                    <p>8 Maret 2019</p>
+                    <p><?= $detailproyek['date_gabung']?></p>
                 </div>
-                <a href="" class="btn btn-info w-100 p-3 mt-3" ><i class="fa fa-user-plus"></i> Bergabung Dengan Proyek</a>
-                <a href="" class="btn btn-info w-100 p-3 mt-3" ><i class="far fa-images"></i> Submit Desain</a>
-                <a href="" class="btn btn-info w-100 p-3 mt-3" ><i class="fa fa-user-tag"></i> Berikan Ide Dan Saran</a>
+                <a href="<?= site_url('Project/bergabung/'.$detailproyek['id_proyek']) ?>" class="btn btn-info w-100 p-3 mt-3" ><i class="fa fa-user-plus"></i> Bergabung Dengan Proyek</a>
+                <a href="<?= site_url('Project/submitdesain/'.$detailproyek['id_proyek'])?>" class="btn btn-info w-100 p-3 mt-3" ><i class="far fa-images"></i> Submit Desain</a>
+                <a href="<?= site_url('Project/submitide/'.$detailproyek['id_proyek'])?>" class="btn btn-info w-100 p-3 mt-3" ><i class="fa fa-user-tag"></i> Berikan Ide Dan Saran</a>
             </div>
         </div>
     <br>

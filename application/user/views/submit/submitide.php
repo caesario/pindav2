@@ -7,7 +7,7 @@
     <div class="container ">
         <div class="section-intro text-center pb-90px">
             <h2>Submit Ide / Saran</h2>
-            <p> Campaign / Partner - Logo pertamina</p>
+            <p> <?php if ($proyek->jenis == 1) : ?> <?= 'Campaign' ?> <?php elseif ($proyek->jenis == 2 ) : ?> <?= 'Find Partner' ?> <?php endif;?> - <?= $proyek->nama_proyek?></p>
         </div>
         <div class="row">
             <div class="col-md-4">
@@ -15,13 +15,15 @@
                     <h3 class="bg-gray p-3 text-center">Ringkasan Proyek</h3>
                    <div class="p-3">
                        <h3>Nama Proyek</h3>
-                       <p class="small">Campaign / Partner - Logo pertamina</p>
+                       <p class="small"><?php if ($proyek->jenis == 1) : ?> <?= 'Campaign' ?> <?php elseif ($proyek->jenis == 2 ) : ?> <?= 'Find Partner' ?> <?php endif;?> - <?= $proyek->nama_proyek?></p>
                        <h3>Deskripsi</h3>
-                       <p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus error facere laboriosam minus natus non officia veritatis. Accusamus aperiam asperiores aspernatur aut commodi, eos harum labore laborum, magnam modi veniam.</p>
+                       <p class="small">
+                           <?= $proyek->detail_proyek ?>
+                       </p>
                        <h3>Batas Waktu</h3>
-                       <p class="small">3 Hari Lagi</p>
+                       <p class="small"><?= $sisawaktu?> Hari Lagi</p>
                        <h3>Nilai Pembayaran</h3>
-                       <p class="small">Rp 100.000</p>
+                       <p class="small">Rp <?= $proyek->nilai_pembayaran?></p>
                    </div>
                 </div>
                 <br>

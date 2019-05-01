@@ -23,4 +23,15 @@ class Model_user extends CI_Model
 	    return $result->result();
     }
 
+    public function getUserDetail($id)
+    {
+        $this->db->select('*');
+        $this->db->from('pinda_user');
+        $this->db->where('id_user', $id);
+        $result = $this->db->get();
+
+
+        return $result->result_array();
+    }
+
 }
