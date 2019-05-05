@@ -151,7 +151,7 @@
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-                <h4 class="modal-title">Ubah Merk</h4>
+                <h4 class="modal-title">Ubah Data User</h4>
 
             </div>
 
@@ -168,36 +168,23 @@
 
 
                     <div class="form-group">
-
-                        <label for="edit_brand_name">Nama Merk</label>
-
-                        <input type="text" class="form-control" id="edit_category_name" name="edit_category_name" placeholder="Masukkan Nama Merk" autocomplete="off">
-
+                        <label for="edit_brand_name">Nama User</label>
+                        <input type="text" class="form-control" id="edit_category_name" name="edit_category_name"  autocomplete="off">
                     </div>
 
                     <div class="form-group">
-
-                        <label for="edit_active">Status</label>
-
-                        <select class="form-control" id="edit_status" name="edit_status">
-
-                            <option value="1">Aktif</option>
-
-                            <option value="2">Tidak Aktif</option>
-
-                        </select>
-
+                        <label for="edit_brand_name">Username</label>
+                        <input type="text" class="form-control" id="edit_category_name" name="edit_category_name"  autocomplete="off">
                     </div>
 
                     <div class="form-group">
-                        <label for="icon">Icon</label>
-                        <select class="form-control" id="edit_icon" name="edit_icon">
-                            <?php foreach ($icon as $k => $v): ?>
+                        <label for="edit_brand_name">Email</label>
+                        <input type="text" class="form-control" id="edit_category_name" name="edit_category_name"  autocomplete="off">
+                    </div>
 
-                                <option value="<?php echo $v['id_icon'] ?>"><?php echo $v['nama_icon'] ?></option>
-
-                            <?php endforeach ?>
-                        </select>
+                    <div class="form-group">
+                        <label for="edit_brand_name">Password Baru</label>
+                        <input type="text" class="form-control" id="edit_category_name" name="edit_category_name"  autocomplete="off">
                     </div>
 
                 </div>
@@ -208,7 +195,7 @@
 
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
 
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
 
                 </div>
 
@@ -257,7 +244,7 @@
 
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-                    <button type="submit" class="btn btn-primary">Hapus</button>
+                    <button type="submit" class="btn btn-success">Hapus</button>
 
                 </div>
 

@@ -64,6 +64,51 @@ class Project extends MY_Controller {
         $this->render_template('Proyek/infopemb', $this->data);
     }
 
+    public function seleksi($id) {
+
+        $detailproyek = $this->proyek->getDetailProyek($id);
+        $detailproyek = $detailproyek[0];
+
+        $detailuser = $this->user->getUserDetail($detailproyek->id_user);
+        $category = $this->category->getCategoryDetail($detailproyek->id_kategori);
+        $totalterima = $this->proyek->getTotalTerimaUser($detailproyek->id_proyek);
+
+        $dategabung = strtotime($detailuser[0]['CreateTime']);
+        $dategabung = date('d F Y', $dategabung);
+
+        $now = time(); // or your date as well
+        $your_date = strtotime($detailproyek->DateAkhir);
+        $datediff = $now - $your_date;
+
+        if ($datediff < 0 ) {
+            $sisahari = 0;
+        } else {
+            $sisahari =  round($datediff / (60 * 60 * 24));
+        }
+        $result = array(
+            'id_proyek' => $detailproyek->id_proyek,
+            'status_proyek' => $detailproyek->status_proyek,
+            'nama_proyek' => $detailproyek->nama_proyek,
+            'jenis' => $detailproyek->jenis,
+            'sisa_hari' => $sisahari,
+            'nilai_pembayaran' => $detailproyek->nilai_pembayaran,
+            'butuh_anggota' => $detailproyek->qty_member,
+            'nama_user' => $detailuser[0]['nama_user'],
+            'foto_user' => $detailuser[0]['photo'],
+            'nama_kategori' => $category[0]['nama_kategori'],
+            'tagline' => $detailproyek->tagline,
+            'detail_proyek' => $detailproyek->detail_proyek,
+            'teks_desain' => $detailproyek->teks_desain,
+            'date_gabung' => $dategabung,
+            'total_terima' => $totalterima
+        );
+
+        $this->data['page_title'] = 'Seleksi Submit';
+        $this->data['detailproyek'] =  $result;
+        $this->render_template('Proyek/seleksiproyek', $this->data);
+    }
+
+
 
 
 

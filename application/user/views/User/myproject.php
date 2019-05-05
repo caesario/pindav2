@@ -49,7 +49,7 @@
                     <h3><i class="fas fa-code-branch"></i> Proyek Saya</h3>
                     <hr>
 
-                    <a href="" class="btn btn-sm bg-white border-dark rounded col-md-2 p-1 text-dark"><i class="fa fa-plus-circle"></i> Tambah</a>
+                    <a href="" class="btn btn-sm bg-white border-dark rounded col-md-2 p-1 text-dark"><i class="fa fa-plus-circle"></i> Buat Proyek</a>
                    <div class="col-md-12 mt-3">
                        <table id="MyprojectTable" class="table table-responsive">
                            <thead>

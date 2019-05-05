@@ -6,7 +6,8 @@
                 <div class="single-footer-widget">
                     <h6>Tentang Pinda</h6>
                     <p>
-                        Pinda Adalah
+                        Pinda Adalah aplikasi Berbasis
+                        web yang mempertemukan pembuat proyek dan pekerja lepas untuk membuat sebuah konten digital
                     </p>
                 </div>
             </div>

@@ -17,7 +17,7 @@
                             <input type="radio" name="product" value="" class="card-input-element" />
                             <div class="jenis-card text-center">
                                 <div class="category-card-img">
-                                    <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
+                                    <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/campaigninit.png') ?>" alt="">
                                 </div>
                                 <div class="jenis-card-body">
                                     <h3>Campaign</h3>
@@ -31,7 +31,7 @@
                         <input type="radio" name="product" value="" class="card-input-element" />
                         <div class="jenis-card text-center">
                             <div class="category-card-img">
-                                <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/category.png') ?>" alt="">
+                                <img class="img-fluid-50" src="<?= base_url('assets/user/img/home/teaminit.png') ?>" alt="">
                             </div>
                             <div class="jenis-card-body">
                                 <h3>Find Partner</h3>
